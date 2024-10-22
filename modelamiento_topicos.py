@@ -1,9 +1,13 @@
-from sentence_transformers import SentenceTransformer
-from typing import List, Dict, Tuple
 import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity
-import unicodedata
+import pandas as pd
 import re
+import unicodedata
+
+from typing import List, Dict, Tuple
+
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
+
 from extraer_vocabulario import Termino
 
 
@@ -21,7 +25,8 @@ class ProcesadorMateriasEmbeddings:
         # Precalculamos los embeddings del tesauro
         self.tesauro_embeddings = self.modelo.encode([term.etiqueta for term in self.tesauro_terminos])
 
-    def normalizar_texto(self, texto: str) -> str:
+    @staticmethod
+    def normalizar_texto(texto: str) -> str:
         """Normaliza el texto eliminando acentos y caracteres especiales"""
         # Eliminar acentos
         texto = ''.join(c for c in unicodedata.normalize('NFD', texto)
@@ -98,7 +103,23 @@ class ProcesadorMateriasEmbeddings:
                 'score': float(score)
             })
 
-        return resultados
+        return max(resultados, key=lambda x: x['score'])
+
+    def procesar_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Procesa las materias de un DataFrame y actualiza la columna tema_general
+
+        Args:
+            df: DataFrame con una columna 'Tema principal'
+
+        Returns:
+            DataFrame con la nueva columna 'tema_general' actualizada
+        """
+        df = df.copy()
+        df['tema_general'] = df['Tema principal'].apply(
+            lambda x: self.procesar_linea(x)['termino_sugerido'].etiqueta if pd.notna(x) else None
+        )
+        return df
 
 
 # Ejemplo de uso
@@ -115,20 +136,9 @@ if __name__ == "__main__":
     procesador = ProcesadorMateriasEmbeddings(tesauro)
 
     # TODO Datos de ejemplo
-    datos = [
-        "Autoestima;Autorrealización (Psicología);Tristeza",
-        "Crímenes contra la humanidad en la literatura;Derechos humanos en la literatura",
-        "Constituciones;Educación cívica",
-        "Conducta infantil;Disciplina infantil"
-    ]
+    df = pd.read_csv("raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv", header=1)
 
-    # Procesamos cada línea
-    for linea in datos:
-        print(f"\nProcesando: {linea}")
-        resultados = procesador.procesar_linea(linea)
-        for resultado in resultados:
-            print(f"""
-            Original: {resultado['termino_original']}
-            Sugerido: {resultado['termino_sugerido'].etiqueta} (Notación: {resultado['termino_sugerido'].notacion})
-            Score: {resultado['score']:.4f}
-            """)
+    df_procesado = procesador.procesar_dataframe(df)
+    df_procesado.to_csv("clean_data/tablero_8_oplb.xlsx - 02102024KOHA_procesado.csv", index=False)
+    for index, row in df_procesado.iterrows():
+        print(f"Línea {index + 1}: {row['Tema principal']} -> {row['tema_general']}")
