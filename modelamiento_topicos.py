@@ -133,26 +133,43 @@ class ProcesadorMateriasEmbeddings:
         resultados = []
 
         for materia in materias:
-            logging.info(f"Processing subject: {materia}")
             termino_sugerido, score = self.encontrar_termino_similar(materia, umbral)
             resultados.append({
                 'termino_original': materia,
                 'termino_sugerido': termino_sugerido,
                 'score': float(score)
             })
-            logging.info(f"Suggested term: {termino_sugerido.etiqueta}, Score: {score:.2f}")
-
         best_result = max(resultados, key=lambda x: x['score'])
         logging.info(f"Best match: {best_result['termino_sugerido'].etiqueta}, Score: {best_result['score']:.2f}")
         return best_result
-
     @timer
     def procesar_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
-        logging.info(f"Processing DataFrame with {len(df)} rows")
+        logging.info(f"Procesando DataFrame con {len(df)} filas")
         df = df.copy()
-        df['tema_general'] = df['Tema principal'].apply(
-            lambda x: self.procesar_linea(x)['termino_sugerido'].etiqueta if pd.notna(x) else None
+
+        # Filtrar entradas no nulas de 'Tema principal'
+        temas_validos = df['Tema principal'].dropna()
+
+        # Normalizar y codificar todos los temas válidos de una vez
+        temas_normalizados = [self.normalizar_texto(tema) for tema in temas_validos]
+        embeddings_temas = self.modelo.encode(temas_normalizados)
+
+        # Calcular similitudes de coseno para todos los temas contra el tesauro
+        similitudes = cosine_similarity(embeddings_temas, self.tesauro_embeddings)
+
+        # Encontrar los índices de los términos más similares y sus puntuaciones
+        indices_mejores_coincidencias = similitudes.argmax(axis=1)
+        puntuaciones_mejores_coincidencias = similitudes.max(axis=1)
+
+        # Crear una serie con los términos que mejor coinciden
+        mejores_coincidencias = pd.Series(
+            [self.tesauro_terminos[i].etiqueta for i in indices_mejores_coincidencias],
+            index=temas_validos.index
         )
+
+        # Asignar los resultados de vuelta al dataframe
+        df.loc[temas_validos.index, 'tema_general'] = mejores_coincidencias
+        df.loc[temas_validos.index, 'score_tema_general'] = puntuaciones_mejores_coincidencias
         return df
 
 
