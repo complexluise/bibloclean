@@ -1,4 +1,6 @@
 import json
+import re
+
 from bs4 import BeautifulSoup
 from dataclasses import dataclass, asdict
 from typing import Optional
@@ -36,7 +38,11 @@ def extract_vocabulary(html_content: str) -> list[Term]:
 
         # Get label by removing the notation from the anchor text
         full_text = anchor.get_text(strip=True)
-        label = full_text[full_text.find(notation) + len(notation):].strip()
+        label = re.sub(
+            r'\s+',
+            ' ',
+            full_text[full_text.find(notation) + len(notation):]
+        ).strip()
 
         # Get URI and level
         uri = anchor.get('data-uri', '')
