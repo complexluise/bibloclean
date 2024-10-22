@@ -5,6 +5,7 @@ import pandas as pd
 import re
 import time
 import unicodedata
+import torch
 
 from functools import wraps
 from typing import List, Dict, Tuple
@@ -30,41 +31,27 @@ def timer(func):
 
 class ProcesadorMateriasEmbeddings:
     def __init__(self, tesauro_terminos: List[Termino], modelo_nombre: str = 'paraphrase-multilingual-mpnet-base-v2'):
-        """
-        Inicializa el procesador con un modelo de embeddings y un tesauro
-
-        Args:
-            tesauro_terminos: Lista de términos del tesauro como objetos Termino
-            modelo_nombre: Nombre del modelo de sentence-transformers a usar
-        """
+        self.device = torch.device("cuda")
         self.modelo = self.cargar_o_descargar_modelo(modelo_nombre)
         self.tesauro_terminos = self.extraer_terminos_nivel_2(tesauro_terminos)
-        # Precalculamos los embeddings del tesauro
-        self.tesauro_embeddings = self.modelo.encode([term.etiqueta for term in self.tesauro_terminos])
+        self.tesauro_embeddings = self.modelo.encode(
+            [term.etiqueta for term in self.tesauro_terminos],
+            device=self.device
+        )
 
     @staticmethod
     def cargar_o_descargar_modelo(modelo_nombre: str) -> SentenceTransformer:
-        """
-        Carga el modelo si existe localmente, o lo descarga y guarda si no existe.
-
-        Args:
-            modelo_nombre: Nombre del modelo de sentence-transformers a usar
-
-        Returns:
-            SentenceTransformer: Modelo cargado o descargado
-        """
         modelo_path = os.path.join('modelos', modelo_nombre)
-
         if os.path.exists(modelo_path):
-            logging.info(f"Loading existing model from {modelo_path}")
-            return SentenceTransformer(modelo_path)
+            logging.info(f"Cargando modelo existente desde {modelo_path}")
+            modelo = SentenceTransformer(modelo_path)
         else:
-            logging.info(f"Downloading model {modelo_nombre}")
+            logging.info(f"Descargando modelo {modelo_nombre}")
             modelo = SentenceTransformer(modelo_nombre)
             os.makedirs('modelos', exist_ok=True)
             modelo.save(modelo_path)
-            logging.info(f"Model saved to {modelo_path}")
-            return modelo
+            logging.info(f"Modelo guardado en {modelo_path}")
+        return modelo.to(torch.device("cuda" if torch.cuda.is_available() else "cpu"))
 
     @staticmethod
     def normalizar_texto(texto: str) -> str:
@@ -142,34 +129,30 @@ class ProcesadorMateriasEmbeddings:
         best_result = max(resultados, key=lambda x: x['score'])
         logging.info(f"Best match: {best_result['termino_sugerido'].etiqueta}, Score: {best_result['score']:.2f}")
         return best_result
+
     @timer
     def procesar_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
         logging.info(f"Procesando DataFrame con {len(df)} filas")
         df = df.copy()
 
-        # Filtrar entradas no nulas de 'Tema principal'
         temas_validos = df['Tema principal'].dropna()
-
-        # Normalizar y codificar todos los temas válidos de una vez
         temas_normalizados = [self.normalizar_texto(tema) for tema in temas_validos]
-        embeddings_temas = self.modelo.encode(temas_normalizados)
 
-        # Calcular similitudes de coseno para todos los temas contra el tesauro
+        embeddings_temas = self.modelo.encode(temas_normalizados, device=self.device)
+
         similitudes = cosine_similarity(embeddings_temas, self.tesauro_embeddings)
 
-        # Encontrar los índices de los términos más similares y sus puntuaciones
         indices_mejores_coincidencias = similitudes.argmax(axis=1)
         puntuaciones_mejores_coincidencias = similitudes.max(axis=1)
 
-        # Crear una serie con los términos que mejor coinciden
         mejores_coincidencias = pd.Series(
             [self.tesauro_terminos[i].etiqueta for i in indices_mejores_coincidencias],
             index=temas_validos.index
         )
 
-        # Asignar los resultados de vuelta al dataframe
         df.loc[temas_validos.index, 'tema_general'] = mejores_coincidencias
         df.loc[temas_validos.index, 'score_tema_general'] = puntuaciones_mejores_coincidencias
+
         return df
 
 
