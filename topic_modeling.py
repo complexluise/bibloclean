@@ -4,21 +4,22 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 import unicodedata
 import re
+from extraer_vocabulario import Termino
 
 
 class ProcesadorMateriasEmbeddings:
-    def __init__(self, tesauro_terminos: List[str], modelo_nombre: str = 'paraphrase-multilingual-mpnet-base-v2'):
+    def __init__(self, tesauro_terminos: List[Termino], modelo_nombre: str = 'paraphrase-multilingual-mpnet-base-v2'):
         """
         Inicializa el procesador con un modelo de embeddings y un tesauro
 
         Args:
-            tesauro_terminos: Lista de términos del tesauro
+            tesauro_terminos: Lista de términos del tesauro como objetos Termino
             modelo_nombre: Nombre del modelo de sentence-transformers a usar
         """
         self.modelo = SentenceTransformer(modelo_nombre)
         self.tesauro_terminos = tesauro_terminos
         # Precalculamos los embeddings del tesauro
-        self.tesauro_embeddings = self.modelo.encode(tesauro_terminos)
+        self.tesauro_embeddings = self.modelo.encode([term.label for term in tesauro_terminos])
 
     def normalizar_texto(self, texto: str) -> str:
         """Normaliza el texto eliminando acentos y caracteres especiales"""
@@ -37,7 +38,7 @@ class ProcesadorMateriasEmbeddings:
         """Separa las materias por punto y coma"""
         return [materia.strip() for materia in texto.split(';')]
 
-    def encontrar_termino_similar(self, termino: str, umbral: float = 0.6) -> Tuple[str, float]:
+    def encontrar_termino_similar(self, termino: str, umbral: float = 0.6) -> Tuple[Termino, float]:
         """
         Encuentra el término más similar en el tesauro usando similitud coseno
 
@@ -46,30 +47,28 @@ class ProcesadorMateriasEmbeddings:
             umbral: Umbral mínimo de similitud para aceptar una coincidencia
 
         Returns:
-            Tupla con el término más similar y su score de similitud
+            Tupla con el término más similar (como objeto Termino) y su score de similitud
         """
         termino_normalizado = self.normalizar_texto(termino)
-        # Calculamos el embedding del término de búsqueda
         termino_embedding = self.modelo.encode([termino_normalizado])[0]
 
-        # Calculamos similitud con todos los términos del tesauro
         similitudes = cosine_similarity([termino_embedding], self.tesauro_embeddings)[0]
 
-        # Encontramos el índice del término más similar
         indice_max = np.argmax(similitudes)
         max_similitud = similitudes[indice_max]
 
         if max_similitud >= umbral:
+            # TODO Seguro este es el comportamienteo deseado?
             return self.tesauro_terminos[indice_max], max_similitud
         else:
-            return termino, max_similitud
+            return Termino(notacion="", etiqueta=termino, uri="", nivel=0, hijos=[]), max_similitud
 
     def procesar_linea(self, linea: str, umbral: float = 0.6) -> List[Dict]:
         """
         Procesa una línea completa de materias
 
         Returns:
-            Lista de diccionarios con término original, término sugerido y score
+            Lista de diccionarios con término original, término sugerido (como objeto Termino) y score
         """
         materias = self.separar_materias(linea)
         resultados = []
@@ -87,27 +86,18 @@ class ProcesadorMateriasEmbeddings:
 
 # Ejemplo de uso
 if __name__ == "__main__":
-    # Ejemplo de tesauro más amplio
-    tesauro_ejemplo = [
-        "PSICOLOGÍA - AUTOESTIMA",
-        "PSICOLOGÍA - DESARROLLO PERSONAL",
-        "PSICOLOGÍA - EMOCIONES",
-        "PSICOLOGÍA - CONDUCTA",
-        "DERECHO INTERNACIONAL HUMANITARIO",
-        "DERECHO - DERECHOS HUMANOS",
-        "DERECHO PENAL INTERNACIONAL",
-        "EDUCACIÓN - CIVISMO",
-        "EDUCACIÓN - VALORES",
-        "PSICOLOGÍA INFANTIL",
-        "EDUCACIÓN - DISCIPLINA",
-        "DESARROLLO INFANTIL",
-        # Agregar más términos según sea necesario
-    ]
+    from extraer_vocabulario import extraer_vocabulario
 
-    # Inicializamos el procesador
-    procesador = ProcesadorMateriasEmbeddings(tesauro_ejemplo)
+    # Cargar el tesauro desde el archivo HTML
+    with open('raw_data/vocabulary.html', 'r', encoding='utf-8') as f:
+        html_content = f.read()
 
-    # Datos de ejemplo
+    tesauro = extraer_vocabulario(html_content)
+
+    # Inicializamos el procesador con el tesauro extraído
+    procesador = ProcesadorMateriasEmbeddings(tesauro)
+
+    # TODO Datos de ejemplo
     datos = [
         "Autoestima;Autorrealización (Psicología);Tristeza",
         "Crímenes contra la humanidad en la literatura;Derechos humanos en la literatura",
@@ -122,6 +112,6 @@ if __name__ == "__main__":
         for resultado in resultados:
             print(f"""
             Original: {resultado['termino_original']}
-            Sugerido: {resultado['termino_sugerido']}
+            Sugerido: {resultado['termino_sugerido'].label} (Notación: {resultado['termino_sugerido'].notation})
             Score: {resultado['score']:.4f}
             """)
