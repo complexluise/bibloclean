@@ -39,11 +39,33 @@ class ProcesadorMateriasEmbeddings:
             tesauro_terminos: Lista de términos del tesauro como objetos Termino
             modelo_nombre: Nombre del modelo de sentence-transformers a usar
         """
-        self.modelo = SentenceTransformer(modelo_nombre)
+        self.modelo = self.cargar_o_descargar_modelo(modelo_nombre)
         self.tesauro_terminos = self.extraer_terminos_nivel_2(tesauro_terminos)
         # Precalculamos los embeddings del tesauro
         self.tesauro_embeddings = self.modelo.encode([term.etiqueta for term in self.tesauro_terminos])
 
+    def cargar_o_descargar_modelo(self, modelo_nombre: str) -> SentenceTransformer:
+        """
+        Carga el modelo si existe localmente, o lo descarga y guarda si no existe.
+
+        Args:
+            modelo_nombre: Nombre del modelo de sentence-transformers a usar
+
+        Returns:
+            SentenceTransformer: Modelo cargado o descargado
+        """
+        modelo_path = os.path.join('modelos', modelo_nombre)
+
+        if os.path.exists(modelo_path):
+            logging.info(f"Loading existing model from {modelo_path}")
+            return SentenceTransformer(modelo_path)
+        else:
+            logging.info(f"Downloading model {modelo_nombre}")
+            modelo = SentenceTransformer(modelo_nombre)
+            os.makedirs('modelos', exist_ok=True)
+            modelo.save(modelo_path)
+            logging.info(f"Model saved to {modelo_path}")
+            return modelo
     @staticmethod
     def normalizar_texto(texto: str) -> str:
         """Normaliza el texto eliminando acentos y caracteres especiales"""
