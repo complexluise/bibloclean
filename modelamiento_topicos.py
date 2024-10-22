@@ -1,9 +1,10 @@
+import logging
 import numpy as np
+import os
 import pandas as pd
 import re
-import unicodedata
-import logging
 import time
+import unicodedata
 
 from functools import wraps
 from typing import List, Dict, Tuple
@@ -12,7 +13,6 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
 from extraer_vocabulario import Termino
-
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -27,8 +27,6 @@ def timer(func):
         return result
     return wrapper
 
-import os
-from sentence_transformers import SentenceTransformer
 
 class ProcesadorMateriasEmbeddings:
     def __init__(self, tesauro_terminos: List[Termino], modelo_nombre: str = 'paraphrase-multilingual-mpnet-base-v2'):
@@ -44,7 +42,8 @@ class ProcesadorMateriasEmbeddings:
         # Precalculamos los embeddings del tesauro
         self.tesauro_embeddings = self.modelo.encode([term.etiqueta for term in self.tesauro_terminos])
 
-    def cargar_o_descargar_modelo(self, modelo_nombre: str) -> SentenceTransformer:
+    @staticmethod
+    def cargar_o_descargar_modelo(modelo_nombre: str) -> SentenceTransformer:
         """
         Carga el modelo si existe localmente, o lo descarga y guarda si no existe.
 
@@ -66,6 +65,7 @@ class ProcesadorMateriasEmbeddings:
             modelo.save(modelo_path)
             logging.info(f"Model saved to {modelo_path}")
             return modelo
+
     @staticmethod
     def normalizar_texto(texto: str) -> str:
         """Normaliza el texto eliminando acentos y caracteres especiales"""
