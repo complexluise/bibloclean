@@ -1,9 +1,13 @@
+import logging
 import pandas as pd
 import numpy as np
 import re
 from pathlib import Path
 from typing import List, Dict, Union, Tuple
 from dataclasses import dataclass
+
+from modelamiento_topicos import ProcesadorMateriasEmbeddings
+from extraer_vocabulario import extraer_vocabulario
 
 
 @dataclass
@@ -37,7 +41,8 @@ class BibliotecaDataProcessor:
                 'Biblioteca_7'
             ],
             'lugar': 'Lugar de publicación',
-            'fecha': 'Fecha de publicación'
+            'fecha': 'Fecha de publicación',
+            'temas': ''
         }
 
     def obtener_columnas_disponibles(self) -> Dict[str, List[str]]:
@@ -56,7 +61,8 @@ class BibliotecaDataProcessor:
             'lugar': self.columnas_esperadas['lugar']
             if self.columnas_esperadas['lugar'] in self.datos.columns else None,
             'fecha': self.columnas_esperadas['fecha']
-            if self.columnas_esperadas['fecha'] in self.datos.columns else None
+            if self.columnas_esperadas['fecha'] in self.datos.columns else None,
+            'temas': self.columnas_esperadas['temas']
         }
         return columnas_disponibles
 
@@ -70,7 +76,9 @@ class BibliotecaDataProcessor:
         Returns:
             pd.DataFrame: DataFrame con los datos cargados
         """
+        logging.info("Cargando datos del archivo Excel")
         self.datos = pd.read_csv(self.ruta_archivo, header=fila_encabezado)
+        logging.info(f"Datos cargados exitosamente. Filas: {len(self.datos)}, Columnas: {len(self.datos.columns)}")
         return self.datos
 
     def filtrar_registros_con_biblioteca(self) -> DatasetPartition:
@@ -84,6 +92,7 @@ class BibliotecaDataProcessor:
         if self.datos is None:
             raise ValueError("Primero debe cargar los datos usando cargar_datos()")
 
+        logging.info("Filtrando registros con al menos una biblioteca")
         columnas_biblioteca = self.obtener_columnas_disponibles()['bibliotecas']
 
         if not columnas_biblioteca:
@@ -101,6 +110,7 @@ class BibliotecaDataProcessor:
         self.datos = registros_validos
         self.datos_descartados = registros_descartados
 
+        logging.info(f"Registros válidos: {len(registros_validos)}, Registros descartados: {len(registros_descartados)}")
         return DatasetPartition(registros_validos, registros_descartados)
 
     def _normalizar_lugar_publicacion(self, valor: Union[str, float]) -> str:
@@ -179,9 +189,9 @@ class BibliotecaDataProcessor:
 
         return max(anos_encontrados) if anos_encontrados else np.nan
 
-    def normalizar_datos(self) -> pd.DataFrame:
+    def transformar_datos(self) -> pd.DataFrame:
         """
-        Aplica todas las normalizaciones necesarias al DataFrame según las columnas disponibles.
+        Aplica todas las transformaciones necesarias al DataFrame según las columnas disponibles.
 
         Returns:
             pd.DataFrame: DataFrame con datos normalizados
@@ -189,19 +199,55 @@ class BibliotecaDataProcessor:
         if self.datos is None:
             raise ValueError("Primero debe cargar los datos usando cargar_datos()")
 
+        logging.info("Iniciando transformación de datos")
+
         columnas_disponibles = self.obtener_columnas_disponibles()
 
         # Normalizar lugar de publicación si existe la columna
         if columnas_disponibles['lugar']:
-            print(f"Normalizando columna: {columnas_disponibles['lugar']}")
+            logging.info(f"Normalizando columna de lugar: {columnas_disponibles['lugar']}")
             self.datos[columnas_disponibles['lugar']] = self.datos[columnas_disponibles['lugar']] \
                 .apply(self._normalizar_lugar_publicacion)
 
         # Normalizar fecha de publicación si existe la columna
         if columnas_disponibles['fecha']:
-            print(f"Normalizando columna: {columnas_disponibles['fecha']}")
+            logging.info(f"Normalizando columna de fecha: {columnas_disponibles['fecha']}")
             self.datos[columnas_disponibles['fecha']] = self.datos[columnas_disponibles['fecha']] \
                 .apply(self._normalizar_fecha_publicacion)
+
+        # Modelar temas si existe la columna
+        if columnas_disponibles['temas']:
+            logging.info(f"Modelando temas en columna: {columnas_disponibles['temas']}")
+            self.datos = self._modelar_topicos(columnas_disponibles['temas'])
+
+        return self.datos
+
+    def _modelar_topicos(self, columna_tema: str = 'Tema principal') -> pd.DataFrame:
+        """
+        Realiza el modelado de tópicos en la columna especificada.
+
+        Args:
+            columna_tema (str): Nombre de la columna que contiene los temas principales.
+
+        Returns:
+            pd.DataFrame: DataFrame con los temas modelados y enriquecidos.
+        """
+        if columna_tema not in self.datos.columns:
+            raise ValueError(f"La columna '{columna_tema}' no existe en el DataFrame.")
+
+        # Cargar el tesauro
+        with open('raw_data/vocabulario.html', 'r', encoding='utf-8') as f:
+            html_content = f.read()
+        tesauro = extraer_vocabulario(html_content)
+
+        # Inicializar el procesador de materias
+        procesador = ProcesadorMateriasEmbeddings(tesauro)
+
+        # Procesar el DataFrame
+        df_procesado = procesador.procesar_dataframe(self.datos)
+
+        # Actualizar el DataFrame principal
+        self.datos = df_procesado
 
         return self.datos
 
@@ -215,6 +261,8 @@ class BibliotecaDataProcessor:
         if self.datos is None:
             raise ValueError("No hay datos para guardar")
 
+        logging.info(f"Guardando resultados en: {directorio_salida}")
+
         directorio = Path(directorio_salida)
         directorio.mkdir(parents=True, exist_ok=True)
 
@@ -227,14 +275,14 @@ class BibliotecaDataProcessor:
         # Guardar registros procesados
         ruta_procesados = directorio / nombre_archivo_procesado
         self.datos.to_csv(ruta_procesados, index=False)
-        print(f"Registros procesados guardados en: {ruta_procesados}")
+        logging.info(f"Registros procesados guardados en: {ruta_procesados}")
 
         # Guardar registros descartados si existen
         if self.datos_descartados is not None and not self.datos_descartados.empty:
             nombre_archivo_descartados = f"{nombre_archivo_original}_descartados.csv"
             ruta_descartados = directorio / nombre_archivo_descartados
             self.datos_descartados.to_csv(ruta_descartados, index=False)
-            print(f"Registros descartados guardados en: {ruta_descartados}")
+            logging.info(f"Registros descartados guardados en: {ruta_descartados}")
 
     def analizar_registros_descartados(self) -> Dict:
         """
@@ -244,6 +292,8 @@ class BibliotecaDataProcessor:
         Returns:
             Dict: Estadísticas y patrones encontrados en los registros descartados
         """
+        logging.info("Analizando registros descartados")
+
         if self.datos_descartados is None or self.datos_descartados.empty:
             return {"mensaje": "No hay registros descartados para analizar"}
 
@@ -271,29 +321,35 @@ class BibliotecaDataProcessor:
             fechas_unicas = self.datos_descartados[columnas_disponibles['fecha']].dropna().unique()
             analisis["valores_unicos"]["fechas"] = list(fechas_unicas)
 
+        logging.info(f"Análisis de registros descartados completado. Total de registros descartados: {analisis['total_registros']}")
         return analisis
 
 
 def main():
+    # Set up logging
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
     # Configuración de rutas
     ruta_entrada = "raw_data/tablero_7_oplb.xlsx - 02102024KOHA.csv"
     directorio_salida = "clean_data"
+
+    logging.info(f"Iniciando procesamiento del archivo: {ruta_entrada}")
 
     # Inicializar procesador
     procesador = BibliotecaDataProcessor(ruta_entrada)
 
     # Ejecutar pipeline de procesamiento
     procesador.cargar_datos()
-    particion = procesador.filtrar_registros_con_biblioteca()
-    procesador.normalizar_datos()
+    procesador.filtrar_registros_con_biblioteca()
+    procesador.transformar_datos()
 
     # Analizar registros descartados
     analisis_descartados = procesador.analizar_registros_descartados()
-    print("\nAnálisis de registros descartados:")
-    print(analisis_descartados)
+    logging.info("Análisis de registros descartados completado")
 
     # Guardar resultados
     procesador.guardar_resultados(directorio_salida)
+    logging.info("Proceso de limpieza y transformación completado exitosamente")
 
 
 if __name__ == "__main__":
