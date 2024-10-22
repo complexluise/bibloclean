@@ -15,6 +15,7 @@ class Termino:
     nivel: int
     hijos: list['Termino']
     notacion_padre: Optional[str] = None
+    etiqueta_padre: Optional[str] = None
 
 
 def extraer_vocabulario(contenido_html: str) -> list[Termino]:
@@ -29,7 +30,7 @@ def extraer_vocabulario(contenido_html: str) -> list[Termino]:
     """
     sopa = BeautifulSoup(contenido_html, 'html.parser')
 
-    def extraer_termino(elemento_li, notacion_padre=None) -> Termino:
+    def extraer_termino(elemento_li, notacion_padre=None, etiqueta_padre=None) -> Termino:
         # Extraer el elemento ancla que contiene la información del término
         ancla = elemento_li.find('a', class_='jstree-anchor')
 
@@ -55,14 +56,19 @@ def extraer_vocabulario(contenido_html: str) -> list[Termino]:
             uri=uri,
             nivel=nivel,
             hijos=[],
-            notacion_padre=notacion_padre
+            notacion_padre=notacion_padre,
+            etiqueta_padre=etiqueta_padre
         )
 
         # Procesar hijos si existen
         hijos_ul = elemento_li.find('ul', class_='jstree-children')
         if hijos_ul:
             for hijo_li in hijos_ul.find_all('li', recursive=False):
-                hijo_termino = extraer_termino(hijo_li, notacion_padre=termino.notacion)
+                hijo_termino = extraer_termino(
+                    hijo_li,
+                    notacion_padre=termino.notacion,
+                    etiqueta_padre=termino.etiqueta
+                )
                 termino.hijos.append(hijo_termino)
 
         return termino
@@ -109,7 +115,7 @@ def guardar_vocabulario_como_json(vocabulario: list[Termino], nombre_archivo: st
 
 # Ejemplo de uso
 if __name__ == "__main__":
-    with open('datos_crudos/vocabulario.html', 'r', encoding='utf-8') as f:
+    with open('raw_data/vocabulario.html', 'r', encoding='utf-8') as f:
         contenido_html = f.read()
 
     vocabulario = extraer_vocabulario(contenido_html)
