@@ -2,7 +2,10 @@ import numpy as np
 import pandas as pd
 import re
 import unicodedata
+import logging
+import time
 
+from functools import wraps
 from typing import List, Dict, Tuple
 
 from sentence_transformers import SentenceTransformer
@@ -10,6 +13,22 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 from extraer_vocabulario import Termino
 
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+
+def timer(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        logging.info(f"{func.__name__} took {end_time - start_time:.2f} seconds to execute.")
+        return result
+    return wrapper
+
+import os
+from sentence_transformers import SentenceTransformer
 
 class ProcesadorMateriasEmbeddings:
     def __init__(self, tesauro_terminos: List[Termino], modelo_nombre: str = 'paraphrase-multilingual-mpnet-base-v2'):
@@ -85,36 +104,29 @@ class ProcesadorMateriasEmbeddings:
         else:
             return Termino(notacion="", etiqueta=termino, uri="", nivel=0, hijos=[]), max_similitud
 
+    @timer
     def procesar_linea(self, linea: str, umbral: float = 0.3) -> List[Dict]:
-        """
-        Procesa una línea completa de materias
-
-        Returns:
-            Lista de diccionarios con término original, término sugerido (como objeto Termino) y score
-        """
+        logging.info(f"Processing line: {linea}")
         materias = self.separar_materias(linea)
         resultados = []
 
         for materia in materias:
+            logging.info(f"Processing subject: {materia}")
             termino_sugerido, score = self.encontrar_termino_similar(materia, umbral)
             resultados.append({
                 'termino_original': materia,
                 'termino_sugerido': termino_sugerido,
                 'score': float(score)
             })
+            logging.info(f"Suggested term: {termino_sugerido.etiqueta}, Score: {score:.2f}")
 
-        return max(resultados, key=lambda x: x['score'])
+        best_result = max(resultados, key=lambda x: x['score'])
+        logging.info(f"Best match: {best_result['termino_sugerido'].etiqueta}, Score: {best_result['score']:.2f}")
+        return best_result
 
+    @timer
     def procesar_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
-        """
-        Procesa las materias de un DataFrame y actualiza la columna tema_general
-
-        Args:
-            df: DataFrame con una columna 'Tema principal'
-
-        Returns:
-            DataFrame con la nueva columna 'tema_general' actualizada
-        """
+        logging.info(f"Processing DataFrame with {len(df)} rows")
         df = df.copy()
         df['tema_general'] = df['Tema principal'].apply(
             lambda x: self.procesar_linea(x)['termino_sugerido'].etiqueta if pd.notna(x) else None
@@ -125,20 +137,28 @@ class ProcesadorMateriasEmbeddings:
 # Ejemplo de uso
 if __name__ == "__main__":
     from extraer_vocabulario import extraer_vocabulario
+    import time
+    import logging
 
-    # Cargar el tesauro desde el archivo HTML
+    start_time = time.time()
+
+    logging.info("Loading tesauro from HTML file")
     with open('raw_data/vocabulario.html', 'r', encoding='utf-8') as f:
         html_content = f.read()
 
     tesauro = extraer_vocabulario(html_content)
 
-    # Inicializamos el procesador con el tesauro extraído
+    logging.info("Initializing ProcesadorMateriasEmbeddings")
     procesador = ProcesadorMateriasEmbeddings(tesauro)
 
-    # TODO Datos de ejemplo
+    logging.info("Loading DataFrame")
     df = pd.read_csv("raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv", header=1)
 
+    logging.info("Processing DataFrame")
     df_procesado = procesador.procesar_dataframe(df)
+
+    logging.info("Saving processed DataFrame")
     df_procesado.to_csv("clean_data/tablero_8_oplb.xlsx - 02102024KOHA_procesado.csv", index=False)
-    for index, row in df_procesado.iterrows():
-        print(f"Línea {index + 1}: {row['Tema principal']} -> {row['tema_general']}")
+
+    end_time = time.time()
+    logging.info(f"Total execution time: {end_time - start_time:.2f} seconds")
