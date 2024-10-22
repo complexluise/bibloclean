@@ -180,7 +180,7 @@ if __name__ == "__main__":
     df_procesado = procesador.procesar_dataframe(df)
 
     logging.info("Saving processed DataFrame")
-    df_procesado.to_csv("clean_data/tablero_8_oplb.xlsx - 02102024KOHA_procesado.csv", index=False)
+    df_procesado.to_csv("clean_data/tablero_8_oplb.xlsx - 02102024KOHA_enriquecido.csv", index=False)
 
     end_time = time.time()
     logging.info(f"Total execution time: {end_time - start_time:.2f} seconds")
