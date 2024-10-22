@@ -17,9 +17,9 @@ class ProcesadorMateriasEmbeddings:
             modelo_nombre: Nombre del modelo de sentence-transformers a usar
         """
         self.modelo = SentenceTransformer(modelo_nombre)
-        self.tesauro_terminos = tesauro_terminos
+        self.tesauro_terminos = self.extraer_terminos_nivel_2(tesauro_terminos)
         # Precalculamos los embeddings del tesauro
-        self.tesauro_embeddings = self.modelo.encode([term.label for term in tesauro_terminos])
+        self.tesauro_embeddings = self.modelo.encode([term.etiqueta for term in self.tesauro_terminos])
 
     def normalizar_texto(self, texto: str) -> str:
         """Normaliza el texto eliminando acentos y caracteres especiales"""
@@ -34,7 +34,24 @@ class ProcesadorMateriasEmbeddings:
         texto = re.sub(r'en la literatura', '', texto)
         return texto.strip()
 
-    def separar_materias(self, texto: str) -> List[str]:
+    @staticmethod
+    def extraer_terminos_nivel_2(tesauro: List[Termino]) -> List[Termino]:
+        """
+        Extrae todos los términos de nivel 2 del tesauro.
+
+        Args:
+            tesauro: Lista de términos raíz del tesauro.
+
+        Returns:
+            Lista de todos los términos de nivel 2.
+        """
+        terminos_nivel_2 = []
+        for termino_raiz in tesauro:
+            terminos_nivel_2.extend(termino_raiz.hijos)
+        return terminos_nivel_2
+
+    @staticmethod
+    def separar_materias(texto: str) -> List[str]:
         """Separa las materias por punto y coma"""
         return [materia.strip() for materia in texto.split(';')]
 
@@ -63,7 +80,7 @@ class ProcesadorMateriasEmbeddings:
         else:
             return Termino(notacion="", etiqueta=termino, uri="", nivel=0, hijos=[]), max_similitud
 
-    def procesar_linea(self, linea: str, umbral: float = 0.6) -> List[Dict]:
+    def procesar_linea(self, linea: str, umbral: float = 0.3) -> List[Dict]:
         """
         Procesa una línea completa de materias
 
@@ -89,7 +106,7 @@ if __name__ == "__main__":
     from extraer_vocabulario import extraer_vocabulario
 
     # Cargar el tesauro desde el archivo HTML
-    with open('raw_data/vocabulary.html', 'r', encoding='utf-8') as f:
+    with open('raw_data/vocabulario.html', 'r', encoding='utf-8') as f:
         html_content = f.read()
 
     tesauro = extraer_vocabulario(html_content)
@@ -112,6 +129,6 @@ if __name__ == "__main__":
         for resultado in resultados:
             print(f"""
             Original: {resultado['termino_original']}
-            Sugerido: {resultado['termino_sugerido'].label} (Notación: {resultado['termino_sugerido'].notation})
+            Sugerido: {resultado['termino_sugerido'].etiqueta} (Notación: {resultado['termino_sugerido'].notacion})
             Score: {resultado['score']:.4f}
             """)
