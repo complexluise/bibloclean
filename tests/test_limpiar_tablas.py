@@ -99,6 +99,45 @@ def test_normalizar_nombre_autor():
     assert processor._normalizar_nombre_autor("O'Connor, Flannery") == "O'Connor, Flannery"
 
 
+def test_normalizar_titulo():
+    processor = BibliotecaDataProcessor("")
+
+    # Test removing leading and trailing spaces
+    assert processor._normalizar_titulo(" El príncipe ") == "El Príncipe"
+
+    # Test correct punctuation spacing
+    assert processor._normalizar_titulo("Prince of the elves /") == "Prince of the Elves"
+
+    # Test removing trailing slashes
+    assert processor._normalizar_titulo("Batallas de Champiñón /") == "Batallas de Champiñón"
+
+    # Test replacing incorrect comma separators
+    assert processor._normalizar_titulo("Los cantos de Maldoror /,") == "Los Cantos de Maldoror"
+
+    # Test removing redundant punctuation
+    assert processor._normalizar_titulo("The adventures of Ook and Gluk :,") == "The Adventures of Ook and Gluk"
+
+    # Test handling subtitle indicators
+    assert processor._normalizar_titulo("Protección familiar :") == "Protección Familiar"
+
+    # Test title case conversion for proper nouns
+    assert processor._normalizar_titulo("En el país de los zenúes /") == "En el País de los Zenúes"
+
+    # Test removing invalid characters
+    assert processor._normalizar_titulo("Fácil dibujar expresión artística %") == "Fácil Dibujar Expresión Artística"
+
+    # Test handling multiple issues simultaneously
+    assert processor._normalizar_titulo(" Historia del arte moderno /: , ") == "Historia del Arte Moderno"
+
+    # Test preserving valid special characters
+    assert processor._normalizar_titulo("C++ Programming Language") == "C++ Programming Language"
+
+    # Test handling empty or None values
+    assert processor._normalizar_titulo("") == "Sin título"
+    assert processor._normalizar_titulo(None) == "Sin título"
+    assert not pd.isna(processor._normalizar_titulo(np.nan))
+
+
 def test_transformar_datos(processor):
     processor.cargar_datos()
     result = processor.filtrar_registros_con_biblioteca()
