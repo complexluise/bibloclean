@@ -1,106 +1,103 @@
-# Limpieza de Datos Bibliográficos - Koha MARC21
+# BibloClean: Pipeline ETL para Análisis Bibliográfico de MARC21
 
-Este proyecto contiene un conjunto de herramientas para procesar, limpiar y enriquecer datos bibliográficos provenientes de sistemas de gestión de bibliotecas como Koha en formato MARC21.
+## Descripción General
 
-## Estructura del Proyecto
+**BibloClean** es un paquete Python diseñado para el procesamiento integral de datos bibliográficos, utilizando un pipeline ETL (Extracción, Transformación, Carga) para procesar registros MARC21 y normalizar la información extraída. El paquete extrae datos desde archivos CSV/Excel, realiza la limpieza y normalización del contenido, genera embeddings para análisis temático, e identifica y normaliza entidades dentro de los registros bibliográficos.
 
-- `extraer_vocabulario.py`: Extrae y procesa la jerarquía de términos del tesauro desde un archivo HTML.
-- `modelamiento_topicos.py`: Implementa el modelado de tópicos usando embeddings y similitud coseno.
-- `limpiar_tablas.py`: Realiza la limpieza y normalización de los datos bibliográficos.
-- `cli.py`: Interfaz de línea de comandos para el procesamiento de datos.
+Este paquete es ideal para bibliotecarios y gestores de información que necesitan procesar grandes volúmenes de registros bibliográficos y normalizarlos para mejorar la calidad de sus catálogos.
 
-## Funcionalidades Principales
+### Características Principales
 
-- Extracción de vocabulario controlado desde tesauro
-- Normalización de:
-  - Nombres de autores
-  - Títulos
-  - Lugares de publicación 
-  - Fechas
-- Modelado de tópicos usando embeddings
-- Análisis de registros descartados
-- Exportación de resultados procesados
+- **Extracción de datos**: Carga registros desde archivos CSV/Excel
+- **Preprocesamiento de texto**: Limpia y normaliza campos bibliográficos
+- **Generación de embeddings**: Crea representaciones vectoriales para análisis temático
+- **Normalización de entidades**: Detecta y normaliza autores, títulos y lugares
+- **Exportación de resultados**: Guarda los datos procesados en formato estructurado
 
-## Requisitos
+### Limitaciones
 
-- Python 3.8+
-- Pandas
-- NumPy
-- BeautifulSoup4
-- Sentence Transformers
-- PyTorch
-- Scikit-learn
-- Click
+- El paquete asume que los datos de entrada están en formato CSV/Excel
+- Los pipelines están diseñados específicamente para datos bibliográficos MARC21
+- El rendimiento depende de la calidad de los modelos de embedding utilizados
+- Se requiere una estructura específica de columnas en los datos de entrada
 
-## Uso
+## Prerrequisitos
 
-1. Instalar las dependencias:
+### 1. Instalación
+
+Instalar el paquete y sus dependencias:
 
 ```bash
 git clone https://github.com/complexluise/limpieza_marc21
 cd limpieza_marc21
-pip install -r requirements.txt
+# Si tienes GPU debes instalar esta versión de pytoch de lo contrario omite la siguiente linea
 pip3 install torch --index-url https://download.pytorch.org/whl/cu118
+pip install -r requirements.txt
 ```
-2. Colocar los archivos de entrada en la carpeta `raw_data/`
-3. Ejecutar el CLI para procesar los datos:
-```bash
-python ./src/cli.py archivo.csv
-```
-Opciones disponibles:
 
-- archivo: Ruta al archivo CSV/Excel a procesar
-- --salida, -s: Directorio donde se guardarán los resultados
-- --verbose, -v: Mostrar información detallada del proceso
-4. Los resultados procesados se guardarán en clean_data/
+### 2. Estructura de Datos
 
-## Estructura de Directorios
+Los datos de entrada deben seguir la estructura de campos MARC21 especificada en la documentación, incluyendo:
+
+Campos de autor (100$a)
+Campos de título (245$a, 245$b)
+Campos temáticos (650$a)
+Campos de clasificación (082$a)
+Campos de biblioteca (943$a-g)
+
+Ten en cuenta que se usan los nombres de la primera fila como la columnas a procesar.
+Tu archivo CSV o Excel debería tener las siguientes columnas:
+
+| 100$a             | 245$a                                   | 245$b                                         | 245$c             | 082$a | 082$b | 082$2 | 090$a | 090$b | 650$a                                       | 650$y | 650$v | 650$x              | 520$a                                                | 943$a     | 943$b | 943$c | 943$d | 943$e | 943$f | 943$g |
+|-------------------|-----------------------------------------|-----------------------------------------------|-------------------|-------|-------|-------|-------|-------|---------------------------------------------|--------|--------|--------------------|-------------------------------------------------------|-----------|--------|--------|--------|--------|--------|--------|
+| Nombre principal (autor) | Título principal                             | Subtítulo                                         | Mención de responsabilidad | Número de clasificación Dewey | Número adicional de clasificación | Edición de la clasificación Dewey | Clasificación local | Número de clasificación local adicional | Tema principal                                  | Periodo cronológico | Forma del término | Subdivisión temática   | Resumen | Biblioteca_1 | Biblioteca_2 | Biblioteca_3 | Biblioteca_6 | Biblioteca_5 | Biblioteca_4 | Biblioteca_7 |
+| Goldberg, Beatriz | ¿Cómo voy a hacer esto a la edad que tengo?: | aprenda a enfrentar las crisis y los cambios a cualquier edad/ | Beatriz Goldberg | 155.25 |       | 20    |       |       | Autoestima;Autorrealización (Psicología);Tristeza |        |        | Aspectos psicologicos | FAJM                                                  |           |        |        |        |        |        |        |
+
+
+### 3. Directorios del Proyecto
 ```
 ├── raw_data/           # Datos de entrada sin procesar
 ├── clean_data/         # Datos procesados y limpios
 ├── modelos/            # Modelos de embeddings guardados
-└── src/                # Código fuente
+└── bibloclean/                # Código fuente
 ```
-## Flujo de Procesamiento
-1. Carga de datos desde archivos CSV
-2. Filtrado de registros válidos
-3. Normalización de campos
-4. Modelado de tópicos
-5. Exportación de resultados
 
-## Columnas Reconocidas
+## Uso
+### 1. Preparación de Datos
+1. Colocar los archivos CSV/Excel en la carpeta raw_data/
+2. Verificar que las columnas coincidan con la estructura requerida
+3. Asegurar que los datos estén codificados en UTF-8
+### 2. Ejecución del Pipeline
+```python
+python bibloclean archivo.csv
+```
 
-Las siguientes columnas son reconocidas por el programa:
+Opciones disponibles:
 
-### Bibliotecas
-- Biblioteca_1
-- Biblioteca_2
-- Biblioteca_3
-- Biblioteca_4
-- Biblioteca_5
-- Biblioteca_6
-- Biblioteca_7
+- archivo: Ruta al archivo CSV/Excel a procesar
+- --salida, -s: Directorio para guardar resultados
+- --verbose, -v: Mostrar información detallada
+### 3. Resultados
+Los datos procesados se guardan en clean_data/ con las siguientes mejoras:
 
-### Datos Bibliográficos
-- Lugar de publicación
-- Fecha de publicación
-- Tema principal
-- Nombre principal (autor)
-- Título principal
-
-El programa generará automáticamente columnas normalizadas añadiendo el sufijo "normalizado" a las columnas originales. Por ejemplo:
-- Título principal normalizado
-- Nombre principal (autor) normalizado
-- Lugar de publicación ciudad 1 normalizado
-- Lugar de publicación ciudad 2 normalizado
-- Fecha de publicación normalizado
-
-## Roadmap
-- [ ] Alinear logica con la tranformacion de archivos MARC21
-
+- Campos normalizados
+- Análisis temático
+- Estadísticas de procesamiento
 ## Contribuciones
-Para contribuir al proyecto:
+Agradecemos las contribuciones a **bibloclean**:
 
+### Reportar Problemas
+1. Revisar los issues existentes
+2. Crear nuevo issue con descripción detallada
+3. Incluir pasos para reproducir el problema
+### Realizar Mejoras
 1. Fork del repositorio
 2. Crear rama para nuevas características
-3. Enviar pull request
+3. Seguir estándares de código del proyecto
+4. Enviar pull request
+### Proponer Cambios Mayores
+1. Abrir issue para discutir la propuesta
+2. Detallar justificación e implementación
+3. Esperar retroalimentación antes de comenzar
+## Licencia
+Limpieza Koha está licenciado bajo Apache License Version 2.0.

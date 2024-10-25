@@ -19,7 +19,7 @@ def limpiar_koha(archivo, salida, verbose):
     """
     Limpia y procesa archivos de datos bibliográficos de KOHA.
 
-    ARCHIVO: Ruta al archivo CSV que contiene los datos a procesar
+    ARCHIVO: Ruta al archivo CSV/Excel que contiene los datos a procesar
     """
     # Configurar logging
     nivel_log = logging.INFO if verbose else logging.WARNING

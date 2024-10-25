@@ -98,7 +98,7 @@ class BibliotecaDataProcessor:
 
     def cargar_datos(self, fila_encabezado: int = 1) -> pd.DataFrame:
         """
-        Carga los datos del archivo Excel.
+        Carga los datos del archivo Excel o CSV.
 
         Args:
             fila_encabezado (int): Número de fila que contiene los encabezados
@@ -106,10 +106,19 @@ class BibliotecaDataProcessor:
         Returns:
             pd.DataFrame: DataFrame con los datos cargados
         """
-        logging.info("Cargando datos del archivo Excel")
-        self.datos = pd.read_csv(self.ruta_archivo, header=fila_encabezado)
+        logging.info("Cargando datos del archivo")
+
+        if self.ruta_archivo.endswith('.csv'):
+            self.datos = pd.read_csv(self.ruta_archivo, header=fila_encabezado)
+            file_type = "CSV"
+        elif self.ruta_archivo.endswith(('.xlsx', '.xls')):
+            self.datos = pd.read_excel(self.ruta_archivo, header=fila_encabezado)
+            file_type = "Excel"
+        else:
+            raise ValueError("El archivo debe ser CSV o Excel (.xlsx, .xls)")
+
         logging.info(
-            f"Datos cargados exitosamente. Filas: {len(self.datos)}, Columnas: {len(self.datos.columns)}"
+            f"Archivo {file_type} cargado exitosamente. Filas: {len(self.datos)}, Columnas: {len(self.datos.columns)}"
         )
         return self.datos
 
