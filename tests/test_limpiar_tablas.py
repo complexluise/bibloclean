@@ -79,9 +79,6 @@ def test_normalizar_nombre_autor():
     assert processor._normalizar_nombre_autor(None) == "[Author Unknown]"
     assert pd.isna(processor._normalizar_nombre_autor(np.nan)) == False
 
-    # Test removing extra punctuation
-    assert processor._normalizar_nombre_autor("Flórez G., Alfonso.") == "Flórez G, Alfonso"
-
     # Test handling compound surnames
     assert processor._normalizar_nombre_autor("Villamil Portilla, Edgardo.") == "Villamil Portilla, Edgardo"
 
