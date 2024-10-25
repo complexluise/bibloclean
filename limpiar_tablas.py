@@ -15,6 +15,7 @@ class DatasetPartition:
     """
     Clase para almacenar las diferentes particiones de los datos
     """
+
     registros_validos: pd.DataFrame
     registros_descartados: pd.DataFrame
 
@@ -35,16 +36,20 @@ class BibliotecaDataProcessor:
         self.datos = None
         self.datos_descartados = None
         self.columnas_esperadas = {
-            'bibliotecas': [
-                'Biblioteca_1', 'Biblioteca_2', 'Biblioteca_3',
-                'Biblioteca_4', 'Biblioteca_5', 'Biblioteca_6',
-                'Biblioteca_7'
+            "bibliotecas": [
+                "Biblioteca_1",
+                "Biblioteca_2",
+                "Biblioteca_3",
+                "Biblioteca_4",
+                "Biblioteca_5",
+                "Biblioteca_6",
+                "Biblioteca_7",
             ],
-            'lugar': 'Lugar de publicación',
-            'fecha': 'Fecha de publicación',
-            'temas': 'Tema principal',
-            'autor': 'Nombre principal (autor)',
-            'titulo': 'Título principal'
+            "lugar": "Lugar de publicación",
+            "fecha": "Fecha de publicación",
+            "temas": "Tema principal",
+            "autor": "Nombre principal (autor)",
+            "titulo": "Título principal",
         }
 
     def obtener_columnas_disponibles(self) -> Dict[str, List[str]]:
@@ -58,18 +63,36 @@ class BibliotecaDataProcessor:
             raise ValueError("Primero debe cargar los datos usando cargar_datos()")
 
         columnas_disponibles = {
-            'bibliotecas': [col for col in self.columnas_esperadas['bibliotecas']
-                            if col in self.datos.columns],
-            'lugar': self.columnas_esperadas['lugar']
-            if self.columnas_esperadas['lugar'] in self.datos.columns else None,
-            'fecha': self.columnas_esperadas['fecha']
-            if self.columnas_esperadas['fecha'] in self.datos.columns else None,
-            'temas': self.columnas_esperadas['temas']
-            if self.columnas_esperadas["temas"] in self.datos.columns else None,
-            'autor': self.columnas_esperadas["autor"]
-            if self.columnas_esperadas["autor"] in self.datos.columns else None,
-            'titulo': self.columnas_esperadas["titulo"]
-            if self.columnas_esperadas["titulo"] in self.datos.columns else None
+            "bibliotecas": [
+                col
+                for col in self.columnas_esperadas["bibliotecas"]
+                if col in self.datos.columns
+            ],
+            "lugar": (
+                self.columnas_esperadas["lugar"]
+                if self.columnas_esperadas["lugar"] in self.datos.columns
+                else None
+            ),
+            "fecha": (
+                self.columnas_esperadas["fecha"]
+                if self.columnas_esperadas["fecha"] in self.datos.columns
+                else None
+            ),
+            "temas": (
+                self.columnas_esperadas["temas"]
+                if self.columnas_esperadas["temas"] in self.datos.columns
+                else None
+            ),
+            "autor": (
+                self.columnas_esperadas["autor"]
+                if self.columnas_esperadas["autor"] in self.datos.columns
+                else None
+            ),
+            "titulo": (
+                self.columnas_esperadas["titulo"]
+                if self.columnas_esperadas["titulo"] in self.datos.columns
+                else None
+            ),
         }
         return columnas_disponibles
 
@@ -85,7 +108,9 @@ class BibliotecaDataProcessor:
         """
         logging.info("Cargando datos del archivo Excel")
         self.datos = pd.read_csv(self.ruta_archivo, header=fila_encabezado)
-        logging.info(f"Datos cargados exitosamente. Filas: {len(self.datos)}, Columnas: {len(self.datos.columns)}")
+        logging.info(
+            f"Datos cargados exitosamente. Filas: {len(self.datos)}, Columnas: {len(self.datos.columns)}"
+        )
         return self.datos
 
     def filtrar_registros_con_biblioteca(self) -> DatasetPartition:
@@ -100,7 +125,7 @@ class BibliotecaDataProcessor:
             raise ValueError("Primero debe cargar los datos usando cargar_datos()")
 
         logging.info("Filtrando registros con al menos una biblioteca")
-        columnas_biblioteca = self.obtener_columnas_disponibles()['bibliotecas']
+        columnas_biblioteca = self.obtener_columnas_disponibles()["bibliotecas"]
 
         if not columnas_biblioteca:
             print("Advertencia: No se encontraron columnas de biblioteca en el dataset")
@@ -117,8 +142,10 @@ class BibliotecaDataProcessor:
         self.datos = registros_validos
         self.datos_descartados = registros_descartados
 
-        logging.info(f"Registros válidos: {len(registros_validos)}, "
-                     f"Registros descartados: {len(registros_descartados)}")
+        logging.info(
+            f"Registros válidos: {len(registros_validos)}, "
+            f"Registros descartados: {len(registros_descartados)}"
+        )
         return DatasetPartition(registros_validos, registros_descartados)
 
     @staticmethod
@@ -138,30 +165,34 @@ class BibliotecaDataProcessor:
 
         valor = str(valor).strip()
         # Limpieza básica
-        valor = valor.replace(';', ',').replace(':', '') \
-            .replace('[', '').replace(']', '') \
-            .replace('©', '')
+        valor = (
+            valor.replace(";", ",")
+            .replace(":", "")
+            .replace("[", "")
+            .replace("]", "")
+            .replace("©", "")
+        )
 
         # Eliminar espacios múltiples y contenido entre paréntesis
-        valor = re.sub(r'\s*\([^)]*\)', '', valor)
-        valor = ' '.join(valor.split())
+        valor = re.sub(r"\s*\([^)]*\)", "", valor)
+        valor = " ".join(valor.split())
 
         # Diccionario de normalizaciones de ciudades
         normalizaciones_ciudades = {
-            'Santafé de Bogotá': 'Bogotá',
-            'Bogota': 'Bogotá',
-            'Cartagena de Indias': 'Cartagena',
-            'México': 'Ciudad de México',
-            'Mexico': 'Ciudad de México',
-            "Ciudad de Ciudad de México": 'Ciudad de México',
-            'Köln': 'Colonia',
-            'Koln': 'Colonia',
-            'Salmanca': 'Salamanca',
-            "New York": "Nueva York"
+            "Santafé de Bogotá": "Bogotá",
+            "Bogota": "Bogotá",
+            "Cartagena de Indias": "Cartagena",
+            "México": "Ciudad de México",
+            "Mexico": "Ciudad de México",
+            "Ciudad de Ciudad de México": "Ciudad de México",
+            "Köln": "Colonia",
+            "Koln": "Colonia",
+            "Salmanca": "Salamanca",
+            "New York": "Nueva York",
         }
 
         # Separar ciudades por coma
-        ciudades = [ciudad.strip() for ciudad in valor.split(',')]
+        ciudades = [ciudad.strip() for ciudad in valor.split(",")]
 
         # Normalizar cada ciudad
         ciudades_normalizadas = []
@@ -172,11 +203,12 @@ class BibliotecaDataProcessor:
                     ciudad_norm = ciudad.replace(ciudad_original, ciudad_normalizada)
 
             # Limpiar números y caracteres especiales
-            ciudad_norm = ''.join([c for c in ciudad_norm if not c.isdigit()]).strip()
+            ciudad_norm = "".join([c for c in ciudad_norm if not c.isdigit()]).strip()
 
             # Verificar si es lugar no identificado
-            if any(phrase in ciudad_norm.lower() for phrase in ["no identificado", "##"]) or \
-                    ciudad_norm.startswith("#"):
+            if any(
+                phrase in ciudad_norm.lower() for phrase in ["no identificado", "##"]
+            ) or ciudad_norm.startswith("#"):
                 ciudad_norm = "Lugar no identificado"
 
             ciudades_normalizadas.append(ciudad_norm)
@@ -205,13 +237,13 @@ class BibliotecaDataProcessor:
 
         fecha = str(fecha)
         # Limpieza de caracteres especiales
-        fecha = re.sub(r'[;#©\\]', '', fecha)
-        fecha = re.sub(r'[\[\]\?]', '', fecha)
-        fecha = re.sub(r'c|circa|Ariel|Aprox\.?', '', fecha, flags=re.IGNORECASE)
-        fecha = fecha.rstrip('.')
+        fecha = re.sub(r"[;#©\\]", "", fecha)
+        fecha = re.sub(r"[\[\]\?]", "", fecha)
+        fecha = re.sub(r"c|circa|Ariel|Aprox\.?", "", fecha, flags=re.IGNORECASE)
+        fecha = fecha.rstrip(".")
 
         # Extraer años (secuencias de 4 dígitos)
-        anos_encontrados = re.findall(r'\b\d{4}\b', fecha)
+        anos_encontrados = re.findall(r"\b\d{4}\b", fecha)
 
         return max(anos_encontrados) if anos_encontrados else np.nan
 
@@ -244,14 +276,20 @@ class BibliotecaDataProcessor:
         autor = autor.strip().rstrip(".,")
 
         if ";" in autor:
-            autores = [self._normalizar_nombre_autor(a.strip()) for a in autor.split(";")]
+            autores = [
+                self._normalizar_nombre_autor(a.strip()) for a in autor.split(";")
+            ]
             return "; ".join(autores)
 
         for titulo in ["Dr.", "PhD.", "Ph.D.", "Mr.", "Mrs.", "Ms."]:
             autor = autor.replace(titulo, "")
 
         partes = [p.strip() for p in autor.split(",") if p.strip()]
-        autor = f"{partes[0].title()}, {partes[1].title()}" if len(partes) >= 2 else partes[0].title()
+        autor = (
+            f"{partes[0].title()}, {partes[1].title()}"
+            if len(partes) >= 2
+            else partes[0].title()
+        )
 
         for prefijo in ["Von", "Van", "De", "Del", "La", "Las", "Los"]:
             autor = autor.replace(f" {prefijo} ", f" {prefijo.lower()} ")
@@ -294,23 +332,23 @@ class BibliotecaDataProcessor:
         titulo = titulo.strip()
 
         # Eliminar números y punto y coma al inicio
-        titulo = re.sub(r'^[\d;]+', '', titulo)
+        titulo = re.sub(r"^[\d;]+", "", titulo)
 
         # Eliminar puntuación redundante al final
-        titulo = re.sub(r'[/,:\s]+$', '', titulo)
+        titulo = re.sub(r"[/,:\s]+$", "", titulo)
 
         # Eliminar caracteres inválidos manteniendo algunos especiales
-        titulo = re.sub(r'[#%&\*\{\}\[\]\^\~]', '', titulo)
+        titulo = re.sub(r"[#%&\*\{\}\[\]\^\~]", "", titulo)
 
         # Corregir espacios alrededor de puntuación
-        titulo = re.sub(r'\s+([/,:;.])', r'\1', titulo)
-        titulo = re.sub(r'([/,:;.])\s+', r'\1 ', titulo)
+        titulo = re.sub(r"\s+([/,:;.])", r"\1", titulo)
+        titulo = re.sub(r"([/,:;.])\s+", r"\1 ", titulo)
 
         # Eliminar espacios múltiples
-        titulo = ' '.join(titulo.split())
+        titulo = " ".join(titulo.split())
 
         # Preservar acrónimos y abreviaturas comunes
-        titulo_limpio = re.sub(r'\b([A-Z])(\+\+)\b', r'\1\2', titulo)
+        titulo_limpio = re.sub(r"\b([A-Z])(\+\+)\b", r"\1\2", titulo)
 
         return titulo_limpio
 
@@ -326,36 +364,51 @@ class BibliotecaDataProcessor:
         columnas_disponibles = self.obtener_columnas_disponibles()
 
         # Add author normalization
-        if columnas_disponibles['autor']:
-            logging.info(f"Normalizando nombres de autores: {columnas_disponibles['autor']}")
-            self.datos[columnas_disponibles['autor'] + " normalizado"] = self.datos[columnas_disponibles['autor']] \
-                .apply(self._normalizar_nombre_autor)
+        if columnas_disponibles["autor"]:
+            logging.info(
+                f"Normalizando nombres de autores: {columnas_disponibles['autor']}"
+            )
+            self.datos[columnas_disponibles["autor"] + " normalizado"] = self.datos[
+                columnas_disponibles["autor"]
+            ].apply(self._normalizar_nombre_autor)
 
         # Add title normalization
-        if columnas_disponibles['titulo']:
+        if columnas_disponibles["titulo"]:
             logging.info(f"Normalizando títulos: {columnas_disponibles['titulo']}")
-            self.datos[columnas_disponibles['titulo'] + " normalizado"] = self.datos[columnas_disponibles['titulo']] \
-                .apply(self._normalizar_titulo)
+            self.datos[columnas_disponibles["titulo"] + " normalizado"] = self.datos[
+                columnas_disponibles["titulo"]
+            ].apply(self._normalizar_titulo)
 
         # Add lugar normalization
-        if columnas_disponibles['lugar']:
-            logging.info(f"Normalizando columna de lugar: {columnas_disponibles['lugar']}")
-            lugares_normalizados = self.datos[columnas_disponibles['lugar']].apply(self._normalizar_lugar_publicacion)
-            self.datos[columnas_disponibles['lugar'] + " ciudad 1 normalizado"] = lugares_normalizados.str[0]
-            self.datos[columnas_disponibles['lugar'] + " ciudad 2 normalizado"] = lugares_normalizados.str[1]
+        if columnas_disponibles["lugar"]:
+            logging.info(
+                f"Normalizando columna de lugar: {columnas_disponibles['lugar']}"
+            )
+            lugares_normalizados = self.datos[columnas_disponibles["lugar"]].apply(
+                self._normalizar_lugar_publicacion
+            )
+            self.datos[columnas_disponibles["lugar"] + " ciudad 1 normalizado"] = (
+                lugares_normalizados.str[0]
+            )
+            self.datos[columnas_disponibles["lugar"] + " ciudad 2 normalizado"] = (
+                lugares_normalizados.str[1]
+            )
 
-        if columnas_disponibles['fecha']:
-            logging.info(f"Normalizando columna de fecha: {columnas_disponibles['fecha']}")
-            self.datos[columnas_disponibles['fecha'] + " normalizado"] = self.datos[columnas_disponibles['fecha']] \
-                .apply(self._normalizar_fecha_publicacion)
+        if columnas_disponibles["fecha"]:
+            logging.info(
+                f"Normalizando columna de fecha: {columnas_disponibles['fecha']}"
+            )
+            self.datos[columnas_disponibles["fecha"] + " normalizado"] = self.datos[
+                columnas_disponibles["fecha"]
+            ].apply(self._normalizar_fecha_publicacion)
 
-        if columnas_disponibles['temas']:
+        if columnas_disponibles["temas"]:
             logging.info(f"Modelando temas en columna: {columnas_disponibles['temas']}")
-            self.datos = self._modelar_topicos(columnas_disponibles['temas'])
+            self.datos = self._modelar_topicos(columnas_disponibles["temas"])
 
         return self.datos
 
-    def _modelar_topicos(self, columna_tema: str = 'Tema principal') -> pd.DataFrame:
+    def _modelar_topicos(self, columna_tema: str = "Tema principal") -> pd.DataFrame:
         """
         Realiza el modelado de tópicos en la columna especificada.
 
@@ -369,7 +422,7 @@ class BibliotecaDataProcessor:
             raise ValueError(f"La columna '{columna_tema}' no existe en el DataFrame.")
 
         # Cargar el tesauro
-        with open('raw_data/vocabulario.html', 'r', encoding='utf-8') as f:
+        with open("raw_data/vocabulario.html", "r", encoding="utf-8") as f:
             html_content = f.read()
         tesauro = extraer_vocabulario(html_content)
 
@@ -380,17 +433,19 @@ class BibliotecaDataProcessor:
                 etiqueta="Propias",
                 uri="",
                 nivel=1,
-                hijos=[Termino(
-                    notacion="8.1",
-                    etiqueta="Literatura Infantil",
-                    uri="",
-                    nivel=2,
-                    hijos=[],
-                    notacion_padre=8,
-                    etiqueta_padre="Propias"
-                )],
+                hijos=[
+                    Termino(
+                        notacion="8.1",
+                        etiqueta="Literatura Infantil",
+                        uri="",
+                        nivel=2,
+                        hijos=[],
+                        notacion_padre=8,
+                        etiqueta_padre="Propias",
+                    )
+                ],
                 notacion_padre=None,
-                etiqueta_padre=None
+                etiqueta_padre=None,
             )
         )
         # Inicializar el procesador de materias
@@ -455,33 +510,43 @@ class BibliotecaDataProcessor:
             "columnas_vacias": {},
             "valores_unicos": {},
             "patrones_fecha": set(),
-            "patrones_lugar": set()
+            "patrones_lugar": set(),
         }
 
         # Analizar columnas vacías
         for col in self.datos_descartados.columns:
-            pct_nulos = (self.datos_descartados[col].isna().sum() / len(self.datos_descartados)) * 100
+            pct_nulos = (
+                self.datos_descartados[col].isna().sum() / len(self.datos_descartados)
+            ) * 100
             analisis["columnas_vacias"][col] = f"{pct_nulos:.2f}%"
 
         # Analizar valores únicos en columnas relevantes
         columnas_disponibles = self.obtener_columnas_disponibles()
 
-        if columnas_disponibles['lugar']:
-            lugares_unicos = self.datos_descartados[columnas_disponibles['lugar']].dropna().unique()
+        if columnas_disponibles["lugar"]:
+            lugares_unicos = (
+                self.datos_descartados[columnas_disponibles["lugar"]].dropna().unique()
+            )
             analisis["valores_unicos"]["lugares"] = list(lugares_unicos)
 
-        if columnas_disponibles['fecha']:
-            fechas_unicas = self.datos_descartados[columnas_disponibles['fecha']].dropna().unique()
+        if columnas_disponibles["fecha"]:
+            fechas_unicas = (
+                self.datos_descartados[columnas_disponibles["fecha"]].dropna().unique()
+            )
             analisis["valores_unicos"]["fechas"] = list(fechas_unicas)
 
-        logging.info(f"Análisis de registros descartados completado. "
-                     f"Total de registros descartados: {analisis['total_registros']}")
+        logging.info(
+            f"Análisis de registros descartados completado. "
+            f"Total de registros descartados: {analisis['total_registros']}"
+        )
         return analisis
 
 
 def main(ruta_entrada):
     # Set up logging
-    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+    logging.basicConfig(
+        level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+    )
 
     # Configuración de rutas
     directorio_salida = "clean_data"
@@ -509,7 +574,7 @@ if __name__ == "__main__":
 
     rutas = [
         "raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv",
-        "raw_data/tablero_7_oplb.xlsx - 02102024KOHA.csv"
+        "raw_data/tablero_7_oplb.xlsx - 02102024KOHA.csv",
     ]
     for i in rutas:
         main(i)

@@ -9,11 +9,12 @@ from typing import Optional
 @dataclass
 class Termino:
     """Representa un término en la jerarquía del vocabulario"""
+
     notacion: str
     etiqueta: str
     uri: str
     nivel: int
-    hijos: list['Termino']
+    hijos: list["Termino"]
     notacion_padre: Optional[str] = None
     etiqueta_padre: Optional[str] = None
 
@@ -28,29 +29,29 @@ def extraer_vocabulario(contenido_html: str) -> list[Termino]:
     Returns:
         Termino: Término raíz con la jerarquía completa
     """
-    sopa = BeautifulSoup(contenido_html, 'html.parser')
+    sopa = BeautifulSoup(contenido_html, "html.parser")
 
-    def extraer_termino(elemento_li, notacion_padre=None, etiqueta_padre=None) -> Termino:
+    def extraer_termino(
+        elemento_li, notacion_padre=None, etiqueta_padre=None
+    ) -> Termino:
         # Extraer el elemento ancla que contiene la información del término
-        ancla = elemento_li.find('a', class_='jstree-anchor')
+        ancla = elemento_li.find("a", class_="jstree-anchor")
 
         # Extraer detalles del término
         if ancla.get("aria-level") == "3":
             notacion = notacion_padre + "extended"
         else:
-            notacion = ancla.find('span', class_='tree-notation').text.strip()
+            notacion = ancla.find("span", class_="tree-notation").text.strip()
 
         # Obtener etiqueta eliminando la notación del texto del ancla
         texto_completo = ancla.get_text(strip=True)
         etiqueta = re.sub(
-            r'\s+',
-            ' ',
-            texto_completo[texto_completo.find(notacion) + len(notacion):]
+            r"\s+", " ", texto_completo[texto_completo.find(notacion) + len(notacion) :]
         ).strip()
 
         # Obtener URI y nivel
-        uri = ancla.get('data-uri', '')
-        nivel = int(ancla.get('aria-level', 1))
+        uri = ancla.get("data-uri", "")
+        nivel = int(ancla.get("aria-level", 1))
 
         # Crear objeto término
         termino = Termino(
@@ -60,24 +61,24 @@ def extraer_vocabulario(contenido_html: str) -> list[Termino]:
             nivel=nivel,
             hijos=[],
             notacion_padre=notacion_padre,
-            etiqueta_padre=etiqueta_padre
+            etiqueta_padre=etiqueta_padre,
         )
 
         # Procesar hijos si existen
-        hijos_ul = elemento_li.find('ul', class_='jstree-children')
+        hijos_ul = elemento_li.find("ul", class_="jstree-children")
         if hijos_ul:
-            for hijo_li in hijos_ul.find_all('li', recursive=False):
+            for hijo_li in hijos_ul.find_all("li", recursive=False):
                 hijo_termino = extraer_termino(
                     hijo_li,
                     notacion_padre=termino.notacion,
-                    etiqueta_padre=termino.etiqueta
+                    etiqueta_padre=termino.etiqueta,
                 )
                 termino.hijos.append(hijo_termino)
 
         return termino
 
     # Encontrar el elemento raíz y procesar la jerarquía
-    raiz_li = sopa.find_all('li', role='presentation', attrs={'aria-level': '1'})
+    raiz_li = sopa.find_all("li", role="presentation", attrs={"aria-level": "1"})
     if not raiz_li:
         raise ValueError("Elemento raíz no encontrado en el HTML")
 
@@ -92,7 +93,7 @@ def imprimir_jerarquia(termino: Termino, sangria: int = 0):
         termino: Objeto Termino a imprimir
         sangria: Nivel de sangría actual
     """
-    print('  ' * sangria + f"{termino.notacion} - {termino.etiqueta}")
+    print("  " * sangria + f"{termino.notacion} - {termino.etiqueta}")
     for hijo in termino.hijos:
         imprimir_jerarquia(hijo, sangria + 1)
 
@@ -105,26 +106,31 @@ def guardar_vocabulario_como_json(vocabulario: list[Termino], nombre_archivo: st
         vocabulario: Lista de objetos Termino raíz
         nombre_archivo: Nombre del archivo JSON a guardar
     """
+
     def termino_a_diccionario(termino: Termino):
         diccionario_termino = asdict(termino)
-        diccionario_termino['hijos'] = [termino_a_diccionario(hijo) for hijo in termino.hijos]
+        diccionario_termino["hijos"] = [
+            termino_a_diccionario(hijo) for hijo in termino.hijos
+        ]
         return diccionario_termino
 
-    diccionario_vocabulario = [termino_a_diccionario(termino) for termino in vocabulario]
+    diccionario_vocabulario = [
+        termino_a_diccionario(termino) for termino in vocabulario
+    ]
 
-    with open(nombre_archivo, 'w', encoding='utf-8') as f:
+    with open(nombre_archivo, "w", encoding="utf-8") as f:
         json.dump(diccionario_vocabulario, f, ensure_ascii=False, indent=2)
 
 
 # Ejemplo de uso
 if __name__ == "__main__":
-    with open('raw_data/vocabulario.html', 'r', encoding='utf-8') as f:
+    with open("raw_data/vocabulario.html", "r", encoding="utf-8") as f:
         contenido_html = f.read()
 
     vocabulario = extraer_vocabulario(contenido_html)
 
     # Guardar vocabulario en archivo JSON
-    guardar_vocabulario_como_json(vocabulario, 'vocabulario.json')
+    guardar_vocabulario_como_json(vocabulario, "vocabulario.json")
 
     print("El vocabulario ha sido guardado en vocabulario.json")
 
