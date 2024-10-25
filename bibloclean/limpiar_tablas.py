@@ -6,8 +6,8 @@ from pathlib import Path
 from typing import List, Dict, Union, Tuple
 from dataclasses import dataclass
 
-from src.modelamiento_topicos import ProcesadorMateriasEmbeddings
-from src.extraer_vocabulario import extraer_vocabulario
+from bibloclean.modelamiento_topicos import ProcesadorMateriasEmbeddings
+from bibloclean.extraer_vocabulario import extraer_vocabulario
 
 
 @dataclass

@@ -1,7 +1,7 @@
 import click
 import logging
 from pathlib import Path
-from src.limpiar_tablas import BibliotecaDataProcessor
+from bibloclean.limpiar_tablas import BibliotecaDataProcessor
 
 
 @click.command()

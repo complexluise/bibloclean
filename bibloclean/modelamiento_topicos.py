@@ -12,7 +12,7 @@ from typing import List
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from src.extraer_vocabulario import Termino
+from bibloclean.extraer_vocabulario import Termino
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
