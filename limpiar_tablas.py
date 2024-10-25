@@ -192,6 +192,55 @@ class BibliotecaDataProcessor:
 
         return max(anos_encontrados) if anos_encontrados else np.nan
 
+    def _normalizar_nombre_autor(self, autor: str) -> str:
+        """
+        Normaliza el nombre del autor según reglas establecidas.
+        """
+        if pd.isna(autor) or not autor or autor.strip() == "":
+            return "Desconocido"
+
+        # Remove leading/trailing whitespace
+        autor = autor.strip()
+
+        # Handle multiple authors
+        if ";" in autor:
+            autores = [self._normalizar_nombre_autor(a.strip()) for a in autor.split(";")]
+            return "; ".join(autores)
+
+        # Remove titles
+        titulos = ["Dr.", "PhD.", "Ph.D.", "Mr.", "Mrs.", "Ms."]
+
+        # Split into parts first
+        partes = autor.split(",")
+
+        # Clean each part separately
+        partes = [parte.strip() for parte in partes]
+
+        # Remove titles from each part
+        for i, parte in enumerate(partes):
+            for titulo in titulos:
+                parte = parte.replace(titulo, "")
+            partes[i] = parte.strip()
+
+        # Remove empty parts
+        partes = [parte for parte in partes if parte]
+
+        # Fix capitalization and join
+        if len(partes) >= 2:
+            apellido = partes[0].strip().title()
+            nombre = partes[1].strip().title()
+            autor = f"{apellido}, {nombre}"
+        else:
+            autor = partes[0].title() if partes else "[Author Unknown]"
+
+        # Remove trailing punctuation
+        autor = autor.rstrip(".,")
+
+        # Remove extra spaces
+        autor = " ".join(autor.split())
+
+        return autor
+
     def transformar_datos(self) -> pd.DataFrame:
         """
         Aplica todas las transformaciones necesarias al DataFrame según las columnas disponibles.
