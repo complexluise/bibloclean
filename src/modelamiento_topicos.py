@@ -12,7 +12,7 @@ from typing import List
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from extraer_vocabulario import Termino
+from src.extraer_vocabulario import Termino
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -48,7 +48,7 @@ class ProcesadorMateriasEmbeddings:
 
     @staticmethod
     def cargar_o_descargar_modelo(modelo_nombre: str) -> SentenceTransformer:
-        modelo_path = os.path.join("../modelos", modelo_nombre)
+        modelo_path = os.path.join("./modelos", modelo_nombre)
         if os.path.exists(modelo_path):
             logging.info(f"Cargando modelo existente desde {modelo_path}")
             modelo = SentenceTransformer(modelo_path, trust_remote_code=True)
