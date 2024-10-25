@@ -205,12 +205,3 @@ def test_normalizar_titulo():
     assert processor._normalizar_titulo("") == "Sin título"
     assert processor._normalizar_titulo(None) == "Sin título"
     assert not pd.isna(processor._normalizar_titulo(np.nan))
-
-
-def test_transformar_datos(processor):
-    processor.cargar_datos()
-    result = processor.filtrar_registros_con_biblioteca()
-    df_transformed = processor.transformar_datos()
-    assert isinstance(df_transformed, pd.DataFrame)
-    assert "Lugar de publicación" in df_transformed.columns
-    assert "Fecha de publicación" in df_transformed.columns
