@@ -1,6 +1,6 @@
 # Procesamiento de Datos Bibliográficos
 
-Este proyecto contiene un conjunto de herramientas para procesar, limpiar y enriquecer datos bibliográficos provenientes de sistemas de gestión de bibliotecas.
+Este proyecto contiene un conjunto de herramientas para procesar, limpiar y enriquecer datos bibliográficos provenientes de sistemas de gestión de bibliotecas como Koha en formato MARC21.
 
 ## Estructura del Proyecto
 
