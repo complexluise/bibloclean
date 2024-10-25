@@ -36,17 +36,18 @@ def extraer_vocabulario(contenido_html: str) -> list[Termino]:
     ) -> Termino:
         # Extraer el elemento ancla que contiene la información del término
         ancla = elemento_li.find("a", class_="jstree-anchor")
+        texto_completo = ancla.get_text(strip=True)
 
         # Extraer detalles del término
         if ancla.get("aria-level") == "3":
             notacion = notacion_padre + "extended"
+            etiqueta = texto_completo
         else:
             notacion = ancla.find("span", class_="tree-notation").text.strip()
+            etiqueta = texto_completo[texto_completo.find(notacion) + len(notacion):]
 
-        # Obtener etiqueta eliminando la notación del texto del ancla
-        texto_completo = ancla.get_text(strip=True)
         etiqueta = re.sub(
-            r"\s+", " ", texto_completo[texto_completo.find(notacion) + len(notacion) :]
+            r"\s+", " ", etiqueta
         ).strip()
 
         # Obtener URI y nivel
