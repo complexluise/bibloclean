@@ -64,6 +64,7 @@ class BibliotecaDataProcessor:
             if self.columnas_esperadas['fecha'] in self.datos.columns else None,
             'temas': self.columnas_esperadas['temas']
             if self.columnas_esperadas["temas"] in self.datos.columns else None,
+            # TODO Add
 
         }
         return columnas_disponibles
@@ -112,7 +113,8 @@ class BibliotecaDataProcessor:
         self.datos = registros_validos
         self.datos_descartados = registros_descartados
 
-        logging.info(f"Registros válidos: {len(registros_validos)}, Registros descartados: {len(registros_descartados)}")
+        logging.info(f"Registros válidos: {len(registros_validos)}, "
+                     f"Registros descartados: {len(registros_descartados)}")
         return DatasetPartition(registros_validos, registros_descartados)
 
     @staticmethod
@@ -127,7 +129,7 @@ class BibliotecaDataProcessor:
             str: Lugar de publicación normalizado
         """
         if pd.isnull(valor):
-            return np.nan
+            return ""
 
         valor = str(valor).strip()
         # Limpieza básica
@@ -167,7 +169,8 @@ class BibliotecaDataProcessor:
 
         return valor
 
-    def _normalizar_fecha_publicacion(self, fecha: Union[str, float]) -> Union[str, float]:
+    @staticmethod
+    def _normalizar_fecha_publicacion(fecha: Union[str, float]) -> Union[str, float]:
         """
         Normaliza la fecha de publicación extrayendo el año más reciente.
 
@@ -244,9 +247,6 @@ class BibliotecaDataProcessor:
     def transformar_datos(self) -> pd.DataFrame:
         """
         Aplica todas las transformaciones necesarias al DataFrame según las columnas disponibles.
-
-        Returns:
-            pd.DataFrame: DataFrame con datos normalizados
         """
         if self.datos is None:
             raise ValueError("Primero debe cargar los datos usando cargar_datos()")
@@ -255,19 +255,23 @@ class BibliotecaDataProcessor:
 
         columnas_disponibles = self.obtener_columnas_disponibles()
 
-        # Normalizar lugar de publicación si existe la columna
+        # Add author normalization
+        if columnas_disponibles['autor']:
+            logging.info(f"Normalizando nombres de autores: {columnas_disponibles['autor']}")
+            self.datos[columnas_disponibles['autor']] = self.datos[columnas_disponibles['autor']] \
+                .apply(self._normalizar_nombre_autor)
+
+        # Existing transformations...
         if columnas_disponibles['lugar']:
             logging.info(f"Normalizando columna de lugar: {columnas_disponibles['lugar']}")
             self.datos[columnas_disponibles['lugar']] = self.datos[columnas_disponibles['lugar']] \
                 .apply(self._normalizar_lugar_publicacion)
 
-        # Normalizar fecha de publicación si existe la columna
         if columnas_disponibles['fecha']:
             logging.info(f"Normalizando columna de fecha: {columnas_disponibles['fecha']}")
             self.datos[columnas_disponibles['fecha']] = self.datos[columnas_disponibles['fecha']] \
                 .apply(self._normalizar_fecha_publicacion)
 
-        # Modelar temas si existe la columna
         if columnas_disponibles['temas']:
             logging.info(f"Modelando temas en columna: {columnas_disponibles['temas']}")
             self.datos = self._modelar_topicos(columnas_disponibles['temas'])
@@ -373,7 +377,8 @@ class BibliotecaDataProcessor:
             fechas_unicas = self.datos_descartados[columnas_disponibles['fecha']].dropna().unique()
             analisis["valores_unicos"]["fechas"] = list(fechas_unicas)
 
-        logging.info(f"Análisis de registros descartados completado. Total de registros descartados: {analisis['total_registros']}")
+        logging.info(f"Análisis de registros descartados completado. "
+                     f"Total de registros descartados: {analisis['total_registros']}")
         return analisis
 
 
@@ -395,7 +400,7 @@ def main(ruta_entrada):
     procesador.transformar_datos()
 
     # Analizar registros descartados
-    analisis_descartados = procesador.analizar_registros_descartados()
+    procesador.analizar_registros_descartados()
     logging.info("Análisis de registros descartados completado")
 
     # Guardar resultados
@@ -406,8 +411,7 @@ def main(ruta_entrada):
 if __name__ == "__main__":
 
     rutas = [
-        #"raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv",
+        "raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv",
         "raw_data/tablero_7_oplb.xlsx - 02102024KOHA.csv"]
     for i in rutas:
         main(i)
-
