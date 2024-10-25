@@ -122,18 +122,19 @@ class BibliotecaDataProcessor:
         return DatasetPartition(registros_validos, registros_descartados)
 
     @staticmethod
-    def _normalizar_lugar_publicacion(valor: Union[str, float]) -> str:
+    def _normalizar_lugar_publicacion(valor: Union[str, float]) -> Tuple[str, str]:
         """
         Normaliza el lugar de publicación aplicando reglas específicas.
+        Retorna una tupla con hasta dos ciudades.
 
         Args:
             valor: Valor a normalizar
 
         Returns:
-            str: Lugar de publicación normalizado
+            Tuple[str, str]: Tupla con dos ciudades (segunda ciudad vacía si solo hay una)
         """
         if pd.isnull(valor):
-            return ""
+            return "Lugar no identificado", ""
 
         valor = str(valor).strip()
         # Limpieza básica
@@ -159,19 +160,34 @@ class BibliotecaDataProcessor:
             'París': 'París'
         }
 
-        for ciudad_original, ciudad_normalizada in normalizaciones_ciudades.items():
-            if ciudad_original in valor:
-                valor = valor.replace(ciudad_original, ciudad_normalizada)
+        # Separar ciudades por coma
+        ciudades = [ciudad.strip() for ciudad in valor.split(',')]
 
-        # Limpiar números y caracteres especiales
-        valor = ''.join([c for c in valor if not c.isdigit()]).rstrip(',')
+        # Normalizar cada ciudad
+        ciudades_normalizadas = []
+        for ciudad in ciudades[:2]:  # Tomar solo las dos primeras ciudades
+            ciudad_norm = ciudad
+            for ciudad_original, ciudad_normalizada in normalizaciones_ciudades.items():
+                if ciudad_original in ciudad:
+                    ciudad_norm = ciudad.replace(ciudad_original, ciudad_normalizada)
 
-        # Manejo de lugares no identificados
-        if any(phrase in valor.lower() for phrase in ["no identificado", "##"]) or \
-                valor.startswith("#"):
-            return "Lugar no identificado"
+            # Limpiar números y caracteres especiales
+            ciudad_norm = ''.join([c for c in ciudad_norm if not c.isdigit()]).strip()
 
-        return valor
+            # Verificar si es lugar no identificado
+            if any(phrase in ciudad_norm.lower() for phrase in ["no identificado", "##"]) or \
+                    ciudad_norm.startswith("#"):
+                ciudad_norm = "Lugar no identificado"
+
+            ciudades_normalizadas.append(ciudad_norm)
+
+        # Asegurar que siempre retornemos una tupla de dos elementos
+        if len(ciudades_normalizadas) == 0:
+            return "Lugar no identificado", ""
+        elif len(ciudades_normalizadas) == 1:
+            return ciudades_normalizadas[0], ""
+        else:
+            return ciudades_normalizadas[0], ciudades_normalizadas[1]
 
     @staticmethod
     def _normalizar_fecha_publicacion(fecha: Union[str, float]) -> Union[str, float]:
@@ -312,24 +328,27 @@ class BibliotecaDataProcessor:
         # Add author normalization
         if columnas_disponibles['autor']:
             logging.info(f"Normalizando nombres de autores: {columnas_disponibles['autor']}")
-            self.datos[columnas_disponibles['autor']] = self.datos[columnas_disponibles['autor']] \
+            self.datos[columnas_disponibles['autor']+" normalizado"] = self.datos[columnas_disponibles['autor']] \
                 .apply(self._normalizar_nombre_autor)
 
         # Add title normalization
         if columnas_disponibles['titulo']:
             logging.info(f"Normalizando títulos: {columnas_disponibles['titulo']}")
-            self.datos[columnas_disponibles['titulo']] = self.datos[columnas_disponibles['titulo']] \
+            self.datos[columnas_disponibles['titulo']+" normalizado"] = self.datos[columnas_disponibles['titulo']] \
                 .apply(self._normalizar_titulo)
 
         # Existing transformations...
         if columnas_disponibles['lugar']:
             logging.info(f"Normalizando columna de lugar: {columnas_disponibles['lugar']}")
-            self.datos[columnas_disponibles['lugar']] = self.datos[columnas_disponibles['lugar']] \
+            self.datos[
+                [columnas_disponibles['lugar']+" 1",
+                 columnas_disponibles['lugar']+" 2"]
+            ] = self.datos[columnas_disponibles['lugar']] \
                 .apply(self._normalizar_lugar_publicacion)
 
         if columnas_disponibles['fecha']:
             logging.info(f"Normalizando columna de fecha: {columnas_disponibles['fecha']}")
-            self.datos[columnas_disponibles['fecha']] = self.datos[columnas_disponibles['fecha']] \
+            self.datos[columnas_disponibles['fecha']+" normalizado"] = self.datos[columnas_disponibles['fecha']] \
                 .apply(self._normalizar_fecha_publicacion)
 
         if columnas_disponibles['temas']:
