@@ -7,7 +7,7 @@ from typing import List, Dict, Union, Tuple
 from dataclasses import dataclass
 
 from modelamiento_topicos import ProcesadorMateriasEmbeddings
-from extraer_vocabulario import extraer_vocabulario
+from extraer_vocabulario import extraer_vocabulario, Termino
 
 
 @dataclass
@@ -328,25 +328,25 @@ class BibliotecaDataProcessor:
         # Add author normalization
         if columnas_disponibles['autor']:
             logging.info(f"Normalizando nombres de autores: {columnas_disponibles['autor']}")
-            self.datos[columnas_disponibles['autor']+" normalizado"] = self.datos[columnas_disponibles['autor']] \
+            self.datos[columnas_disponibles['autor'] + " normalizado"] = self.datos[columnas_disponibles['autor']] \
                 .apply(self._normalizar_nombre_autor)
 
         # Add title normalization
         if columnas_disponibles['titulo']:
             logging.info(f"Normalizando títulos: {columnas_disponibles['titulo']}")
-            self.datos[columnas_disponibles['titulo']+" normalizado"] = self.datos[columnas_disponibles['titulo']] \
+            self.datos[columnas_disponibles['titulo'] + " normalizado"] = self.datos[columnas_disponibles['titulo']] \
                 .apply(self._normalizar_titulo)
 
         # Add lugar normalization
         if columnas_disponibles['lugar']:
             logging.info(f"Normalizando columna de lugar: {columnas_disponibles['lugar']}")
             lugares_normalizados = self.datos[columnas_disponibles['lugar']].apply(self._normalizar_lugar_publicacion)
-            self.datos[columnas_disponibles['lugar']+" ciudad 1 normalizado"] = lugares_normalizados.str[0]
-            self.datos[columnas_disponibles['lugar']+" ciudad 2 normalizado"] = lugares_normalizados.str[1]
+            self.datos[columnas_disponibles['lugar'] + " ciudad 1 normalizado"] = lugares_normalizados.str[0]
+            self.datos[columnas_disponibles['lugar'] + " ciudad 2 normalizado"] = lugares_normalizados.str[1]
 
         if columnas_disponibles['fecha']:
             logging.info(f"Normalizando columna de fecha: {columnas_disponibles['fecha']}")
-            self.datos[columnas_disponibles['fecha']+" normalizado"] = self.datos[columnas_disponibles['fecha']] \
+            self.datos[columnas_disponibles['fecha'] + " normalizado"] = self.datos[columnas_disponibles['fecha']] \
                 .apply(self._normalizar_fecha_publicacion)
 
         if columnas_disponibles['temas']:
@@ -373,8 +373,26 @@ class BibliotecaDataProcessor:
             html_content = f.read()
         tesauro = extraer_vocabulario(html_content)
 
-        # add words to tesauro
-
+        # add manually tesaurus
+        tesauro.append(
+            Termino(
+                notacion=8,
+                etiqueta="Propias",
+                uri="",
+                nivel=1,
+                hijos=[Termino(
+                    notacion="8.1",
+                    etiqueta="Literatura Infantil",
+                    uri="",
+                    nivel=2,
+                    hijos=[],
+                    notacion_padre=8,
+                    etiqueta_padre="Propias"
+                )],
+                notacion_padre=None,
+                etiqueta_padre=None
+            )
+        )
         # Inicializar el procesador de materias
         procesador = ProcesadorMateriasEmbeddings(tesauro)
 
@@ -491,6 +509,7 @@ if __name__ == "__main__":
 
     rutas = [
         "raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv",
-        "raw_data/tablero_7_oplb.xlsx - 02102024KOHA.csv"]
+        "raw_data/tablero_7_oplb.xlsx - 02102024KOHA.csv"
+    ]
     for i in rutas:
         main(i)
