@@ -83,53 +83,6 @@ class ProcesadorMateriasEmbeddings:
             terminos_nivel_2.extend(termino_raiz.hijos)
         return terminos_nivel_2
 
-    @staticmethod
-    def separar_materias(texto: str) -> List[str]:
-        """Separa las materias por punto y coma"""
-        return [materia.strip() for materia in texto.split(';')]
-
-    def encontrar_termino_similar(self, termino: str, umbral: float = 0.6) -> Tuple[Termino, float]:
-        """
-        Encuentra el término más similar en el tesauro usando similitud coseno
-
-        Args:
-            termino: Término a buscar
-            umbral: Umbral mínimo de similitud para aceptar una coincidencia
-
-        Returns:
-            Tupla con el término más similar (como objeto Termino) y su score de similitud
-        """
-        termino_normalizado = self.normalizar_texto(termino)
-        termino_embedding = self.modelo.encode([termino_normalizado])[0]
-
-        similitudes = cosine_similarity([termino_embedding], self.tesauro_embeddings)[0]
-
-        indice_max = np.argmax(similitudes)
-        max_similitud = similitudes[indice_max]
-
-        if max_similitud >= umbral:
-            # TODO Seguro este es el comportamienteo deseado?
-            return self.tesauro_terminos[indice_max], max_similitud
-        else:
-            return Termino(notacion="", etiqueta=termino, uri="", nivel=0, hijos=[]), max_similitud
-
-    @timer
-    def procesar_linea(self, linea: str, umbral: float = 0.3) -> List[Dict]:
-        logging.info(f"Processing line: {linea}")
-        materias = self.separar_materias(linea)
-        resultados = []
-
-        for materia in materias:
-            termino_sugerido, score = self.encontrar_termino_similar(materia, umbral)
-            resultados.append({
-                'termino_original': materia,
-                'termino_sugerido': termino_sugerido,
-                'score': float(score)
-            })
-        best_result = max(resultados, key=lambda x: x['score'])
-        logging.info(f"Best match: {best_result['termino_sugerido'].etiqueta}, Score: {best_result['score']:.2f}")
-        return best_result
-
     @timer
     def procesar_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
         logging.info(f"Procesando DataFrame con {len(df)} filas")
@@ -156,7 +109,6 @@ class ProcesadorMateriasEmbeddings:
         return df
 
 
-# Ejemplo de uso
 if __name__ == "__main__":
     from extraer_vocabulario import extraer_vocabulario
     import time
