@@ -42,7 +42,7 @@ class BibliotecaDataProcessor:
             ],
             'lugar': 'Lugar de publicación',
             'fecha': 'Fecha de publicación',
-            'temas': ''
+            'temas': 'Tema principal'
         }
 
     def obtener_columnas_disponibles(self) -> Dict[str, List[str]]:
@@ -113,7 +113,8 @@ class BibliotecaDataProcessor:
         logging.info(f"Registros válidos: {len(registros_validos)}, Registros descartados: {len(registros_descartados)}")
         return DatasetPartition(registros_validos, registros_descartados)
 
-    def _normalizar_lugar_publicacion(self, valor: Union[str, float]) -> str:
+    @staticmethod
+    def _normalizar_lugar_publicacion(valor: Union[str, float]) -> str:
         """
         Normaliza el lugar de publicación aplicando reglas específicas.
 
@@ -330,7 +331,7 @@ def main():
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
     # Configuración de rutas
-    ruta_entrada = "raw_data/tablero_7_oplb.xlsx - 02102024KOHA.csv"
+    ruta_entrada = "raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv"
     directorio_salida = "clean_data"
 
     logging.info(f"Iniciando procesamiento del archivo: {ruta_entrada}")
