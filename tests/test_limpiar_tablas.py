@@ -12,7 +12,12 @@ def sample_df():
         "1": ['Biblioteca_2', None, 'Lib2', None, None],
         "2": ['Lugar de publicación', 'Bogotá', 'México', 'New York', 'Madrid'],
         "3": ['Fecha de publicación', '2020', '2019-2020', 'c.2018', '©2021'],
-        "4": ['Tema principal', 'Historia del Arte, ', 'Arte', 'Ciencia', 'Literatura']
+        "4": ['Tema principal', 'Historia del Arte, ', 'Arte', 'Ciencia', 'Literatura'],
+        "5": ['Nombre principal (autor)',
+              'GARCÍA MÁRQUEZ, GABRIEL,',
+              'von Goethe,   Johann Wolfgang.',
+              'browne,anthony',
+              'Süskind, Patrick,; Gambolini, Gerardo']
     })
 
 
@@ -54,6 +59,47 @@ def test_normalizar_fecha_publicacion():
     assert processor._normalizar_fecha_publicacion("c.2018") == "2018"
     assert processor._normalizar_fecha_publicacion("©2021") == "2021"
     assert pd.isna(processor._normalizar_fecha_publicacion("sin fecha"))
+
+
+def test_normalizar_nombre_autor():
+    processor = BibliotecaDataProcessor("")
+
+    # Test removing trailing commas
+    assert processor._normalizar_nombre_autor("Kibuishi, Kazu,") == "Kibuishi, Kazu"
+
+    # Test standardizing format and removing extra spaces
+    assert processor._normalizar_nombre_autor("Otálvaro S., Rubén Darío  ") == "Otálvaro S., Rubén Darío"
+
+    # Test fixing capitalization
+    assert processor._normalizar_nombre_autor("BROWNE, ANTHONY") == "Browne, Anthony"
+    assert processor._normalizar_nombre_autor("browne, anthony") == "Browne, Anthony"
+
+    # Test handling missing authors
+    assert processor._normalizar_nombre_autor("") == "[Author Unknown]"
+    assert processor._normalizar_nombre_autor(None) == "[Author Unknown]"
+    assert pd.isna(processor._normalizar_nombre_autor(np.nan)) == False
+
+    # Test removing extra punctuation
+    assert processor._normalizar_nombre_autor("Flórez G., Alfonso.") == "Flórez G, Alfonso"
+
+    # Test handling compound surnames
+    assert processor._normalizar_nombre_autor("Villamil Portilla, Edgardo.") == "Villamil Portilla, Edgardo"
+
+    # Test removing titles and fixing misplaced initials
+    assert processor._normalizar_nombre_autor("Dr. Cardona Marín, Guillermo") == "Cardona Marín, Guillermo"
+    assert processor._normalizar_nombre_autor("Cardona Marín, PhD., Guillermo") == "Cardona Marín, Guillermo"
+
+    # Test handling multiple authors
+    assert processor._normalizar_nombre_autor(
+        "Süskind, Patrick,; Gambolini, Gerardo") == "Süskind, Patrick; Gambolini, Gerardo"
+
+    # Test handling special characters and diacritics
+    assert processor._normalizar_nombre_autor("García Márquez, Gabriel") == "García Márquez, Gabriel"
+
+    # Test handling various edge cases
+    assert processor._normalizar_nombre_autor("   Smith,   John   ") == "Smith, John"
+    assert processor._normalizar_nombre_autor("von Goethe, Johann Wolfgang") == "von Goethe, Johann Wolfgang"
+    assert processor._normalizar_nombre_autor("O'Connor, Flannery") == "O'Connor, Flannery"
 
 
 def test_transformar_datos(processor):
