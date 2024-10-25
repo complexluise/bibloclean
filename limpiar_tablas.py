@@ -147,17 +147,13 @@ class BibliotecaDataProcessor:
 
         # Diccionario de normalizaciones de ciudades
         normalizaciones_ciudades = {
-            'Bogotá': 'Bogotá',
+            'Santafé de Bogotá': 'Bogotá',
             'México': 'Ciudad de México',
             'Mexico': 'Ciudad de México',
-            'Madrid': 'Madrid',
-            'Salamanca': 'Salamanca',
+            "Ciudad de Ciudad de México": 'Ciudad de México',
             'Köln': 'Colonia',
             'Koln': 'Colonia',
-            'Singapur': 'Singapur',
-            'New York': 'Nueva York',
-            'Londres': 'Londres',
-            'París': 'París'
+            'Salmanca': 'Salamanca'
         }
 
         # Separar ciudades por coma
@@ -372,6 +368,8 @@ class BibliotecaDataProcessor:
         with open('raw_data/vocabulario.html', 'r', encoding='utf-8') as f:
             html_content = f.read()
         tesauro = extraer_vocabulario(html_content)
+
+        # add words to tesauro
 
         # Inicializar el procesador de materias
         procesador = ProcesadorMateriasEmbeddings(tesauro)
