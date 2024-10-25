@@ -63,6 +63,8 @@ class BibliotecaDataProcessor:
             'fecha': self.columnas_esperadas['fecha']
             if self.columnas_esperadas['fecha'] in self.datos.columns else None,
             'temas': self.columnas_esperadas['temas']
+            if self.columnas_esperadas["temas"] in self.datos.columns else None,
+
         }
         return columnas_disponibles
 
