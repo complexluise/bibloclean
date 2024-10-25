@@ -39,11 +39,11 @@ pip install -r requirements.txt
 
 Los datos de entrada deben seguir la estructura de campos MARC21 especificada en la documentación, incluyendo:
 
-Campos de autor (100$a)
-Campos de título (245$a, 245$b)
-Campos temáticos (650$a)
-Campos de clasificación (082$a)
-Campos de biblioteca (943$a-g)
+- Campos de autor (100$a)
+- Campos de título (245$a, 245$b)
+- Campos temáticos (650$a)
+- Campos de clasificación (082$a)
+- Campos de biblioteca (943$a-g)
 
 Ten en cuenta que se usan los nombres de la primera fila como la columnas a procesar.
 Tu archivo CSV o Excel debería tener las siguientes columnas:
