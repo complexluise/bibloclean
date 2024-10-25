@@ -5,9 +5,16 @@ from limpiar_tablas import BibliotecaDataProcessor
 
 
 @click.command()
-@click.argument('archivo', type=click.Path(exists=True))
-@click.option('--salida', '-s', default='clean_data', help='Directorio de salida para los archivos procesados')
-@click.option('--verbose', '-v', is_flag=True, help='Mostrar información detallada del proceso')
+@click.argument("archivo", type=click.Path(exists=True))
+@click.option(
+    "--salida",
+    "-s",
+    default="clean_data",
+    help="Directorio de salida para los archivos procesados",
+)
+@click.option(
+    "--verbose", "-v", is_flag=True, help="Mostrar información detallada del proceso"
+)
 def limpiar_koha(archivo, salida, verbose):
     """
     Limpia y procesa archivos de datos bibliográficos de KOHA.
@@ -17,8 +24,7 @@ def limpiar_koha(archivo, salida, verbose):
     # Configurar logging
     nivel_log = logging.INFO if verbose else logging.WARNING
     logging.basicConfig(
-        level=nivel_log,
-        format='%(asctime)s - %(levelname)s - %(message)s'
+        level=nivel_log, format="%(asctime)s - %(levelname)s - %(message)s"
     )
 
     click.echo(f"Procesando archivo: {archivo}")
@@ -57,5 +63,5 @@ def limpiar_koha(archivo, salida, verbose):
         raise click.Abort()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     limpiar_koha()

@@ -46,9 +46,7 @@ def extraer_vocabulario(contenido_html: str) -> list[Termino]:
             notacion = ancla.find("span", class_="tree-notation").text.strip()
             etiqueta = texto_completo[texto_completo.find(notacion) + len(notacion):]
 
-        etiqueta = re.sub(
-            r"\s+", " ", etiqueta
-        ).strip()
+        etiqueta = re.sub(r"\s+", " ", etiqueta).strip()
 
         # Obtener URI y nivel
         uri = ancla.get("data-uri", "")
