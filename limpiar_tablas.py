@@ -142,7 +142,8 @@ class BibliotecaDataProcessor:
             .replace('[', '').replace(']', '') \
             .replace('©', '')
 
-        # Eliminar espacios múltiples
+        # Eliminar espacios múltiples y contenido entre paréntesis
+        valor = re.sub(r'\s*\([^)]*\)', '', valor)
         valor = ' '.join(valor.split())
 
         # Diccionario de normalizaciones de ciudades
