@@ -153,7 +153,8 @@ class BibliotecaDataProcessor:
             "Ciudad de Ciudad de México": 'Ciudad de México',
             'Köln': 'Colonia',
             'Koln': 'Colonia',
-            'Salmanca': 'Salamanca'
+            'Salmanca': 'Salamanca',
+            "New York": "Nueva York"
         }
 
         # Separar ciudades por coma
