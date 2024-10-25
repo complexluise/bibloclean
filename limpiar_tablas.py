@@ -337,14 +337,12 @@ class BibliotecaDataProcessor:
             self.datos[columnas_disponibles['titulo']+" normalizado"] = self.datos[columnas_disponibles['titulo']] \
                 .apply(self._normalizar_titulo)
 
-        # Existing transformations...
+        # Add lugar normalization
         if columnas_disponibles['lugar']:
             logging.info(f"Normalizando columna de lugar: {columnas_disponibles['lugar']}")
-            self.datos[
-                [columnas_disponibles['lugar']+" 1",
-                 columnas_disponibles['lugar']+" 2"]
-            ] = self.datos[columnas_disponibles['lugar']] \
-                .apply(self._normalizar_lugar_publicacion)
+            lugares_normalizados = self.datos[columnas_disponibles['lugar']].apply(self._normalizar_lugar_publicacion)
+            self.datos[columnas_disponibles['lugar']+" ciudad 1 normalizado"] = lugares_normalizados.str[0]
+            self.datos[columnas_disponibles['lugar']+" ciudad 2 normalizado"] = lugares_normalizados.str[1]
 
         if columnas_disponibles['fecha']:
             logging.info(f"Normalizando columna de fecha: {columnas_disponibles['fecha']}")
