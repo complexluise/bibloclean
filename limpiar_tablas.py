@@ -149,6 +149,8 @@ class BibliotecaDataProcessor:
         # Diccionario de normalizaciones de ciudades
         normalizaciones_ciudades = {
             'Santafé de Bogotá': 'Bogotá',
+            'Bogota': 'Bogotá',
+            'Cartagena de Indias': 'Cartagena',
             'México': 'Ciudad de México',
             'Mexico': 'Ciudad de México',
             "Ciudad de Ciudad de México": 'Ciudad de México',
