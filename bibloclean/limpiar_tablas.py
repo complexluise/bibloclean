@@ -108,10 +108,12 @@ class BibliotecaDataProcessor:
         """
         logging.info("Cargando datos del archivo")
 
-        if self.ruta_archivo.endswith('.csv'):
+        extension = self.ruta_archivo.parts[-1]
+
+        if extension.endswith('.csv'):
             self.datos = pd.read_csv(self.ruta_archivo, header=fila_encabezado)
             file_type = "CSV"
-        elif self.ruta_archivo.endswith(('.xlsx', '.xls')):
+        elif extension.endswith(('.xlsx', '.xls')):
             self.datos = pd.read_excel(self.ruta_archivo, header=fila_encabezado)
             file_type = "Excel"
         else:
