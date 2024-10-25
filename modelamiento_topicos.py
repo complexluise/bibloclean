@@ -38,7 +38,7 @@ class ProcesadorMateriasEmbeddings:
     def __init__(
         self,
         tesauro_terminos: List[Termino],
-        modelo_nombre: str = "paraphrase-multilingual-mpnet-base-v2",
+        modelo_nombre: str = "jinaai/jina-embeddings-v3",
     ):
         self.device = torch.device("cuda")
         self.modelo = self.cargar_o_descargar_modelo(modelo_nombre)
@@ -52,10 +52,10 @@ class ProcesadorMateriasEmbeddings:
         modelo_path = os.path.join("modelos", modelo_nombre)
         if os.path.exists(modelo_path):
             logging.info(f"Cargando modelo existente desde {modelo_path}")
-            modelo = SentenceTransformer(modelo_path)
+            modelo = SentenceTransformer(modelo_path, trust_remote_code=True)
         else:
             logging.info(f"Descargando modelo {modelo_nombre}")
-            modelo = SentenceTransformer(modelo_nombre)
+            modelo = SentenceTransformer(modelo_nombre, trust_remote_code=True)
             os.makedirs("modelos", exist_ok=True)
             modelo.save(modelo_path)
             logging.info(f"Modelo guardado en {modelo_path}")
