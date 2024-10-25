@@ -202,47 +202,35 @@ class BibliotecaDataProcessor:
         if pd.isna(autor) or not autor or autor.strip() == "":
             return "Desconocido"
 
-        # Remove leading/trailing whitespace
-        autor = autor.strip()
+        # Remove leading/trailing whitespace and punctuation
+        autor = autor.strip().rstrip(".,")
 
-        # Handle multiple authors
+        # Handle multiple authors first
         if ";" in autor:
             autores = [self._normalizar_nombre_autor(a.strip()) for a in autor.split(";")]
             return "; ".join(autores)
 
         # Remove titles
         titulos = ["Dr.", "PhD.", "Ph.D.", "Mr.", "Mrs.", "Ms."]
-
-        # Split into parts first
-        partes = autor.split(",")
-
-        # Clean each part separately
-        partes = [parte.strip() for parte in partes]
-
-        # Remove titles from each part
-        for i, parte in enumerate(partes):
-            for titulo in titulos:
-                parte = parte.replace(titulo, "")
-            partes[i] = parte.strip()
+        for titulo in titulos:
+            autor = autor.replace(titulo, "")
 
         # Remove empty parts
-        partes = [parte for parte in partes if parte]
+        autor = " ".join(parte.strip() for parte in autor.split() if parte.strip())
 
-        # Fix capitalization and join
-        if len(partes) >= 2:
-            apellido = partes[0].strip().title()
-            nombre = partes[1].strip().title()
-            autor = f"{apellido}, {nombre}"
-        else:
-            autor = partes[0].title() if partes else "[Author Unknown]"
+        # First capitalize everything properly
+        partes = [p.strip().title() for p in autor.split(",") if p.strip()!="" ]
+        autor = ", ".join(partes)
 
-        # Remove trailing punctuation
-        autor = autor.rstrip(".,")
+        # Then target and lowercase specific prefixes
+        prefijos = ["Von", "Van", "De", "Del", "La", "Las", "Los"]
+        for prefijo in prefijos:
+            # Only replace if preceded by space or start of string
+            autor = autor.replace(f" {prefijo} ", f" {prefijo.lower()} ")
+            if autor.startswith(f"{prefijo} "):
+                autor = f"{prefijo.lower()}{autor[len(prefijo):]}"
 
-        # Remove extra spaces
-        autor = " ".join(autor.split())
-
-        return autor
+        return " ".join(autor.split())
 
     def transformar_datos(self) -> pd.DataFrame:
         """

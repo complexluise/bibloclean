@@ -75,8 +75,8 @@ def test_normalizar_nombre_autor():
     assert processor._normalizar_nombre_autor("browne, anthony") == "Browne, Anthony"
 
     # Test handling missing authors
-    assert processor._normalizar_nombre_autor("") == "[Author Unknown]"
-    assert processor._normalizar_nombre_autor(None) == "[Author Unknown]"
+    assert processor._normalizar_nombre_autor("") == "Desconocido"
+    assert processor._normalizar_nombre_autor(None) == "Desconocido"
     assert pd.isna(processor._normalizar_nombre_autor(np.nan)) == False
 
     # Test handling compound surnames
