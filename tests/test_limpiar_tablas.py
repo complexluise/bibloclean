@@ -12,7 +12,7 @@ def sample_df():
         "1": ['Biblioteca_2', None, 'Lib2', None, None],
         "2": ['Lugar de publicación', 'Bogotá', 'México', 'New York', 'Madrid'],
         "3": ['Fecha de publicación', '2020', '2019-2020', 'c.2018', '©2021'],
-        "4": ['Tema principal', 'Historia del Arte, ', 'Arte', 'Ciencia', 'Literatura'],
+        #"4": ['Tema principal', 'Historia del Arte, ', 'Arte', 'Ciencia', 'Literatura'],
         "5": ['Nombre principal (autor)',
               'GARCÍA MÁRQUEZ, GABRIEL,',
               'von Goethe,   Johann Wolfgang.',
@@ -45,11 +45,12 @@ def test_filtrar_registros_con_biblioteca(processor):
 
 def test_normalizar_lugar_publicacion():
     processor = BibliotecaDataProcessor("")
-    assert processor._normalizar_lugar_publicacion("Bogotá") == "Bogotá"
-    assert processor._normalizar_lugar_publicacion("México") == "Ciudad de México"
-    assert processor._normalizar_lugar_publicacion("New York") == "Nueva York"
-    assert processor._normalizar_lugar_publicacion("##") == "Lugar no identificado"
-    assert not pd.isna(processor._normalizar_lugar_publicacion(np.nan))
+    assert processor._normalizar_lugar_publicacion("Bogotá") == ("Bogotá", "")
+    assert processor._normalizar_lugar_publicacion("México") == ("Ciudad de México", "")
+    assert processor._normalizar_lugar_publicacion("New York") == ("Nueva York", "")
+    assert processor._normalizar_lugar_publicacion("##") == ("Lugar no identificado", "")
+    assert processor._normalizar_lugar_publicacion("Barcelona,Bogotá") == ("Barcelona", "Bogotá")
+    assert not pd.isna(processor._normalizar_lugar_publicacion(np.nan)[0])
 
 
 def test_normalizar_fecha_publicacion():
