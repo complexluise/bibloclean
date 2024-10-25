@@ -43,7 +43,8 @@ class BibliotecaDataProcessor:
             'lugar': 'Lugar de publicación',
             'fecha': 'Fecha de publicación',
             'temas': 'Tema principal',
-            'autor': 'Nombre principal (autor)'
+            'autor': 'Nombre principal (autor)',
+            'titulo': 'Título principal'
         }
 
     def obtener_columnas_disponibles(self) -> Dict[str, List[str]]:
@@ -66,7 +67,9 @@ class BibliotecaDataProcessor:
             'temas': self.columnas_esperadas['temas']
             if self.columnas_esperadas["temas"] in self.datos.columns else None,
             'autor': self.columnas_esperadas["autor"]
-            if self.columnas_esperadas["autor"] in self.datos.columns else None
+            if self.columnas_esperadas["autor"] in self.datos.columns else None,
+            'titulo': self.columnas_esperadas["titulo"]
+            if self.columnas_esperadas["titulo"] in self.datos.columns else None
         }
         return columnas_disponibles
 
@@ -274,6 +277,9 @@ class BibliotecaDataProcessor:
         # Eliminar espacios extras y caracteres especiales
         titulo = titulo.strip()
 
+        # Eliminar números y punto y coma al inicio
+        titulo = re.sub(r'^[\d;]+', '', titulo)
+
         # Eliminar puntuación redundante al final
         titulo = re.sub(r'[/,:\s]+$', '', titulo)
 
@@ -308,6 +314,12 @@ class BibliotecaDataProcessor:
             logging.info(f"Normalizando nombres de autores: {columnas_disponibles['autor']}")
             self.datos[columnas_disponibles['autor']] = self.datos[columnas_disponibles['autor']] \
                 .apply(self._normalizar_nombre_autor)
+
+        # Add title normalization
+        if columnas_disponibles['titulo']:
+            logging.info(f"Normalizando títulos: {columnas_disponibles['titulo']}")
+            self.datos[columnas_disponibles['titulo']] = self.datos[columnas_disponibles['titulo']] \
+                .apply(self._normalizar_titulo)
 
         # Existing transformations...
         if columnas_disponibles['lugar']:
