@@ -50,6 +50,9 @@ def test_normalizar_lugar_publicacion():
     assert processor._normalizar_lugar_publicacion("New York") == ("Nueva York", "")
     assert processor._normalizar_lugar_publicacion("##") == ("Lugar no identificado", "")
     assert processor._normalizar_lugar_publicacion("Barcelona,Bogotá") == ("Barcelona", "Bogotá")
+    assert processor._normalizar_lugar_publicacion("Badalona (España)") == ("Badalona", "")
+    assert processor._normalizar_lugar_publicacion("León ( España)") == ("León", "")
+    assert processor._normalizar_lugar_publicacion("Rubi (Barcelona)") == ("Rubi", "")
     assert not pd.isna(processor._normalizar_lugar_publicacion(np.nan)[0])
 
 
