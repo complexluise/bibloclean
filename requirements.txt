@@ -1,6 +1,7 @@
-einops
-requests
-pandas
-beautifulsoup4
-sentence-transformers
-scikit-learn
+beautifulsoup4==4.12.3
+einops==0.8.0
+pandas==2.2.3
+requests==2.32.3
+scikit-learn==1.5.2
+sentence-transformers==3.2.1
+torch==2.5.0+cu118
