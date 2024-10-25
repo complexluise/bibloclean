@@ -125,7 +125,7 @@ def guardar_vocabulario_como_json(vocabulario: list[Termino], nombre_archivo: st
 
 # Ejemplo de uso
 if __name__ == "__main__":
-    with open("raw_data/vocabulario.html", "r", encoding="utf-8") as f:
+    with open("../raw_data/vocabulario.html", "r", encoding="utf-8") as f:
         contenido_html = f.read()
 
     vocabulario = extraer_vocabulario(contenido_html)

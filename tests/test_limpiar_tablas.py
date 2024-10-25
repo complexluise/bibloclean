@@ -1,8 +1,7 @@
 import pytest
 import pandas as pd
 import numpy as np
-from pathlib import Path
-from limpiar_tablas import BibliotecaDataProcessor, DatasetPartition
+from src.limpiar_tablas import BibliotecaDataProcessor, DatasetPartition
 
 
 @pytest.fixture

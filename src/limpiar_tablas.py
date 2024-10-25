@@ -422,7 +422,7 @@ class BibliotecaDataProcessor:
             raise ValueError(f"La columna '{columna_tema}' no existe en el DataFrame.")
 
         # Cargar el tesauro
-        with open("raw_data/vocabulario.html", "r", encoding="utf-8") as f:
+        with open("../raw_data/vocabulario.html", "r", encoding="utf-8") as f:
             html_content = f.read()
         tesauro = extraer_vocabulario(html_content)
 

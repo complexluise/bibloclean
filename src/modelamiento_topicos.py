@@ -49,14 +49,14 @@ class ProcesadorMateriasEmbeddings:
 
     @staticmethod
     def cargar_o_descargar_modelo(modelo_nombre: str) -> SentenceTransformer:
-        modelo_path = os.path.join("modelos", modelo_nombre)
+        modelo_path = os.path.join("../modelos", modelo_nombre)
         if os.path.exists(modelo_path):
             logging.info(f"Cargando modelo existente desde {modelo_path}")
             modelo = SentenceTransformer(modelo_path, trust_remote_code=True)
         else:
             logging.info(f"Descargando modelo {modelo_nombre}")
             modelo = SentenceTransformer(modelo_nombre, trust_remote_code=True)
-            os.makedirs("modelos", exist_ok=True)
+            os.makedirs("../modelos", exist_ok=True)
             modelo.save(modelo_path)
             logging.info(f"Modelo guardado en {modelo_path}")
         return modelo.to(torch.device("cuda" if torch.cuda.is_available() else "cpu"))
@@ -147,7 +147,7 @@ if __name__ == "__main__":
     start_time = time.time()
 
     logging.info("Loading tesauro from HTML file")
-    with open("raw_data/vocabulario.html", "r", encoding="utf-8") as f:
+    with open("../raw_data/vocabulario.html", "r", encoding="utf-8") as f:
         html_content = f.read()
 
     tesauro = extraer_vocabulario(html_content)
@@ -156,7 +156,7 @@ if __name__ == "__main__":
     procesador = ProcesadorMateriasEmbeddings(tesauro)
 
     logging.info("Loading DataFrame")
-    df = pd.read_csv("raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv", header=1)
+    df = pd.read_csv("../raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv", header=1)
 
     logging.info("Processing DataFrame")
     df_procesado = procesador.procesar_dataframe(df)
