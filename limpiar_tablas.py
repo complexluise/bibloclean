@@ -197,35 +197,43 @@ class BibliotecaDataProcessor:
 
     def _normalizar_nombre_autor(self, autor: str) -> str:
         """
-        Normaliza el nombre del autor según reglas establecidas.
+        Normaliza nombres de autores siguiendo estándares bibliográficos.
+
+        Esta función aplica las siguientes transformaciones:
+            1. Estandariza el formato "Apellido, Nombre"
+            2. Corrige mayúsculas y minúsculas
+            3. Maneja prefijos nobiliarios (von, van, de)
+            4. Procesa múltiples autores
+            5. Elimina títulos académicos y puntuación extra
+
+        Args:
+            autor (str): Nombre del autor a normalizar
+
+        Returns:
+            str: Nombre del autor normalizado
+
+        Examples:
+            >>> _normalizar_nombre_autor("GARCÍA MÁRQUEZ, GABRIEL")
+            "García Márquez, Gabriel"
+            >>> _normalizar_nombre_autor("von Goethe, Johann")
+            "von Goethe, Johann"
         """
         if pd.isna(autor) or not autor or autor.strip() == "":
             return "Desconocido"
 
-        # Remove leading/trailing whitespace and punctuation
         autor = autor.strip().rstrip(".,")
 
-        # Handle multiple authors first
         if ";" in autor:
             autores = [self._normalizar_nombre_autor(a.strip()) for a in autor.split(";")]
             return "; ".join(autores)
 
-        # Remove titles
-        titulos = ["Dr.", "PhD.", "Ph.D.", "Mr.", "Mrs.", "Ms."]
-        for titulo in titulos:
+        for titulo in ["Dr.", "PhD.", "Ph.D.", "Mr.", "Mrs.", "Ms."]:
             autor = autor.replace(titulo, "")
 
-        # Remove empty parts
-        autor = " ".join(parte.strip() for parte in autor.split() if parte.strip())
+        partes = [p.strip() for p in autor.split(",") if p.strip()]
+        autor = f"{partes[0].title()}, {partes[1].title()}" if len(partes) >= 2 else partes[0].title()
 
-        # First capitalize everything properly
-        partes = [p.strip().title() for p in autor.split(",") if p.strip()!="" ]
-        autor = ", ".join(partes)
-
-        # Then target and lowercase specific prefixes
-        prefijos = ["Von", "Van", "De", "Del", "La", "Las", "Los"]
-        for prefijo in prefijos:
-            # Only replace if preceded by space or start of string
+        for prefijo in ["Von", "Van", "De", "Del", "La", "Las", "Los"]:
             autor = autor.replace(f" {prefijo} ", f" {prefijo.lower()} ")
             if autor.startswith(f"{prefijo} "):
                 autor = f"{prefijo.lower()}{autor[len(prefijo):]}"
