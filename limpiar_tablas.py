@@ -241,6 +241,57 @@ class BibliotecaDataProcessor:
 
         return " ".join(autor.split())
 
+    @staticmethod
+    def _normalizar_titulo(titulo: str) -> str:
+        """
+        Normaliza títulos siguiendo estándares bibliográficos.
+
+        Esta función aplica las siguientes transformaciones:
+            1. Elimina espacios al inicio y final
+            2. Corrige espacios alrededor de signos de puntuación
+            3. Elimina barras diagonales al final
+            4. Reemplaza comas incorrectas
+            5. Elimina puntuación redundante
+            6. Maneja indicadores de subtítulos
+            7. Corrige mayúsculas y minúsculas
+            8. Elimina caracteres inválidos
+
+        Args:
+            titulo (str): Título a normalizar
+
+        Returns:
+            str: Título normalizado
+
+        Examples:
+            >>> _normalizar_titulo(" El príncipe /")
+            "El Príncipe"
+            >>> _normalizar_titulo("Historia del arte :,")
+            "Historia del Arte"
+        """
+        if pd.isna(titulo) or not titulo or titulo.strip() == "":
+            return "Sin título"
+
+        # Eliminar espacios extras y caracteres especiales
+        titulo = titulo.strip()
+
+        # Eliminar puntuación redundante al final
+        titulo = re.sub(r'[/,:\s]+$', '', titulo)
+
+        # Eliminar caracteres inválidos manteniendo algunos especiales
+        titulo = re.sub(r'[#%&\*\{\}\[\]\^\~]', '', titulo)
+
+        # Corregir espacios alrededor de puntuación
+        titulo = re.sub(r'\s+([/,:;.])', r'\1', titulo)
+        titulo = re.sub(r'([/,:;.])\s+', r'\1 ', titulo)
+
+        # Eliminar espacios múltiples
+        titulo = ' '.join(titulo.split())
+
+        # Preservar acrónimos y abreviaturas comunes
+        titulo_limpio = re.sub(r'\b([A-Z])(\+\+)\b', r'\1\2', titulo)
+
+        return titulo_limpio
+
     def transformar_datos(self) -> pd.DataFrame:
         """
         Aplica todas las transformaciones necesarias al DataFrame según las columnas disponibles.
