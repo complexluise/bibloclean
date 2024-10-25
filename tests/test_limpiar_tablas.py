@@ -132,6 +132,9 @@ def test_normalizar_titulo():
     # Test preserving valid special characters
     assert processor._normalizar_titulo("C++ Programming Language") == "C++ Programming Language"
 
+    # Test handling leading numbers and semicolons
+    assert processor._normalizar_titulo("00;Fichero de juegos al aire libre") == "Fichero de juegos al aire libre"
+
     # Test handling empty or None values
     assert processor._normalizar_titulo("") == "Sin título"
     assert processor._normalizar_titulo(None) == "Sin título"
