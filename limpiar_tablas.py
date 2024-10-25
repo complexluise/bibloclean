@@ -328,12 +328,11 @@ class BibliotecaDataProcessor:
         return analisis
 
 
-def main():
+def main(ruta_entrada):
     # Set up logging
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
     # Configuración de rutas
-    ruta_entrada = "raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv"
     directorio_salida = "clean_data"
 
     logging.info(f"Iniciando procesamiento del archivo: {ruta_entrada}")
@@ -356,4 +355,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+
+    rutas = [
+        #"raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv",
+        "raw_data/tablero_7_oplb.xlsx - 02102024KOHA.csv"]
+    for i in rutas:
+        main(i)
+
