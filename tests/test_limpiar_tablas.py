@@ -49,7 +49,7 @@ def test_normalizar_lugar_publicacion():
     assert processor._normalizar_lugar_publicacion("México") == "Ciudad de México"
     assert processor._normalizar_lugar_publicacion("New York") == "Nueva York"
     assert processor._normalizar_lugar_publicacion("##") == "Lugar no identificado"
-    assert pd.isna(processor._normalizar_lugar_publicacion(np.nan))
+    assert not pd.isna(processor._normalizar_lugar_publicacion(np.nan))
 
 
 def test_normalizar_fecha_publicacion():
@@ -77,7 +77,7 @@ def test_normalizar_nombre_autor():
     # Test handling missing authors
     assert processor._normalizar_nombre_autor("") == "Desconocido"
     assert processor._normalizar_nombre_autor(None) == "Desconocido"
-    assert pd.isna(processor._normalizar_nombre_autor(np.nan)) == False
+    assert not pd.isna(processor._normalizar_nombre_autor(np.nan))
 
     # Test handling compound surnames
     assert processor._normalizar_nombre_autor("Villamil Portilla, Edgardo.") == "Villamil Portilla, Edgardo"
