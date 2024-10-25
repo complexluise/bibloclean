@@ -1,5 +1,4 @@
 import logging
-import numpy as np
 import os
 import pandas as pd
 import re
@@ -8,7 +7,7 @@ import unicodedata
 import torch
 
 from functools import wraps
-from typing import List, Dict, Tuple
+from typing import List
 
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -40,7 +39,7 @@ class ProcesadorMateriasEmbeddings:
         tesauro_terminos: List[Termino],
         modelo_nombre: str = "jinaai/jina-embeddings-v3",
     ):
-        self.device = torch.device("cuda")
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.modelo = self.cargar_o_descargar_modelo(modelo_nombre)
         self.tesauro_terminos = self.extraer_terminos_nivel_3(tesauro_terminos)
         self.tesauro_embeddings = self.modelo.encode(
@@ -141,8 +140,6 @@ class ProcesadorMateriasEmbeddings:
 
 if __name__ == "__main__":
     from extraer_vocabulario import extraer_vocabulario
-    import time
-    import logging
 
     start_time = time.time()
 
