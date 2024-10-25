@@ -60,6 +60,36 @@ Opciones disponibles:
 4. Modelado de tópicos
 5. Exportación de resultados
 
+## Columnas Reconocidas
+
+Las siguientes columnas son reconocidas por el programa:
+
+### Bibliotecas
+- Biblioteca_1
+- Biblioteca_2
+- Biblioteca_3
+- Biblioteca_4
+- Biblioteca_5
+- Biblioteca_6
+- Biblioteca_7
+
+### Datos Bibliográficos
+- Lugar de publicación
+- Fecha de publicación
+- Tema principal
+- Nombre principal (autor)
+- Título principal
+
+El programa generará automáticamente columnas normalizadas añadiendo el sufijo "normalizado" a las columnas originales. Por ejemplo:
+- Título principal normalizado
+- Nombre principal (autor) normalizado
+- Lugar de publicación ciudad 1 normalizado
+- Lugar de publicación ciudad 2 normalizado
+- Fecha de publicación normalizado
+
+## Roadmap
+- [ ] Alinear logica con la tranformacion de archivos MARC21
+
 ## Contribuciones
 Para contribuir al proyecto:
 
