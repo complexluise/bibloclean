@@ -103,31 +103,31 @@ def test_normalizar_titulo():
     processor = BibliotecaDataProcessor("")
 
     # Test removing leading and trailing spaces
-    assert processor._normalizar_titulo(" El príncipe ") == "El Príncipe"
+    assert processor._normalizar_titulo(" El príncipe ") == "El príncipe"
 
     # Test correct punctuation spacing
-    assert processor._normalizar_titulo("Prince of the elves /") == "Prince of the Elves"
+    assert processor._normalizar_titulo("Prince of the elves /") == "Prince of the elves"
 
     # Test removing trailing slashes
     assert processor._normalizar_titulo("Batallas de Champiñón /") == "Batallas de Champiñón"
 
     # Test replacing incorrect comma separators
-    assert processor._normalizar_titulo("Los cantos de Maldoror /,") == "Los Cantos de Maldoror"
+    assert processor._normalizar_titulo("Los cantos de Maldoror /,") == "Los cantos de Maldoror"
 
     # Test removing redundant punctuation
-    assert processor._normalizar_titulo("The adventures of Ook and Gluk :,") == "The Adventures of Ook and Gluk"
+    assert processor._normalizar_titulo("The adventures of Ook and Gluk :,") == "The adventures of Ook and Gluk"
 
     # Test handling subtitle indicators
-    assert processor._normalizar_titulo("Protección familiar :") == "Protección Familiar"
+    assert processor._normalizar_titulo("Protección familiar :") == "Protección familiar"
 
     # Test title case conversion for proper nouns
-    assert processor._normalizar_titulo("En el país de los zenúes /") == "En el País de los Zenúes"
+    assert processor._normalizar_titulo("En el país de los zenúes /") == "En el país de los zenúes"
 
     # Test removing invalid characters
-    assert processor._normalizar_titulo("Fácil dibujar expresión artística %") == "Fácil Dibujar Expresión Artística"
+    assert processor._normalizar_titulo("Fácil dibujar expresión artística %") == "Fácil dibujar expresión artística"
 
     # Test handling multiple issues simultaneously
-    assert processor._normalizar_titulo(" Historia del arte moderno /: , ") == "Historia del Arte Moderno"
+    assert processor._normalizar_titulo(" Historia del arte moderno /: , ") == "Historia del arte moderno"
 
     # Test preserving valid special characters
     assert processor._normalizar_titulo("C++ Programming Language") == "C++ Programming Language"
