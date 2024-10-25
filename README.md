@@ -34,8 +34,16 @@ Este proyecto contiene un conjunto de herramientas para procesar, limpiar y enri
 
 ## Uso
 
-1. Colocar los archivos de entrada en la carpeta `raw_data/`
-2. Ejecutar el CLI para procesar los datos:
+1. Instalar las dependencias:
+
+```bash
+git clone https://github.com/complexluise/limpieza_marc21
+cd limpieza_marc21
+pip install -r requirements.txt
+pip3 install torch --index-url https://download.pytorch.org/whl/cu118
+```
+2. Colocar los archivos de entrada en la carpeta `raw_data/`
+3. Ejecutar el CLI para procesar los datos:
 ```bash
 python ./src/cli.py archivo.csv
 ```
@@ -44,7 +52,7 @@ Opciones disponibles:
 - archivo: Ruta al archivo CSV/Excel a procesar
 - --salida, -s: Directorio donde se guardarán los resultados
 - --verbose, -v: Mostrar información detallada del proceso
-3. Los resultados procesados se guardarán en clean_data/
+4. Los resultados procesados se guardarán en clean_data/
 
 ## Estructura de Directorios
 ```
