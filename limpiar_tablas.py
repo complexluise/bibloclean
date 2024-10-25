@@ -426,28 +426,6 @@ class BibliotecaDataProcessor:
             html_content = f.read()
         tesauro = extraer_vocabulario(html_content)
 
-        # add manually tesaurus
-        tesauro.append(
-            Termino(
-                notacion=8,
-                etiqueta="Propias",
-                uri="",
-                nivel=1,
-                hijos=[
-                    Termino(
-                        notacion="8.1",
-                        etiqueta="Literatura Infantil",
-                        uri="",
-                        nivel=2,
-                        hijos=[],
-                        notacion_padre=8,
-                        etiqueta_padre="Propias",
-                    )
-                ],
-                notacion_padre=None,
-                etiqueta_padre=None,
-            )
-        )
         # Inicializar el procesador de materias
         procesador = ProcesadorMateriasEmbeddings(tesauro)
 
