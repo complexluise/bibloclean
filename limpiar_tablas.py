@@ -42,7 +42,8 @@ class BibliotecaDataProcessor:
             ],
             'lugar': 'Lugar de publicación',
             'fecha': 'Fecha de publicación',
-            'temas': 'Tema principal'
+            'temas': 'Tema principal',
+            'autor': 'Nombre principal (autor)'
         }
 
     def obtener_columnas_disponibles(self) -> Dict[str, List[str]]:
@@ -64,8 +65,8 @@ class BibliotecaDataProcessor:
             if self.columnas_esperadas['fecha'] in self.datos.columns else None,
             'temas': self.columnas_esperadas['temas']
             if self.columnas_esperadas["temas"] in self.datos.columns else None,
-            'autor': 'Autor'
-            if 'Autor' in self.datos.columns else None
+            'autor': self.columnas_esperadas["autor"]
+            if self.columnas_esperadas["autor"] in self.datos.columns else None
         }
         return columnas_disponibles
 
