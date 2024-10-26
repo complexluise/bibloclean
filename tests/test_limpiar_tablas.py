@@ -205,3 +205,33 @@ def test_normalizar_titulo():
     assert processor._normalizar_titulo("") == "Sin título"
     assert processor._normalizar_titulo(None) == "Sin título"
     assert not pd.isna(processor._normalizar_titulo(np.nan))
+
+
+def test_normalizar_periodo():
+    processor = BibliotecaDataProcessor("")
+    # Casos básicos
+    assert processor._normalizar_periodo("Siglo XX") == "XX"
+    assert processor._normalizar_periodo("Siglo xx") == "XX"
+    assert processor._normalizar_periodo("Siglo xix") == "XIX"
+    assert processor._normalizar_periodo("siglo XXI") == "XXI"
+
+    # Casos con variaciones de espacios y puntuación
+    assert processor._normalizar_periodo("Siglo  XX") == "XX"
+    assert processor._normalizar_periodo("Siglo xx.") == "XX"
+    assert processor._normalizar_periodo("Sigloxx") == "XX"
+
+    # Casos con múltiples siglos (toma el primero)
+    assert processor._normalizar_periodo("Siglos XX-XXI") == "XX"
+    assert processor._normalizar_periodo("Siglo xix-xx") == "XIX"
+
+    # Casos inválidos
+    assert processor._normalizar_periodo("") is None
+    assert processor._normalizar_periodo(None) is None
+    assert processor._normalizar_periodo("No es un siglo") is None
+    assert processor._normalizar_periodo("2013") is None
+
+    # Casos con texto adicional
+    assert processor._normalizar_periodo("Siglo XX;Siglo XX") == "XX"
+    assert processor._normalizar_periodo("Historia;Siglo xx;Siglo xx") == "XX"
+
+    print("Todas las pruebas pasaron exitosamente!")
