@@ -225,7 +225,7 @@ class BibliotecaDataProcessor:
             ciudades_normalizadas.append(ciudad_norm)
 
         # Asegurar que siempre retornemos una tupla de dos elementos
-        if len(ciudades_normalizadas) == 0:
+        if len(ciudades_normalizadas) == 0 or ciudades_normalizadas[0] == "":
             return "Lugar no identificado", ""
         elif len(ciudades_normalizadas) == 1:
             return ciudades_normalizadas[0], ""
@@ -254,9 +254,9 @@ class BibliotecaDataProcessor:
         fecha = fecha.rstrip(".")
 
         # Extraer años (secuencias de 4 dígitos)
-        anos_encontrados = re.findall(r"\b\d{4}\b", fecha)
+        años_encontrados = re.findall(r"\b\d{4}\b", fecha)
 
-        return max(anos_encontrados) if anos_encontrados else np.nan
+        return max(años_encontrados) if años_encontrados else np.nan
 
     def _normalizar_nombre_autor(self, autor: str) -> str:
         """
