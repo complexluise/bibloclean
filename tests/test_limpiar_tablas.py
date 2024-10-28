@@ -100,40 +100,40 @@ def test_normalizar_nombre_autor():
 
     # Test handling compound surnames
     assert (
-            processor._normalizar_nombre_autor("Villamil Portilla, Edgardo.")
-            == "Villamil Portilla, Edgardo"
+        processor._normalizar_nombre_autor("Villamil Portilla, Edgardo.")
+        == "Villamil Portilla, Edgardo"
     )
 
     # Test removing titles and fixing misplaced initials
     assert (
-            processor._normalizar_nombre_autor("Dr. Cardona Marín, Guillermo")
-            == "Cardona Marín, Guillermo"
+        processor._normalizar_nombre_autor("Dr. Cardona Marín, Guillermo")
+        == "Cardona Marín, Guillermo"
     )
     assert (
-            processor._normalizar_nombre_autor("Cardona Marín, PhD., Guillermo")
-            == "Cardona Marín, Guillermo"
+        processor._normalizar_nombre_autor("Cardona Marín, PhD., Guillermo")
+        == "Cardona Marín, Guillermo"
     )
 
     # Test handling multiple authors
     assert (
-            processor._normalizar_nombre_autor("Süskind, Patrick,; Gambolini, Gerardo")
-            == "Süskind, Patrick; Gambolini, Gerardo"
+        processor._normalizar_nombre_autor("Süskind, Patrick,; Gambolini, Gerardo")
+        == "Süskind, Patrick; Gambolini, Gerardo"
     )
 
     # Test handling special characters and diacritics
     assert (
-            processor._normalizar_nombre_autor("García Márquez, Gabriel")
-            == "García Márquez, Gabriel"
+        processor._normalizar_nombre_autor("García Márquez, Gabriel")
+        == "García Márquez, Gabriel"
     )
 
     # Test handling various edge cases
     assert processor._normalizar_nombre_autor("   Smith,   John   ") == "Smith, John"
     assert (
-            processor._normalizar_nombre_autor("von Goethe, Johann Wolfgang")
-            == "von Goethe, Johann Wolfgang"
+        processor._normalizar_nombre_autor("von Goethe, Johann Wolfgang")
+        == "von Goethe, Johann Wolfgang"
     )
     assert (
-            processor._normalizar_nombre_autor("O'Connor, Flannery") == "O'Connor, Flannery"
+        processor._normalizar_nombre_autor("O'Connor, Flannery") == "O'Connor, Flannery"
     )
 
 
@@ -145,60 +145,60 @@ def test_normalizar_titulo():
 
     # Test correct punctuation spacing
     assert (
-            processor._normalizar_titulo("Prince of the elves /") == "Prince of the elves"
+        processor._normalizar_titulo("Prince of the elves /") == "Prince of the elves"
     )
 
     # Test removing trailing slashes
     assert (
-            processor._normalizar_titulo("Batallas de Champiñón /")
-            == "Batallas de Champiñón"
+        processor._normalizar_titulo("Batallas de Champiñón /")
+        == "Batallas de Champiñón"
     )
 
     # Test replacing incorrect comma separators
     assert (
-            processor._normalizar_titulo("Los cantos de Maldoror /,")
-            == "Los cantos de Maldoror"
+        processor._normalizar_titulo("Los cantos de Maldoror /,")
+        == "Los cantos de Maldoror"
     )
 
     # Test removing redundant punctuation
     assert (
-            processor._normalizar_titulo("The adventures of Ook and Gluk :,")
-            == "The adventures of Ook and Gluk"
+        processor._normalizar_titulo("The adventures of Ook and Gluk :,")
+        == "The adventures of Ook and Gluk"
     )
 
     # Test handling subtitle indicators
     assert (
-            processor._normalizar_titulo("Protección familiar :") == "Protección familiar"
+        processor._normalizar_titulo("Protección familiar :") == "Protección familiar"
     )
 
     # Test title case conversion for proper nouns
     assert (
-            processor._normalizar_titulo("En el país de los zenúes /")
-            == "En el país de los zenúes"
+        processor._normalizar_titulo("En el país de los zenúes /")
+        == "En el país de los zenúes"
     )
 
     # Test removing invalid characters
     assert (
-            processor._normalizar_titulo("Fácil dibujar expresión artística %")
-            == "Fácil dibujar expresión artística"
+        processor._normalizar_titulo("Fácil dibujar expresión artística %")
+        == "Fácil dibujar expresión artística"
     )
 
     # Test handling multiple issues simultaneously
     assert (
-            processor._normalizar_titulo(" Historia del arte moderno /: , ")
-            == "Historia del arte moderno"
+        processor._normalizar_titulo(" Historia del arte moderno /: , ")
+        == "Historia del arte moderno"
     )
 
     # Test preserving valid special characters
     assert (
-            processor._normalizar_titulo("C++ Programming Language")
-            == "C++ Programming Language"
+        processor._normalizar_titulo("C++ Programming Language")
+        == "C++ Programming Language"
     )
 
     # Test handling leading numbers and semicolons
     assert (
-            processor._normalizar_titulo("00;Fichero de juegos al aire libre")
-            == "Fichero de juegos al aire libre"
+        processor._normalizar_titulo("00;Fichero de juegos al aire libre")
+        == "Fichero de juegos al aire libre"
     )
 
     # Test handling empty or None values
@@ -237,33 +237,31 @@ def test_normalizar_periodo():
     print("Todas las pruebas pasaron exitosamente!")
 
 
-@pytest.mark.parametrize("dewey_number, expected", [
-    # Standard cases
-    ("123.456", "123"),
-    ("70904062", "709"),
-    ("70.904.062", "709"),
-
-    # Edge cases with prefixes and additional characters
-    ("3.386.425", "338"),  # should handle prefixes
-    ("Co 867.6", "867"),  # non-numeric prefix
-    ("14;155.633", "155"),  # semicolon separator
-    ("338.9/86106", "338"),  # slash separator
-
-    # Cases with only three digits
-    ("523", "523"),  # exactly three digits
-    ("920", "920"),  # another three-digit case
-
-    # Cases with fewer than three digits
-    ("5", ""),  # fewer than three digits
-    ("88", ""),  # fewer than three digits
-
-    # Complex non-numeric patterns
-    ("AB123CD456", "123"),  # mixed letters
-    ("90-123-456", "901"),  # hyphens in sequence
-    (" 650.213 ", "650"),  # spaces around the number
-    ("", "")  # empty input
-])
+@pytest.mark.parametrize(
+    "dewey_number, expected",
+    [
+        # Standard cases
+        ("123.456", "123"),
+        ("70904062", "709"),
+        ("70.904.062", "709"),
+        # Edge cases with prefixes and additional characters
+        ("3.386.425", "338"),  # should handle prefixes
+        ("Co 867.6", "867"),  # non-numeric prefix
+        ("14;155.633", "155"),  # semicolon separator
+        ("338.9/86106", "338"),  # slash separator
+        # Cases with only three digits
+        ("523", "523"),  # exactly three digits
+        ("920", "920"),  # another three-digit case
+        # Cases with fewer than three digits
+        ("5", ""),  # fewer than three digits
+        ("88", ""),  # fewer than three digits
+        # Complex non-numeric patterns
+        ("AB123CD456", "123"),  # mixed letters
+        ("90-123-456", "901"),  # hyphens in sequence
+        (" 650.213 ", "650"),  # spaces around the number
+        ("", ""),  # empty input
+    ],
+)
 def test_normalizar_numero_clasificacion_dewey(dewey_number, expected):
     processor = BibliotecaDataProcessor("")
     assert processor._normalizar_numero_clasificacion_dewey(dewey_number) == expected
-

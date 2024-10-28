@@ -110,10 +110,10 @@ class BibliotecaDataProcessor:
 
         extension = self.ruta_archivo.parts[-1]
 
-        if extension.endswith('.csv'):
+        if extension.endswith(".csv"):
             self.datos = pd.read_csv(self.ruta_archivo, header=fila_encabezado)
             file_type = "CSV"
-        elif extension.endswith(('.xlsx', '.xls')):
+        elif extension.endswith((".xlsx", ".xls")):
             self.datos = pd.read_excel(self.ruta_archivo, header=fila_encabezado)
             file_type = "Excel"
         else:
@@ -379,10 +379,10 @@ class BibliotecaDataProcessor:
 
         # Limpiar el texto
         periodo = periodo.lower().strip()
-        periodo = re.sub(r'\s+', ' ', periodo)
+        periodo = re.sub(r"\s+", " ", periodo)
 
         # Patrones de siglos (incluyendo plural y rangos)
-        patron_siglo = r'siglos?\s*(xxi|xviii|xvii|xvi|xix|xiii|xii|xi|xx|xv|xiv|ix|viii|vii|vi|iv|iii|ii|i|x)(?:[-\s]+(?:xxi|xviii|xvii|xvi|xix|xiii|xii|xi|xx|xv|xiv|ix|viii|vii|vi|iv|iii|ii|i|x))?'
+        patron_siglo = r"siglos?\s*(xxi|xviii|xvii|xvi|xix|xiii|xii|xi|xx|xv|xiv|ix|viii|vii|vi|iv|iii|ii|i|x)(?:[-\s]+(?:xxi|xviii|xvii|xvi|xix|xiii|xii|xi|xx|xv|xiv|ix|viii|vii|vi|iv|iii|ii|i|x))?"
 
         # Buscar coincidencias
         match = re.search(patron_siglo, periodo)
@@ -407,13 +407,17 @@ class BibliotecaDataProcessor:
           string if no valid number is found.
         """
 
-        raw_dewey_number = raw_dewey_number.split(";")[1] if ";" in raw_dewey_number else raw_dewey_number
+        raw_dewey_number = (
+            raw_dewey_number.split(";")[1]
+            if ";" in raw_dewey_number
+            else raw_dewey_number
+        )
 
         # Remove all non-numeric characters
-        numeric_part = re.sub(r'\D', '', raw_dewey_number)
+        numeric_part = re.sub(r"\D", "", raw_dewey_number)
 
         # Extract and return the first three digits if available
-        return numeric_part[:3] if len(numeric_part) >= 3 else ''
+        return numeric_part[:3] if len(numeric_part) >= 3 else ""
 
     def transformar_datos(self) -> pd.DataFrame:
         """

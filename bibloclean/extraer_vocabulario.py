@@ -44,7 +44,7 @@ def extraer_vocabulario(contenido_html: str) -> list[Termino]:
             etiqueta = texto_completo
         else:
             notacion = ancla.find("span", class_="tree-notation").text.strip()
-            etiqueta = texto_completo[texto_completo.find(notacion) + len(notacion):]
+            etiqueta = texto_completo[texto_completo.find(notacion) + len(notacion) :]
 
         etiqueta = re.sub(r"\s+", " ", etiqueta).strip()
 
