@@ -389,22 +389,39 @@ class BibliotecaDataProcessor:
         if not isinstance(periodo, str) or not periodo:
             return None
 
+        def año_a_siglo_romano(año):
+            """Convierte un año a su siglo en números romanos"""
+            siglo = (año - 1) // 100 + 1
+            # Convertir a romano usando biblioteca estándar
+            valores = [(1000, "M"), (900, "CM"), (500, "D"), (400, "CD"),
+                      (100, "C"), (90, "XC"), (50, "L"), (40, "XL"),
+                      (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I")]
+            resultado = ""
+            for valor, numeral in valores:
+                while siglo >= valor:
+                    resultado += numeral
+                    siglo -= valor
+            return resultado
+
         # Limpiar el texto
         periodo = periodo.lower().strip()
         periodo = re.sub(r"\s+", " ", periodo)
 
-        # Patrones de siglos (incluyendo plural y rangos)
-        patron_siglo = r"siglos?\s*(xxi|xviii|xvii|xvi|xix|xiii|xii|xi|xx|xv|xiv|ix|viii|vii|vi|iv|iii|ii|i|x)(?:[-\s]+(?:xxi|xviii|xvii|xvi|xix|xiii|xii|xi|xx|xv|xiv|ix|viii|vii|vi|iv|iii|ii|i|x))?"
+        # Detectar rangos de años (XXXX-XXXX)
+        patron_años = r"(\d{4})-(\d{4})"
+        match_años = re.search(patron_años, periodo)
+        if match_años:
+            año_inicio = int(match_años.group(1))
+            return año_a_siglo_romano(año_inicio)
 
-        # Buscar coincidencias
+        # Mantener funcionalidad existente para siglos en romano
+        patron_siglo = r"siglos?\s*(xxi|xviii|xvii|xvi|xix|xiii|xii|xi|xx|xv|xiv|ix|viii|vii|vi|iv|iii|ii|i|x)(?:[-\s]+(?:xxi|xviii|xvii|xvi|xix|xiii|xii|xi|xx|xv|xiv|ix|viii|vii|vi|iv|iii|ii|i|x))?"
         match = re.search(patron_siglo, periodo)
         if match:
             siglo = match.group(1)
-            # Normalizar a mayúsculas
             return siglo.upper()
 
         return None
-
     @staticmethod
     def _normalizar_numero_clasificacion_dewey(raw_dewey_number: str):
         """
