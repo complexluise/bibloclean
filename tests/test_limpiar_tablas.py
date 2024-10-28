@@ -102,7 +102,10 @@ def test_normalizar_fecha_publicacion(fecha, expected):
         ("BROWNE, ANTHONY", "Browne, Anthony"),
         ("browne, anthony", "Browne, Anthony"),
         # Casos con múltiples autores
-        ("Süskind, Patrick,; Gambolini, Gerardo", "Süskind, Patrick; Gambolini, Gerardo"),
+        (
+            "Süskind, Patrick,; Gambolini, Gerardo",
+            "Süskind, Patrick; Gambolini, Gerardo",
+        ),
         # Casos con títulos académicos
         ("Dr. Cardona Marín, Guillermo", "Cardona Marín, Guillermo"),
         ("Cardona Marín, PhD., Guillermo", "Cardona Marín, Guillermo"),
@@ -129,16 +132,13 @@ def test_normalizar_nombre_autor(autor, expected):
         ("Siglo xx", "XX"),
         ("Siglo xix", "XIX"),
         ("siglo XXI", "XXI"),
-
         # Variaciones de formato y espacios
         ("Siglo  XX", "XX"),
         ("Siglo xx.", "XX"),
         ("Sigloxx", "XX"),
-
         # Rangos de siglos (toma el mayor)
         ("Siglos XX-XXI", "XXI"),
         ("Siglo xix-xx", "XX"),
-
         # Casos con texto adicional
         ("Siglo XX;Siglo XX", "XX"),
         ("Historia;Siglo xx;Siglo xx", "XX"),
@@ -146,17 +146,14 @@ def test_normalizar_nombre_autor(autor, expected):
         ("Siglo XX;Siglo XX", "XX"),
         ("Siglo XX;Siglo XX;Siglo XX", "XX"),
         ("Siglos xix-xx;Siglos xix-xx", "XX"),
-
         # Casos con números (toma el mayor)
         ("2013", "XXI"),
         ("1400-1600;1400-1600;1400-1600", "XVI"),
         ("1830-1990;1830-1990;1830-1990", "XX"),
-
         # Casos inválidos
         ("", None),
         (None, None),
         ("No es un siglo", None),
-
         # Siglos romanos específicos
         ("Siglo XVIII", "XVIII"),
         ("Siglo XVII", "XVII"),

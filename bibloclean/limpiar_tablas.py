@@ -51,7 +51,7 @@ class BibliotecaDataProcessor:
             "autor": "Nombre principal (autor)",
             "titulo": "Título principal",
             "dewey": "Número de clasificación Dewey",
-            "periodo": "Periodo cronológico"
+            "periodo": "Periodo cronológico",
         }
 
     def obtener_columnas_disponibles(self) -> Dict[str, List[str]]:
@@ -104,7 +104,7 @@ class BibliotecaDataProcessor:
                 self.columnas_esperadas["periodo"]
                 if self.columnas_esperadas["periodo"] in self.datos.columns
                 else None
-            )
+            ),
         }
         return columnas_disponibles
 
@@ -393,9 +393,21 @@ class BibliotecaDataProcessor:
             """Convierte un año a su siglo en números romanos"""
             siglo = (año - 1) // 100 + 1
             # Convertir a romano usando biblioteca estándar
-            valores = [(1000, "M"), (900, "CM"), (500, "D"), (400, "CD"),
-                       (100, "C"), (90, "XC"), (50, "L"), (40, "XL"),
-                       (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I")]
+            valores = [
+                (1000, "M"),
+                (900, "CM"),
+                (500, "D"),
+                (400, "CD"),
+                (100, "C"),
+                (90, "XC"),
+                (50, "L"),
+                (40, "XL"),
+                (10, "X"),
+                (9, "IX"),
+                (5, "V"),
+                (4, "IV"),
+                (1, "I"),
+            ]
             resultado = ""
             for valor, numeral in valores:
                 while siglo >= valor:
@@ -405,7 +417,7 @@ class BibliotecaDataProcessor:
 
         def valor_siglo_romano(siglo_romano):
             """Convierte un siglo romano a su valor numérico"""
-            valores = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+            valores = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
             valor = 0
             prev_valor = 0
 
@@ -532,7 +544,6 @@ class BibliotecaDataProcessor:
         if columnas_disponibles["temas"]:
             logging.info(f"Modelando temas en columna: {columnas_disponibles['temas']}")
             self.datos = self._modelar_topicos(columnas_disponibles["temas"])
-
 
         return self.datos
 
