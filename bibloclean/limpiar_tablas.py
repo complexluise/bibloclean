@@ -472,6 +472,9 @@ class BibliotecaDataProcessor:
         # Remove all non-numeric characters
         numeric_part = re.sub(r"\D", "", raw_dewey_number)
 
+        # Remove leading zeros and get first 3 significant digits
+        numeric_part = str(int(numeric_part)) if numeric_part else ""
+
         # Extract and return the first three digits if available
         return numeric_part[:3] if len(numeric_part) >= 3 else ""
 

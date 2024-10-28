@@ -177,7 +177,11 @@ def test_normalizar_periodo(periodo, expected):
         ("Co 867.6", "867"),  # non-numeric prefix
         ("14;155.633", "155"),  # semicolon separator
         ("338.9/86106", "338"),  # slash separator
-        ("'070.44", "704"),  # single quote prefix and start with 0
+        # Cases with leading zeros
+        ("070.44", "704"),
+        ("005.133", "513"),
+        ("000.151", "151"),
+        ("'070.44", "704"),
         # Cases with only three digits
         ("523", "523"),  # exactly three digits
         ("920", "920"),  # another three-digit case
