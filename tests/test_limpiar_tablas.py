@@ -75,7 +75,7 @@ def test_normalizar_lugar_publicacion(lugar, expected):
     [
         # Años simples
         ("2020", "2020"),
-        # Rangos de años
+        # Rangos de años (tomar el mayor)
         ("2019-2020", "2020"),
         # Prefijos especiales
         ("c.2018", "2018"),
@@ -135,19 +135,27 @@ def test_normalizar_nombre_autor(autor, expected):
         ("Siglo xx.", "XX"),
         ("Sigloxx", "XX"),
 
-        # Rangos de siglos (toma el primero)
-        ("Siglos XX-XXI", "XX"),
-        ("Siglo xix-xx", "XIX"),
+        # Rangos de siglos (toma el mayor)
+        ("Siglos XX-XXI", "XXI"),
+        ("Siglo xix-xx", "XX"),
 
         # Casos con texto adicional
         ("Siglo XX;Siglo XX", "XX"),
         ("Historia;Siglo xx;Siglo xx", "XX"),
+        # Casos con Siglo repetido
+        ("Siglo XX;Siglo XX", "XX"),
+        ("Siglo XX;Siglo XX;Siglo XX", "XX"),
+        ("Siglos xix-xx;Siglos xix-xx", "XX"),
+
+        # Casos con números (toma el mayor)
+        ("2013", "XXI"),
+        ("1400-1600;1400-1600;1400-1600", "XVI"),
+        ("1830-1990;1830-1990;1830-1990", "XX"),
 
         # Casos inválidos
         ("", None),
         (None, None),
         ("No es un siglo", None),
-        ("2013", None),
 
         # Siglos romanos específicos
         ("Siglo XVIII", "XVIII"),
@@ -172,6 +180,7 @@ def test_normalizar_periodo(periodo, expected):
         ("Co 867.6", "867"),  # non-numeric prefix
         ("14;155.633", "155"),  # semicolon separator
         ("338.9/86106", "338"),  # slash separator
+        ("'070.44", "704"),  # single quote prefix and start with 0
         # Cases with only three digits
         ("523", "523"),  # exactly three digits
         ("920", "920"),  # another three-digit case
