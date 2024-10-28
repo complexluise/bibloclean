@@ -394,7 +394,7 @@ class BibliotecaDataProcessor:
         return None
 
     @staticmethod
-    def _normalizar_numero_clasificacion_dewey(dewey_number):
+    def _normalizar_numero_clasificacion_dewey(raw_dewey_number: str):
         """
         Normalize Dewey classification number by extracting the first three digits only,
         ignoring non-numeric prefixes and internal separators.
@@ -406,8 +406,11 @@ class BibliotecaDataProcessor:
         - str: The first three digits of the Dewey number as a string, or an empty
           string if no valid number is found.
         """
+
+        raw_dewey_number = raw_dewey_number.split(";")[1] if ";" in raw_dewey_number else raw_dewey_number
+
         # Remove all non-numeric characters
-        numeric_part = re.sub(r'\D', '', dewey_number)
+        numeric_part = re.sub(r'\D', '', raw_dewey_number)
 
         # Extract and return the first three digits if available
         return numeric_part[:3] if len(numeric_part) >= 3 else ''
