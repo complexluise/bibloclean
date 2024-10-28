@@ -393,6 +393,25 @@ class BibliotecaDataProcessor:
 
         return None
 
+    @staticmethod
+    def _normalizar_numero_clasificacion_dewey(dewey_number):
+        """
+        Normalize Dewey classification number by extracting the first three digits only,
+        ignoring non-numeric prefixes and internal separators.
+
+        Parameters:
+        - dewey_number (str): The Dewey number to normalize.
+
+        Returns:
+        - str: The first three digits of the Dewey number as a string, or an empty
+          string if no valid number is found.
+        """
+        # Remove all non-numeric characters
+        numeric_part = re.sub(r'\D', '', dewey_number)
+
+        # Extract and return the first three digits if available
+        return numeric_part[:3] if len(numeric_part) >= 3 else ''
+
     def transformar_datos(self) -> pd.DataFrame:
         """
         Aplica todas las transformaciones necesarias al DataFrame según las columnas disponibles.
