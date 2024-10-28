@@ -394,8 +394,8 @@ class BibliotecaDataProcessor:
             siglo = (año - 1) // 100 + 1
             # Convertir a romano usando biblioteca estándar
             valores = [(1000, "M"), (900, "CM"), (500, "D"), (400, "CD"),
-                      (100, "C"), (90, "XC"), (50, "L"), (40, "XL"),
-                      (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I")]
+                       (100, "C"), (90, "XC"), (50, "L"), (40, "XL"),
+                       (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I")]
             resultado = ""
             for valor, numeral in valores:
                 while siglo >= valor:
@@ -403,25 +403,40 @@ class BibliotecaDataProcessor:
                     siglo -= valor
             return resultado
 
+        def valor_siglo_romano(siglo_romano):
+            """Convierte un siglo romano a su valor numérico"""
+            valores = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+            valor = 0
+            prev_valor = 0
+
+            for char in reversed(siglo_romano.upper()):
+                curr_valor = valores[char]
+                if curr_valor >= prev_valor:
+                    valor += curr_valor
+                else:
+                    valor -= curr_valor
+                prev_valor = curr_valor
+            return valor
+
         # Limpiar el texto
         periodo = periodo.lower().strip()
         periodo = re.sub(r"\s+", " ", periodo)
 
-        # Detectar rangos de años (XXXX-XXXX)
-        patron_años = r"(\d{4})-(\d{4})"
-        match_años = re.search(patron_años, periodo)
-        if match_años:
-            año_inicio = int(match_años.group(1))
-            return año_a_siglo_romano(año_inicio)
+        # Buscar todos los años en el texto
+        años = re.findall(r"\d{4}", periodo)
+        if años:
+            año_mas_reciente = max(map(int, años))
+            return año_a_siglo_romano(año_mas_reciente)
 
-        # Mantener funcionalidad existente para siglos en romano
-        patron_siglo = r"siglos?\s*(xxi|xviii|xvii|xvi|xix|xiii|xii|xi|xx|xv|xiv|ix|viii|vii|vi|iv|iii|ii|i|x)(?:[-\s]+(?:xxi|xviii|xvii|xvi|xix|xiii|xii|xi|xx|xv|xiv|ix|viii|vii|vi|iv|iii|ii|i|x))?"
-        match = re.search(patron_siglo, periodo)
-        if match:
-            siglo = match.group(1)
-            return siglo.upper()
+        # Buscar todos los siglos romanos
+        patron_siglos = r"(?:siglos?\s*|-)(xxi|xx|xix|xviii|xvii|xvi|xv|xiv|xiii|xii|xi|x|ix|viii|vii|vi|v|iv|iii|ii|i)"
+        siglos_encontrados = re.findall(patron_siglos, periodo)
+
+        if siglos_encontrados:
+            return max(siglos_encontrados, key=valor_siglo_romano).upper()
 
         return None
+
     @staticmethod
     def _normalizar_numero_clasificacion_dewey(raw_dewey_number: str):
         """
