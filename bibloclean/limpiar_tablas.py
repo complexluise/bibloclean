@@ -50,6 +50,8 @@ class BibliotecaDataProcessor:
             "temas": "Tema principal",
             "autor": "Nombre principal (autor)",
             "titulo": "Título principal",
+            "dewey": "Número de clasificación Dewey",
+            "periodo": "Periodo cronológico"
         }
 
     def obtener_columnas_disponibles(self) -> Dict[str, List[str]]:
@@ -93,6 +95,16 @@ class BibliotecaDataProcessor:
                 if self.columnas_esperadas["titulo"] in self.datos.columns
                 else None
             ),
+            "dewey": (
+                self.columnas_esperadas["dewey"]
+                if self.columnas_esperadas["dewey"] in self.datos.columns
+                else None
+            ),
+            "periodo": (
+                self.columnas_esperadas["periodo"]
+                if self.columnas_esperadas["periodo"] in self.datos.columns
+                else None
+            )
         }
         return columnas_disponibles
 
@@ -406,7 +418,7 @@ class BibliotecaDataProcessor:
         - str: The first three digits of the Dewey number as a string, or an empty
           string if no valid number is found.
         """
-
+        raw_dewey_number = str(raw_dewey_number)
         raw_dewey_number = (
             raw_dewey_number.split(";")[1]
             if ";" in raw_dewey_number
@@ -469,9 +481,26 @@ class BibliotecaDataProcessor:
                 columnas_disponibles["fecha"]
             ].apply(self._normalizar_fecha_publicacion)
 
+        if columnas_disponibles["dewey"]:
+            logging.info(
+                f"Normalizando columna de número de clasificación Dewey: {columnas_disponibles['dewey']}"
+            )
+            self.datos[columnas_disponibles["dewey"] + " normalizado"] = self.datos[
+                columnas_disponibles["dewey"]
+            ].apply(self._normalizar_numero_clasificacion_dewey)
+
+        if columnas_disponibles["periodo"]:
+            logging.info(
+                f"Normalizando columna de periodo cronologico: {columnas_disponibles['periodo']}"
+            )
+            self.datos[columnas_disponibles["periodo"] + " normalizado"] = self.datos[
+                columnas_disponibles["periodo"]
+            ].apply(self._normalizar_periodo)
+
         if columnas_disponibles["temas"]:
             logging.info(f"Modelando temas en columna: {columnas_disponibles['temas']}")
             self.datos = self._modelar_topicos(columnas_disponibles["temas"])
+
 
         return self.datos
 
