@@ -381,8 +381,8 @@ class BibliotecaDataProcessor:
         periodo = periodo.lower().strip()
         periodo = re.sub(r'\s+', ' ', periodo)
 
-        # Patrones de siglos
-        patron_siglo = r'siglo\s*(xxi|xviii|xvii|xvi|xix|xiii|xii|xi|xx|xv|xiv|ix|viii|vii|vi|iv|iii|ii|i|x)'
+        # Patrones de siglos (incluyendo plural y rangos)
+        patron_siglo = r'siglos?\s*(xxi|xviii|xvii|xvi|xix|xiii|xii|xi|xx|xv|xiv|ix|viii|vii|vi|iv|iii|ii|i|x)(?:[-\s]+(?:xxi|xviii|xvii|xvi|xix|xiii|xii|xi|xx|xv|xiv|ix|viii|vii|vi|iv|iii|ii|i|x))?'
 
         # Buscar coincidencias
         match = re.search(patron_siglo, periodo)
