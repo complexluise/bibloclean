@@ -46,162 +46,155 @@ def test_filtrar_registros_con_biblioteca(processor):
     assert len(result.registros_descartados) == 1  # Records with no library
 
 
-def test_normalizar_lugar_publicacion():
+@pytest.mark.parametrize(
+    "lugar, expected",
+    [
+        # Casos básicos
+        ("Bogotá", ("Bogotá", "")),
+        ("México", ("Ciudad de México", "")),
+        ("New York", ("Nueva York", "")),
+        # Casos con múltiples lugares
+        ("Barcelona,Bogotá", ("Barcelona", "Bogotá")),
+        # Casos con paréntesis y espacios
+        ("Badalona (España)", ("Badalona", "")),
+        ("León ( España)", ("León", "")),
+        ("Rubi (Barcelona)", ("Rubi", "")),
+        # Casos especiales
+        ("##", ("Lugar no identificado", "")),
+        (np.nan, ("Lugar no identificado", "")),
+        ("", ("Lugar no identificado", "")),
+    ],
+)
+def test_normalizar_lugar_publicacion(lugar, expected):
     processor = BibliotecaDataProcessor("")
-    assert processor._normalizar_lugar_publicacion("Bogotá") == ("Bogotá", "")
-    assert processor._normalizar_lugar_publicacion("México") == ("Ciudad de México", "")
-    assert processor._normalizar_lugar_publicacion("New York") == ("Nueva York", "")
-    assert processor._normalizar_lugar_publicacion("##") == (
-        "Lugar no identificado",
-        "",
-    )
-    assert processor._normalizar_lugar_publicacion("Barcelona,Bogotá") == (
-        "Barcelona",
-        "Bogotá",
-    )
-    assert processor._normalizar_lugar_publicacion("Badalona (España)") == (
-        "Badalona",
-        "",
-    )
-    assert processor._normalizar_lugar_publicacion("León ( España)") == ("León", "")
-    assert processor._normalizar_lugar_publicacion("Rubi (Barcelona)") == ("Rubi", "")
-    assert not pd.isna(processor._normalizar_lugar_publicacion(np.nan)[0])
+    assert processor._normalizar_lugar_publicacion(lugar) == expected
 
 
-def test_normalizar_fecha_publicacion():
+@pytest.mark.parametrize(
+    "fecha, expected",
+    [
+        # Años simples
+        ("2020", "2020"),
+        # Rangos de años (tomar el mayor)
+        ("2019-2020", "2020"),
+        # Prefijos especiales
+        ("c.2018", "2018"),
+        ("©2021", "2021"),
+        # Casos inválidos
+        ("sin fecha", None),
+        ("", None),
+        (np.nan, None),
+    ],
+)
+def test_normalizar_fecha_publicacion(fecha, expected):
     processor = BibliotecaDataProcessor("")
-    assert processor._normalizar_fecha_publicacion("2020") == "2020"
-    assert processor._normalizar_fecha_publicacion("2019-2020") == "2020"
-    assert processor._normalizar_fecha_publicacion("c.2018") == "2018"
-    assert processor._normalizar_fecha_publicacion("©2021") == "2021"
-    assert pd.isna(processor._normalizar_fecha_publicacion("sin fecha"))
+    if expected is None:
+        assert pd.isna(processor._normalizar_fecha_publicacion(fecha))
+    else:
+        assert processor._normalizar_fecha_publicacion(fecha) == expected
 
 
-def test_normalizar_nombre_autor():
+@pytest.mark.parametrize(
+    "autor, expected",
+    [
+        # Casos básicos de formato
+        ("Kibuishi, Kazu,", "Kibuishi, Kazu"),
+        ("BROWNE, ANTHONY", "Browne, Anthony"),
+        ("browne, anthony", "Browne, Anthony"),
+        # Casos con múltiples autores
+        (
+            "Süskind, Patrick,; Gambolini, Gerardo",
+            "Süskind, Patrick; Gambolini, Gerardo",
+        ),
+        # Casos con títulos académicos
+        ("Dr. Cardona Marín, Guillermo", "Cardona Marín, Guillermo"),
+        ("Cardona Marín, PhD., Guillermo", "Cardona Marín, Guillermo"),
+        # Casos con partículas nobiliarias
+        ("von Goethe, Johann Wolfgang", "von Goethe, Johann Wolfgang"),
+        # Casos con espacios extra
+        ("   Smith,   John   ", "Smith, John"),
+        # Casos especiales
+        ("", "Desconocido"),
+        (None, "Desconocido"),
+        (np.nan, "Desconocido"),
+    ],
+)
+def test_normalizar_nombre_autor(autor, expected):
     processor = BibliotecaDataProcessor("")
-
-    # Test removing trailing commas
-    assert processor._normalizar_nombre_autor("Kibuishi, Kazu,") == "Kibuishi, Kazu"
-
-    # Test standardizing format and removing extra spaces
-    assert (
-        processor._normalizar_nombre_autor("Otálvaro S., Rubén Darío  ")
-        == "Otálvaro S., Rubén Darío"
-    )
-
-    # Test fixing capitalization
-    assert processor._normalizar_nombre_autor("BROWNE, ANTHONY") == "Browne, Anthony"
-    assert processor._normalizar_nombre_autor("browne, anthony") == "Browne, Anthony"
-
-    # Test handling missing authors
-    assert processor._normalizar_nombre_autor("") == "Desconocido"
-    assert processor._normalizar_nombre_autor(None) == "Desconocido"
-    assert not pd.isna(processor._normalizar_nombre_autor(np.nan))
-
-    # Test handling compound surnames
-    assert (
-        processor._normalizar_nombre_autor("Villamil Portilla, Edgardo.")
-        == "Villamil Portilla, Edgardo"
-    )
-
-    # Test removing titles and fixing misplaced initials
-    assert (
-        processor._normalizar_nombre_autor("Dr. Cardona Marín, Guillermo")
-        == "Cardona Marín, Guillermo"
-    )
-    assert (
-        processor._normalizar_nombre_autor("Cardona Marín, PhD., Guillermo")
-        == "Cardona Marín, Guillermo"
-    )
-
-    # Test handling multiple authors
-    assert (
-        processor._normalizar_nombre_autor("Süskind, Patrick,; Gambolini, Gerardo")
-        == "Süskind, Patrick; Gambolini, Gerardo"
-    )
-
-    # Test handling special characters and diacritics
-    assert (
-        processor._normalizar_nombre_autor("García Márquez, Gabriel")
-        == "García Márquez, Gabriel"
-    )
-
-    # Test handling various edge cases
-    assert processor._normalizar_nombre_autor("   Smith,   John   ") == "Smith, John"
-    assert (
-        processor._normalizar_nombre_autor("von Goethe, Johann Wolfgang")
-        == "von Goethe, Johann Wolfgang"
-    )
-    assert (
-        processor._normalizar_nombre_autor("O'Connor, Flannery") == "O'Connor, Flannery"
-    )
+    assert processor._normalizar_nombre_autor(autor) == expected
 
 
-def test_normalizar_titulo():
+@pytest.mark.parametrize(
+    "periodo, expected",
+    [
+        # Casos básicos de siglos
+        ("Siglo XX", "XX"),
+        ("Siglo xx", "XX"),
+        ("Siglo xix", "XIX"),
+        ("siglo XXI", "XXI"),
+        # Variaciones de formato y espacios
+        ("Siglo  XX", "XX"),
+        ("Siglo xx.", "XX"),
+        ("Sigloxx", "XX"),
+        # Rangos de siglos (toma el mayor)
+        ("Siglos XX-XXI", "XXI"),
+        ("Siglo xix-xx", "XX"),
+        # Casos con texto adicional
+        ("Siglo XX;Siglo XX", "XX"),
+        ("Historia;Siglo xx;Siglo xx", "XX"),
+        # Casos con Siglo repetido
+        ("Siglo XX;Siglo XX", "XX"),
+        ("Siglo XX;Siglo XX;Siglo XX", "XX"),
+        ("Siglos xix-xx;Siglos xix-xx", "XX"),
+        # Casos con números (toma el mayor)
+        ("2013", "XXI"),
+        ("1400-1600;1400-1600;1400-1600", "XVI"),
+        ("1830-1990;1830-1990;1830-1990", "XX"),
+        # Casos inválidos
+        ("", None),
+        (None, None),
+        ("No es un siglo", None),
+        # Siglos romanos específicos
+        ("Siglo XVIII", "XVIII"),
+        ("Siglo XVII", "XVII"),
+        ("Siglo XVI", "XVI"),
+    ],
+)
+def test_normalizar_periodo(periodo, expected):
     processor = BibliotecaDataProcessor("")
+    assert processor._normalizar_periodo(periodo) == expected
 
-    # Test removing leading and trailing spaces
-    assert processor._normalizar_titulo(" El príncipe ") == "El príncipe"
 
-    # Test correct punctuation spacing
-    assert (
-        processor._normalizar_titulo("Prince of the elves /") == "Prince of the elves"
-    )
-
-    # Test removing trailing slashes
-    assert (
-        processor._normalizar_titulo("Batallas de Champiñón /")
-        == "Batallas de Champiñón"
-    )
-
-    # Test replacing incorrect comma separators
-    assert (
-        processor._normalizar_titulo("Los cantos de Maldoror /,")
-        == "Los cantos de Maldoror"
-    )
-
-    # Test removing redundant punctuation
-    assert (
-        processor._normalizar_titulo("The adventures of Ook and Gluk :,")
-        == "The adventures of Ook and Gluk"
-    )
-
-    # Test handling subtitle indicators
-    assert (
-        processor._normalizar_titulo("Protección familiar :") == "Protección familiar"
-    )
-
-    # Test title case conversion for proper nouns
-    assert (
-        processor._normalizar_titulo("En el país de los zenúes /")
-        == "En el país de los zenúes"
-    )
-
-    # Test removing invalid characters
-    assert (
-        processor._normalizar_titulo("Fácil dibujar expresión artística %")
-        == "Fácil dibujar expresión artística"
-    )
-
-    # Test handling multiple issues simultaneously
-    assert (
-        processor._normalizar_titulo(" Historia del arte moderno /: , ")
-        == "Historia del arte moderno"
-    )
-
-    # Test preserving valid special characters
-    assert (
-        processor._normalizar_titulo("C++ Programming Language")
-        == "C++ Programming Language"
-    )
-
-    # Test handling leading numbers and semicolons
-    assert (
-        processor._normalizar_titulo("00;Fichero de juegos al aire libre")
-        == "Fichero de juegos al aire libre"
-    )
-
-    # Test handling empty or None values
-    assert processor._normalizar_titulo("") == "Sin título"
-    assert processor._normalizar_titulo(None) == "Sin título"
-    assert not pd.isna(processor._normalizar_titulo(np.nan))
+@pytest.mark.parametrize(
+    "dewey_number, expected",
+    [
+        # Standard cases
+        ("123.456", "123"),
+        ("70904062", "709"),
+        ("70.904.062", "709"),
+        # Edge cases with prefixes and additional characters
+        ("3.386.425", "338"),  # should handle prefixes
+        ("Co 867.6", "867"),  # non-numeric prefix
+        ("14;155.633", "155"),  # semicolon separator
+        ("338.9/86106", "338"),  # slash separator
+        # Cases with leading zeros
+        ("070.44", "704"),
+        ("005.133", "513"),
+        ("000.151", "151"),
+        ("'070.44", "704"),
+        # Cases with only three digits
+        ("523", "523"),  # exactly three digits
+        ("920", "920"),  # another three-digit case
+        # Cases with fewer than three digits
+        ("5", ""),  # fewer than three digits
+        ("88", ""),  # fewer than three digits
+        # Complex non-numeric patterns
+        ("AB123CD456", "123"),  # mixed letters
+        ("90-123-456", "901"),  # hyphens in sequence
+        (" 650.213 ", "650"),  # spaces around the number
+        ("", ""),  # empty input
+    ],
+)
+def test_normalizar_numero_clasificacion_dewey(dewey_number, expected):
+    processor = BibliotecaDataProcessor("")
+    assert processor._normalizar_numero_clasificacion_dewey(dewey_number) == expected

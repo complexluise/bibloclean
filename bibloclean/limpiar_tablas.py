@@ -50,6 +50,8 @@ class BibliotecaDataProcessor:
             "temas": "Tema principal",
             "autor": "Nombre principal (autor)",
             "titulo": "Título principal",
+            "dewey": "Número de clasificación Dewey",
+            "periodo": "Periodo cronológico",
         }
 
     def obtener_columnas_disponibles(self) -> Dict[str, List[str]]:
@@ -93,6 +95,16 @@ class BibliotecaDataProcessor:
                 if self.columnas_esperadas["titulo"] in self.datos.columns
                 else None
             ),
+            "dewey": (
+                self.columnas_esperadas["dewey"]
+                if self.columnas_esperadas["dewey"] in self.datos.columns
+                else None
+            ),
+            "periodo": (
+                self.columnas_esperadas["periodo"]
+                if self.columnas_esperadas["periodo"] in self.datos.columns
+                else None
+            ),
         }
         return columnas_disponibles
 
@@ -110,10 +122,10 @@ class BibliotecaDataProcessor:
 
         extension = self.ruta_archivo.parts[-1]
 
-        if extension.endswith('.csv'):
+        if extension.endswith(".csv"):
             self.datos = pd.read_csv(self.ruta_archivo, header=fila_encabezado)
             file_type = "CSV"
-        elif extension.endswith(('.xlsx', '.xls')):
+        elif extension.endswith((".xlsx", ".xls")):
             self.datos = pd.read_excel(self.ruta_archivo, header=fila_encabezado)
             file_type = "Excel"
         else:
@@ -225,7 +237,7 @@ class BibliotecaDataProcessor:
             ciudades_normalizadas.append(ciudad_norm)
 
         # Asegurar que siempre retornemos una tupla de dos elementos
-        if len(ciudades_normalizadas) == 0:
+        if len(ciudades_normalizadas) == 0 or ciudades_normalizadas[0] == "":
             return "Lugar no identificado", ""
         elif len(ciudades_normalizadas) == 1:
             return ciudades_normalizadas[0], ""
@@ -254,9 +266,9 @@ class BibliotecaDataProcessor:
         fecha = fecha.rstrip(".")
 
         # Extraer años (secuencias de 4 dígitos)
-        anos_encontrados = re.findall(r"\b\d{4}\b", fecha)
+        años_encontrados = re.findall(r"\b\d{4}\b", fecha)
 
-        return max(anos_encontrados) if anos_encontrados else np.nan
+        return max(años_encontrados) if años_encontrados else np.nan
 
     def _normalizar_nombre_autor(self, autor: str) -> str:
         """
@@ -363,6 +375,109 @@ class BibliotecaDataProcessor:
 
         return titulo_limpio
 
+    @staticmethod
+    def _normalizar_periodo(periodo):
+        """
+        Normaliza un texto de periodo cronológico a número romano del siglo.
+
+        Args:
+            periodo (str): Texto del periodo cronológico
+
+        Returns:
+            str: Siglo en números romanos o None si no se puede normalizar
+        """
+        if not isinstance(periodo, str) or not periodo:
+            return None
+
+        def año_a_siglo_romano(año):
+            """Convierte un año a su siglo en números romanos"""
+            siglo = (año - 1) // 100 + 1
+            # Convertir a romano usando biblioteca estándar
+            valores = [
+                (1000, "M"),
+                (900, "CM"),
+                (500, "D"),
+                (400, "CD"),
+                (100, "C"),
+                (90, "XC"),
+                (50, "L"),
+                (40, "XL"),
+                (10, "X"),
+                (9, "IX"),
+                (5, "V"),
+                (4, "IV"),
+                (1, "I"),
+            ]
+            resultado = ""
+            for valor, numeral in valores:
+                while siglo >= valor:
+                    resultado += numeral
+                    siglo -= valor
+            return resultado
+
+        def valor_siglo_romano(siglo_romano):
+            """Convierte un siglo romano a su valor numérico"""
+            valores = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+            valor = 0
+            prev_valor = 0
+
+            for char in reversed(siglo_romano.upper()):
+                curr_valor = valores[char]
+                if curr_valor >= prev_valor:
+                    valor += curr_valor
+                else:
+                    valor -= curr_valor
+                prev_valor = curr_valor
+            return valor
+
+        # Limpiar el texto
+        periodo = periodo.lower().strip()
+        periodo = re.sub(r"\s+", " ", periodo)
+
+        # Buscar todos los años en el texto
+        años = re.findall(r"\d{4}", periodo)
+        if años:
+            año_mas_reciente = max(map(int, años))
+            return año_a_siglo_romano(año_mas_reciente)
+
+        # Buscar todos los siglos romanos
+        patron_siglos = r"(?:siglos?\s*|-)(xxi|xx|xix|xviii|xvii|xvi|xv|xiv|xiii|xii|xi|x|ix|viii|vii|vi|v|iv|iii|ii|i)"
+        siglos_encontrados = re.findall(patron_siglos, periodo)
+
+        if siglos_encontrados:
+            return max(siglos_encontrados, key=valor_siglo_romano).upper()
+
+        return None
+
+    @staticmethod
+    def _normalizar_numero_clasificacion_dewey(raw_dewey_number: str):
+        """
+        Normalize Dewey classification number by extracting the first three digits only,
+        ignoring non-numeric prefixes and internal separators.
+
+        Parameters:
+        - dewey_number (str): The Dewey number to normalize.
+
+        Returns:
+        - str: The first three digits of the Dewey number as a string, or an empty
+          string if no valid number is found.
+        """
+        raw_dewey_number = str(raw_dewey_number)
+        raw_dewey_number = (
+            raw_dewey_number.split(";")[1]
+            if ";" in raw_dewey_number
+            else raw_dewey_number
+        )
+
+        # Remove all non-numeric characters
+        numeric_part = re.sub(r"\D", "", raw_dewey_number)
+
+        # Remove leading zeros and get first 3 significant digits
+        numeric_part = str(int(numeric_part)) if numeric_part else ""
+
+        # Extract and return the first three digits if available
+        return numeric_part[:3] if len(numeric_part) >= 3 else ""
+
     def transformar_datos(self) -> pd.DataFrame:
         """
         Aplica todas las transformaciones necesarias al DataFrame según las columnas disponibles.
@@ -412,6 +527,22 @@ class BibliotecaDataProcessor:
             self.datos[columnas_disponibles["fecha"] + " normalizado"] = self.datos[
                 columnas_disponibles["fecha"]
             ].apply(self._normalizar_fecha_publicacion)
+
+        if columnas_disponibles["dewey"]:
+            logging.info(
+                f"Normalizando columna de número de clasificación Dewey: {columnas_disponibles['dewey']}"
+            )
+            self.datos[columnas_disponibles["dewey"] + " normalizado"] = self.datos[
+                columnas_disponibles["dewey"]
+            ].apply(self._normalizar_numero_clasificacion_dewey)
+
+        if columnas_disponibles["periodo"]:
+            logging.info(
+                f"Normalizando columna de periodo cronologico: {columnas_disponibles['periodo']}"
+            )
+            self.datos[columnas_disponibles["periodo"] + " normalizado"] = self.datos[
+                columnas_disponibles["periodo"]
+            ].apply(self._normalizar_periodo)
 
         if columnas_disponibles["temas"]:
             logging.info(f"Modelando temas en columna: {columnas_disponibles['temas']}")
