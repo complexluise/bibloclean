@@ -1,1 +1,1 @@
-from cli import limpiar_koha
+from bibloclean.cli import limpiar_koha
