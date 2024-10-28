@@ -235,3 +235,35 @@ def test_normalizar_periodo():
     assert processor._normalizar_periodo("Historia;Siglo xx;Siglo xx") == "XX"
 
     print("Todas las pruebas pasaron exitosamente!")
+
+
+@pytest.mark.parametrize("dewey_number, expected", [
+    # Standard cases
+    ("123.456", "123"),
+    ("70904062", "709"),
+    ("70.904.062", "709"),
+
+    # Edge cases with prefixes and additional characters
+    ("3.386.425", "386"),  # should handle prefixes
+    ("Co 867.6", "867"),  # non-numeric prefix
+    ("14;155.633", "155"),  # semicolon separator
+    ("338.9/86106", "338"),  # slash separator
+
+    # Cases with only three digits
+    ("523", "523"),  # exactly three digits
+    ("920", "920"),  # another three-digit case
+
+    # Cases with fewer than three digits
+    ("5", "500"),  # fewer than three digits
+    ("88", "880"),  # fewer than three digits
+
+    # Complex non-numeric patterns
+    ("AB123CD456", "123"),  # mixed letters
+    ("90-123-456", "901"),  # hyphens in sequence
+    (" 650.213 ", "650"),  # spaces around the number
+    ("", "")  # empty input
+])
+def test_normalizar_numero_clasificacion_dewey(dewey_number, expected):
+    processor = BibliotecaDataProcessor("")
+    assert processor._normalizar_numero_clasificacion_dewey(dewey_number) == expected
+
