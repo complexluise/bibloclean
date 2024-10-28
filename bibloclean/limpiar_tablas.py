@@ -363,6 +363,36 @@ class BibliotecaDataProcessor:
 
         return titulo_limpio
 
+    @staticmethod
+    def _normalizar_periodo(periodo):
+        """
+        Normaliza un texto de periodo cronológico a número romano del siglo.
+
+        Args:
+            periodo (str): Texto del periodo cronológico
+
+        Returns:
+            str: Siglo en números romanos o None si no se puede normalizar
+        """
+        if not isinstance(periodo, str) or not periodo:
+            return None
+
+        # Limpiar el texto
+        periodo = periodo.lower().strip()
+        periodo = re.sub(r'\s+', ' ', periodo)
+
+        # Patrones de siglos
+        patron_siglo = r'siglo\s*(xxi|xviii|xvii|xvi|xix|xiii|xii|xi|xx|xv|xiv|ix|viii|vii|vi|iv|iii|ii|i|x)'
+
+        # Buscar coincidencias
+        match = re.search(patron_siglo, periodo)
+        if match:
+            siglo = match.group(1)
+            # Normalizar a mayúsculas
+            return siglo.upper()
+
+        return None
+
     def transformar_datos(self) -> pd.DataFrame:
         """
         Aplica todas las transformaciones necesarias al DataFrame según las columnas disponibles.
