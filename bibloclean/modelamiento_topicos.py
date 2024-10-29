@@ -1,4 +1,5 @@
 import logging
+import networkx as nx
 import os
 import pandas as pd
 import re
@@ -165,3 +166,37 @@ if __name__ == "__main__":
 
     end_time = time.time()
     logging.info(f"Total execution time: {end_time - start_time:.2f} seconds")
+
+
+def construir_red(umbral_similaridad, df: pd.DataFrame, procesador: ProcesadorMateriasEmbeddings) -> nx.Graph:
+    """Construye red de correlaciones entre temas usando embeddings"""
+    grafo = nx.Graph()
+
+    # Obtener temas únicos y sus embeddings
+    temas_unicos = df['tema_general'].dropna().unique()
+    embeddings_temas = procesador.modelo.encode(temas_unicos, device=procesador.device)
+
+    # Calcular matriz de similaridad
+    matriz_similaridad = cosine_similarity(embeddings_temas, embeddings_temas)
+
+    # Construir grafo
+    for i, tema1 in enumerate(temas_unicos):
+        for j, tema2 in enumerate(temas_unicos[i + 1:], i + 1):
+            similaridad = matriz_similaridad[i, j]
+            if similaridad >= umbral_similaridad:
+                # Añadir nodos con atributos
+                frecuencia1 = len(df[df['tema_general'] == tema1])
+                frecuencia2 = len(df[df['tema_general'] == tema2])
+
+                grafo.add_node(tema1, frequency=frecuencia1)
+                grafo.add_node(tema2, frequency=frecuencia2)
+
+                # Añadir arista con peso
+                grafo.add_edge(tema1, tema2, weight=float(similaridad))
+
+    return grafo
+
+
+def exportar_graphml(grafo, ruta_salida: str):
+    """Exporta el grafo en formato GraphML"""
+    nx.write_graphml(grafo, ruta_salida)
