@@ -20,6 +20,8 @@
 - El rendimiento depende de la calidad de los modelos de embedding y el tamaño de los datos.
 - La estructura de columnas en los datos de entrada debe cumplir con un formato específico.
 
+Para obtener más información detallada sobre las transformaciones realizadas visitar [Explicación de las normalizaciones](https://complexluise.github.io/bibloclean/explicacion_normalizacion).
+
 ## Prerrequisitos
 
 ### 1. Instalación
