@@ -1,0 +1,3955 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d1" for="edge" attr.name="weight" attr.type="double" />
+  <key id="d0" for="node" attr.name="frequency" attr.type="long" />
+  <graph edgedefault="undirected">
+    <node id="Educación ciudadana">
+      <data key="d0">3</data>
+    </node>
+    <node id="Educación comunitaria">
+      <data key="d0">1</data>
+    </node>
+    <node id="Educación">
+      <data key="d0">3</data>
+    </node>
+    <node id="Educación para los derechos humanos">
+      <data key="d0">1</data>
+    </node>
+    <node id="Libro para niños">
+      <data key="d0">1255</data>
+    </node>
+    <node id="Película para niños">
+      <data key="d0">4</data>
+    </node>
+    <node id="Biblioteca para niños">
+      <data key="d0">7</data>
+    </node>
+    <node id="Colombia">
+      <data key="d0">143</data>
+    </node>
+    <node id="Costa Rica">
+      <data key="d0">1</data>
+    </node>
+    <node id="Ecuador">
+      <data key="d0">2</data>
+    </node>
+    <node id="Guatemala">
+      <data key="d0">1</data>
+    </node>
+    <node id="Educación sexual">
+      <data key="d0">8</data>
+    </node>
+    <node id="Educación de la mujer">
+      <data key="d0">1</data>
+    </node>
+    <node id="Escuela de sexo único">
+      <data key="d0">1</data>
+    </node>
+    <node id="Nanotecnología">
+      <data key="d0">1</data>
+    </node>
+    <node id="Tecnología">
+      <data key="d0">2</data>
+    </node>
+    <node id="Diversidad cultural">
+      <data key="d0">2</data>
+    </node>
+    <node id="Conflicto cultural">
+      <data key="d0">1</data>
+    </node>
+    <node id="Identidad cultural">
+      <data key="d0">3</data>
+    </node>
+    <node id="Desarrollo cultural">
+      <data key="d0">2</data>
+    </node>
+    <node id="Mujer periodista">
+      <data key="d0">1</data>
+    </node>
+    <node id="Periodista">
+      <data key="d0">4</data>
+    </node>
+    <node id="Mujer">
+      <data key="d0">7</data>
+    </node>
+    <node id="Periodismo">
+      <data key="d0">7</data>
+    </node>
+    <node id="Juego educativo">
+      <data key="d0">14</data>
+    </node>
+    <node id="Juguete educativo">
+      <data key="d0">5</data>
+    </node>
+    <node id="Juego">
+      <data key="d0">4</data>
+    </node>
+    <node id="Experimento educacional">
+      <data key="d0">1</data>
+    </node>
+    <node id="Narración de cuentos">
+      <data key="d0">67</data>
+    </node>
+    <node id="Cuento">
+      <data key="d0">7</data>
+    </node>
+    <node id="Literatura eslava">
+      <data key="d0">4</data>
+    </node>
+    <node id="Literatura">
+      <data key="d0">2</data>
+    </node>
+    <node id="Literatura europea">
+      <data key="d0">1</data>
+    </node>
+    <node id="Literatura escandinava">
+      <data key="d0">1</data>
+    </node>
+    <node id="Exploración geográfica">
+      <data key="d0">4</data>
+    </node>
+    <node id="Exploración marina">
+      <data key="d0">2</data>
+    </node>
+    <node id="Geografía física">
+      <data key="d0">2</data>
+    </node>
+    <node id="Geografía">
+      <data key="d0">2</data>
+    </node>
+    <node id="Literatura norteamericana">
+      <data key="d0">54</data>
+    </node>
+    <node id="Literatura latinoamericana">
+      <data key="d0">49</data>
+    </node>
+    <node id="Literatura oceánica">
+      <data key="d0">4</data>
+    </node>
+    <node id="Literatura nacional">
+      <data key="d0">4</data>
+    </node>
+    <node id="Español">
+      <data key="d0">9</data>
+    </node>
+    <node id="Portugués">
+      <data key="d0">4</data>
+    </node>
+    <node id="España">
+      <data key="d0">3</data>
+    </node>
+    <node id="Inglés">
+      <data key="d0">2</data>
+    </node>
+    <node id="Relación padres-hijos">
+      <data key="d0">3</data>
+    </node>
+    <node id="Padres (progenitores)">
+      <data key="d0">3</data>
+    </node>
+    <node id="Actitud de los padres">
+      <data key="d0">1</data>
+    </node>
+    <node id="Fauna">
+      <data key="d0">2</data>
+    </node>
+    <node id="Animal marino">
+      <data key="d0">2</data>
+    </node>
+    <node id="Animal">
+      <data key="d0">16</data>
+    </node>
+    <node id="Zoología">
+      <data key="d0">1</data>
+    </node>
+    <node id="Recursos animales">
+      <data key="d0">1</data>
+    </node>
+    <node id="Biblioteca pública">
+      <data key="d0">1</data>
+    </node>
+    <node id="Historia de las bibliotecas">
+      <data key="d0">1</data>
+    </node>
+    <node id="Biblioteca especializada">
+      <data key="d0">1</data>
+    </node>
+    <node id="Información/biblioteca, política">
+      <data key="d0">1</data>
+    </node>
+    <node id="Biblioteca para ciegos">
+      <data key="d0">1</data>
+    </node>
+    <node id="Información/biblioteca, personal">
+      <data key="d0">1</data>
+    </node>
+    <node id="Biblioteca de arte">
+      <data key="d0">1</data>
+    </node>
+    <node id="Colecciones de biblioteca">
+      <data key="d0">1</data>
+    </node>
+    <node id="Investigación sobre los conflictos">
+      <data key="d0">2</data>
+    </node>
+    <node id="Solución de conflictos">
+      <data key="d0">2</data>
+    </node>
+    <node id="Conflicto social">
+      <data key="d0">1</data>
+    </node>
+    <node id="Violencia de género">
+      <data key="d0">5</data>
+    </node>
+    <node id="Violencia">
+      <data key="d0">26</data>
+    </node>
+    <node id="Igualdad de género">
+      <data key="d0">1</data>
+    </node>
+    <node id="Movimiento revolucionario">
+      <data key="d0">2</data>
+    </node>
+    <node id="Movimiento obrero">
+      <data key="d0">1</data>
+    </node>
+    <node id="Movimiento juvenil">
+      <data key="d0">1</data>
+    </node>
+    <node id="Revolución">
+      <data key="d0">1</data>
+    </node>
+    <node id="Homicidio">
+      <data key="d0">20</data>
+    </node>
+    <node id="Crimen">
+      <data key="d0">5</data>
+    </node>
+    <node id="Psicología del adolescente">
+      <data key="d0">3</data>
+    </node>
+    <node id="Psicología del niño">
+      <data key="d0">5</data>
+    </node>
+    <node id="Adolescencia">
+      <data key="d0">40</data>
+    </node>
+    <node id="Psicología">
+      <data key="d0">1</data>
+    </node>
+    <node id="Cultura nacional">
+      <data key="d0">1</data>
+    </node>
+    <node id="Cultura y desarrollo">
+      <data key="d0">1</data>
+    </node>
+    <node id="Valor cultural">
+      <data key="d0">1</data>
+    </node>
+    <node id="Política cultural">
+      <data key="d0">2</data>
+    </node>
+    <node id="Educación cultural">
+      <data key="d0">1</data>
+    </node>
+    <node id="Historia nacional">
+      <data key="d0">1</data>
+    </node>
+    <node id="Información cultural">
+      <data key="d0">1</data>
+    </node>
+    <node id="Poesía">
+      <data key="d0">44</data>
+    </node>
+    <node id="Poeta">
+      <data key="d0">1</data>
+    </node>
+    <node id="Poesía épica">
+      <data key="d0">8</data>
+    </node>
+    <node id="Educación musical">
+      <data key="d0">3</data>
+    </node>
+    <node id="Educación artística">
+      <data key="d0">1</data>
+    </node>
+    <node id="Música">
+      <data key="d0">3</data>
+    </node>
+    <node id="Musicología">
+      <data key="d0">1</data>
+    </node>
+    <node id="Árbol">
+      <data key="d0">5</data>
+    </node>
+    <node id="Bosque">
+      <data key="d0">1</data>
+    </node>
+    <node id="Derecho constitucional">
+      <data key="d0">6</data>
+    </node>
+    <node id="Derecho">
+      <data key="d0">2</data>
+    </node>
+    <node id="Constitución">
+      <data key="d0">1</data>
+    </node>
+    <node id="Prensa rural">
+      <data key="d0">1</data>
+    </node>
+    <node id="Mujer rural">
+      <data key="d0">3</data>
+    </node>
+    <node id="Prensa local">
+      <data key="d0">1</data>
+    </node>
+    <node id="Justicia">
+      <data key="d0">2</data>
+    </node>
+    <node id="Administración de justicia">
+      <data key="d0">4</data>
+    </node>
+    <node id="Tribunal">
+      <data key="d0">1</data>
+    </node>
+    <node id="Justicia social">
+      <data key="d0">1</data>
+    </node>
+    <node id="Familia">
+      <data key="d0">40</data>
+    </node>
+    <node id="Derecho de la familia">
+      <data key="d0">1</data>
+    </node>
+    <node id="Desintegración de la familia">
+      <data key="d0">3</data>
+    </node>
+    <node id="Casa">
+      <data key="d0">1</data>
+    </node>
+    <node id="Educación a la vida familiar">
+      <data key="d0">1</data>
+    </node>
+    <node id="Corrupción">
+      <data key="d0">6</data>
+    </node>
+    <node id="Corrupción política">
+      <data key="d0">6</data>
+    </node>
+    <node id="Afectividad">
+      <data key="d0">11</data>
+    </node>
+    <node id="Desarrollo afectivo">
+      <data key="d0">2</data>
+    </node>
+    <node id="Identidad">
+      <data key="d0">1</data>
+    </node>
+    <node id="Desarrollo de la personalidad">
+      <data key="d0">2</data>
+    </node>
+    <node id="Desarrollo del niño">
+      <data key="d0">3</data>
+    </node>
+    <node id="Personalidad">
+      <data key="d0">3</data>
+    </node>
+    <node id="Desarrollo mental">
+      <data key="d0">1</data>
+    </node>
+    <node id="Trastornos de la personalidad">
+      <data key="d0">1</data>
+    </node>
+    <node id="Ciencia ficción">
+      <data key="d0">22</data>
+    </node>
+    <node id="Literatura de ficción">
+      <data key="d0">22</data>
+    </node>
+    <node id="Ciencia">
+      <data key="d0">10</data>
+    </node>
+    <node id="Biología marina">
+      <data key="d0">1</data>
+    </node>
+    <node id="Biología">
+      <data key="d0">1</data>
+    </node>
+    <node id="Vida marina">
+      <data key="d0">1</data>
+    </node>
+    <node id="Crianza del niño">
+      <data key="d0">2</data>
+    </node>
+    <node id="Hindustani">
+      <data key="d0">1</data>
+    </node>
+    <node id="Hinduismo">
+      <data key="d0">2</data>
+    </node>
+    <node id="Escritora">
+      <data key="d0">16</data>
+    </node>
+    <node id="Escritura">
+      <data key="d0">2</data>
+    </node>
+    <node id="Escritor">
+      <data key="d0">1</data>
+    </node>
+    <node id="Muerte">
+      <data key="d0">11</data>
+    </node>
+    <node id="Suicidio">
+      <data key="d0">5</data>
+    </node>
+    <node id="Delincuencia">
+      <data key="d0">7</data>
+    </node>
+    <node id="Seguridad social">
+      <data key="d0">1</data>
+    </node>
+    <node id="Política social">
+      <data key="d0">1</data>
+    </node>
+    <node id="Literatura del Caribe">
+      <data key="d0">15</data>
+    </node>
+    <node id="Creencia religiosa">
+      <data key="d0">1</data>
+    </node>
+    <node id="Religión">
+      <data key="d0">1</data>
+    </node>
+    <node id="Actividad religiosa">
+      <data key="d0">2</data>
+    </node>
+    <node id="Historia religiosa">
+      <data key="d0">2</data>
+    </node>
+    <node id="Libertad religiosa">
+      <data key="d0">1</data>
+    </node>
+    <node id="Cristianismo">
+      <data key="d0">1</data>
+    </node>
+    <node id="Dramaturgo">
+      <data key="d0">2</data>
+    </node>
+    <node id="Obra de teatro">
+      <data key="d0">3</data>
+    </node>
+    <node id="Drama">
+      <data key="d0">5</data>
+    </node>
+    <node id="Teatro">
+      <data key="d0">4</data>
+    </node>
+    <node id="Filosofía de la ciencia">
+      <data key="d0">1</data>
+    </node>
+    <node id="Filosofía política">
+      <data key="d0">2</data>
+    </node>
+    <node id="Filosofía">
+      <data key="d0">9</data>
+    </node>
+    <node id="Ciencia de la ciencia">
+      <data key="d0">1</data>
+    </node>
+    <node id="Filosofía de la educación">
+      <data key="d0">1</data>
+    </node>
+    <node id="Joven">
+      <data key="d0">4</data>
+    </node>
+    <node id="Infancia">
+      <data key="d0">3</data>
+    </node>
+    <node id="Electromagnetismo">
+      <data key="d0">4</data>
+    </node>
+    <node id="Magnetismo">
+      <data key="d0">1</data>
+    </node>
+    <node id="Ciencia política">
+      <data key="d0">3</data>
+    </node>
+    <node id="Sociología política">
+      <data key="d0">2</data>
+    </node>
+    <node id="Comportamiento del docente">
+      <data key="d0">1</data>
+    </node>
+    <node id="Comportamiento">
+      <data key="d0">1</data>
+    </node>
+    <node id="Ciencias de la educación">
+      <data key="d0">1</data>
+    </node>
+    <node id="Ciencias sociales">
+      <data key="d0">3</data>
+    </node>
+    <node id="Ciencias naturales">
+      <data key="d0">3</data>
+    </node>
+    <node id="Ciencias ambientales">
+      <data key="d0">1</data>
+    </node>
+    <node id="Relación escuela-comunidad">
+      <data key="d0">1</data>
+    </node>
+    <node id="Desarrollo comunitario">
+      <data key="d0">1</data>
+    </node>
+    <node id="Comunidad">
+      <data key="d0">1</data>
+    </node>
+    <node id="Matemáticas">
+      <data key="d0">7</data>
+    </node>
+    <node id="Álgebra">
+      <data key="d0">5</data>
+    </node>
+    <node id="Aritmética">
+      <data key="d0">2</data>
+    </node>
+    <node id="Desarrollo del lenguaje">
+      <data key="d0">2</data>
+    </node>
+    <node id="Idioma de enseñanza">
+      <data key="d0">1</data>
+    </node>
+    <node id="Metafísica">
+      <data key="d0">1</data>
+    </node>
+    <node id="Filosofía del espíritu">
+      <data key="d0">1</data>
+    </node>
+    <node id="Desarrollo rural">
+      <data key="d0">1</data>
+    </node>
+    <node id="Arte latinoamericano">
+      <data key="d0">3</data>
+    </node>
+    <node id="Cultura latinoamericana">
+      <data key="d0">2</data>
+    </node>
+    <node id="Dibujo">
+      <data key="d0">4</data>
+    </node>
+    <node id="Dibujos">
+      <data key="d0">1</data>
+    </node>
+    <node id="Pintura">
+      <data key="d0">12</data>
+    </node>
+    <node id="Dibujo técnico">
+      <data key="d0">1</data>
+    </node>
+    <node id="Dibujo animado">
+      <data key="d0">1</data>
+    </node>
+    <node id="Música pop">
+      <data key="d0">1</data>
+    </node>
+    <node id="Música popular">
+      <data key="d0">1</data>
+    </node>
+    <node id="Arte pop">
+      <data key="d0">1</data>
+    </node>
+    <node id="Arte prehistórico">
+      <data key="d0">2</data>
+    </node>
+    <node id="Prehistoria">
+      <data key="d0">1</data>
+    </node>
+    <node id="Arte primitivo">
+      <data key="d0">1</data>
+    </node>
+    <node id="Hombre prehistórico">
+      <data key="d0">1</data>
+    </node>
+    <node id="Historia del arte">
+      <data key="d0">1</data>
+    </node>
+    <node id="Arte antiguo">
+      <data key="d0">1</data>
+    </node>
+    <node id="Experimento">
+      <data key="d0">1</data>
+    </node>
+    <node id="Experimento (en clase)">
+      <data key="d0">1</data>
+    </node>
+    <node id="Juguete">
+      <data key="d0">1</data>
+    </node>
+    <node id="Desarrollo motor">
+      <data key="d0">1</data>
+    </node>
+    <node id="Lingüista">
+      <data key="d0">1</data>
+    </node>
+    <node id="Lingüística">
+      <data key="d0">1</data>
+    </node>
+    <node id="Cambio de actitud">
+      <data key="d0">2</data>
+    </node>
+    <node id="Cambio organizacional">
+      <data key="d0">3</data>
+    </node>
+    <node id="Medicina deportiva">
+      <data key="d0">1</data>
+    </node>
+    <node id="Deporte">
+      <data key="d0">7</data>
+    </node>
+    <node id="Dictadura">
+      <data key="d0">4</data>
+    </node>
+    <node id="Democracia">
+      <data key="d0">5</data>
+    </node>
+    <node id="Educación para la paz">
+      <data key="d0">1</data>
+    </node>
+    <node id="Consolidación de la paz">
+      <data key="d0">2</data>
+    </node>
+    <node id="Agricultura">
+      <data key="d0">2</data>
+    </node>
+    <node id="Agrosilvicultura">
+      <data key="d0">1</data>
+    </node>
+    <node id="Horticultura">
+      <data key="d0">4</data>
+    </node>
+    <node id="Biología agrícola">
+      <data key="d0">1</data>
+    </node>
+    <node id="Maquinaria agrícola">
+      <data key="d0">1</data>
+    </node>
+    <node id="Construcción de viviendas">
+      <data key="d0">1</data>
+    </node>
+    <node id="Arquitectura">
+      <data key="d0">2</data>
+    </node>
+    <node id="Libro de arte">
+      <data key="d0">2</data>
+    </node>
+    <node id="Artes gráficas">
+      <data key="d0">3</data>
+    </node>
+    <node id="Obra literaria representativa">
+      <data key="d0">2</data>
+    </node>
+    <node id="Artes">
+      <data key="d0">1</data>
+    </node>
+    <node id="Artes plásticas">
+      <data key="d0">1</data>
+    </node>
+    <node id="Artes visuales">
+      <data key="d0">2</data>
+    </node>
+    <node id="Crítica de arte">
+      <data key="d0">1</data>
+    </node>
+    <node id="Historia antigua">
+      <data key="d0">1</data>
+    </node>
+    <node id="Enciclopedia">
+      <data key="d0">4</data>
+    </node>
+    <node id="Diccionario">
+      <data key="d0">2</data>
+    </node>
+    <node id="Comercio internacional">
+      <data key="d0">1</data>
+    </node>
+    <node id="Libre comercio">
+      <data key="d0">2</data>
+    </node>
+    <node id="Relaciones económicas internacionales">
+      <data key="d0">1</data>
+    </node>
+    <node id="Argentina">
+      <data key="d0">2</data>
+    </node>
+    <node id="Animal acuático">
+      <data key="d0">1</data>
+    </node>
+    <node id="Agua de mar">
+      <data key="d0">1</data>
+    </node>
+    <node id="Entomología">
+      <data key="d0">1</data>
+    </node>
+    <node id="Ornitología">
+      <data key="d0">1</data>
+    </node>
+    <node id="Edad Media">
+      <data key="d0">2</data>
+    </node>
+    <node id="Arte medieval">
+      <data key="d0">4</data>
+    </node>
+    <node id="Historia medieval">
+      <data key="d0">1</data>
+    </node>
+    <node id="Artes textiles">
+      <data key="d0">1</data>
+    </node>
+    <node id="Artes decorativas">
+      <data key="d0">2</data>
+    </node>
+    <node id="Artes escénicas">
+      <data key="d0">1</data>
+    </node>
+    <node id="Estereotipo sexual">
+      <data key="d0">1</data>
+    </node>
+    <node id="Rol sexual">
+      <data key="d0">3</data>
+    </node>
+    <node id="Discriminación sexual">
+      <data key="d0">1</data>
+    </node>
+    <node id="Hombre">
+      <data key="d0">1</data>
+    </node>
+    <node id="Migración rural">
+      <data key="d0">1</data>
+    </node>
+    <node id="Discriminación educacional">
+      <data key="d0">1</data>
+    </node>
+    <node id="Educación inclusiva">
+      <data key="d0">1</data>
+    </node>
+    <node id="Bosque y selva tropicales">
+      <data key="d0">2</data>
+    </node>
+    <node id="Amazonia">
+      <data key="d0">1</data>
+    </node>
+    <node id="Comportamiento animal">
+      <data key="d0">2</data>
+    </node>
+    <node id="Animal salvaje">
+      <data key="d0">6</data>
+    </node>
+    <node id="Animal doméstico">
+      <data key="d0">1</data>
+    </node>
+    <node id="Mamífero">
+      <data key="d0">3</data>
+    </node>
+    <node id="Ecología animal">
+      <data key="d0">3</data>
+    </node>
+    <node id="Consumo alimenticio">
+      <data key="d0">1</data>
+    </node>
+    <node id="Dietética">
+      <data key="d0">1</data>
+    </node>
+    <node id="Salud mental">
+      <data key="d0">1</data>
+    </node>
+    <node id="Estrés mental">
+      <data key="d0">3</data>
+    </node>
+    <node id="Salud">
+      <data key="d0">2</data>
+    </node>
+    <node id="Arte religioso">
+      <data key="d0">2</data>
+    </node>
+    <node id="Viaje">
+      <data key="d0">2</data>
+    </node>
+    <node id="Guía de viaje">
+      <data key="d0">1</data>
+    </node>
+    <node id="Viaje de estudios">
+      <data key="d0">1</data>
+    </node>
+    <node id="Vacaciones">
+      <data key="d0">2</data>
+    </node>
+    <node id="Turismo">
+      <data key="d0">2</data>
+    </node>
+    <node id="Alumno desertor">
+      <data key="d0">1</data>
+    </node>
+    <node id="Estudiante">
+      <data key="d0">1</data>
+    </node>
+    <node id="Estudiante universitario">
+      <data key="d0">1</data>
+    </node>
+    <node id="Matrimonio">
+      <data key="d0">9</data>
+    </node>
+    <node id="Matrimonio infantil">
+      <data key="d0">2</data>
+    </node>
+    <node id="Comunicación interpersonal">
+      <data key="d0">1</data>
+    </node>
+    <node id="Comunicación">
+      <data key="d0">3</data>
+    </node>
+    <node id="Calcio">
+      <data key="d0">5</data>
+    </node>
+    <node id="Educación física">
+      <data key="d0">1</data>
+    </node>
+    <node id="Joven urbano">
+      <data key="d0">2</data>
+    </node>
+    <node id="Francia">
+      <data key="d0">3</data>
+    </node>
+    <node id="Francés">
+      <data key="d0">1</data>
+    </node>
+    <node id="Bélgica">
+      <data key="d0">1</data>
+    </node>
+    <node id="Lengua esquimal">
+      <data key="d0">1</data>
+    </node>
+    <node id="Lengua indígena">
+      <data key="d0">6</data>
+    </node>
+    <node id="Administración de empresas">
+      <data key="d0">9</data>
+    </node>
+    <node id="Derecho administrativo">
+      <data key="d0">2</data>
+    </node>
+    <node id="Gestión">
+      <data key="d0">1</data>
+    </node>
+    <node id="Australia">
+      <data key="d0">1</data>
+    </node>
+    <node id="Austria">
+      <data key="d0">3</data>
+    </node>
+    <node id="Derechos de la mujer">
+      <data key="d0">3</data>
+    </node>
+    <node id="Mujer artista">
+      <data key="d0">2</data>
+    </node>
+    <node id="Crimen de guerra">
+      <data key="d0">3</data>
+    </node>
+    <node id="Criminología">
+      <data key="d0">1</data>
+    </node>
+    <node id="Agua">
+      <data key="d0">2</data>
+    </node>
+    <node id="Abastecimiento de agua">
+      <data key="d0">1</data>
+    </node>
+    <node id="Actividad juvenil">
+      <data key="d0">1</data>
+    </node>
+    <node id="Guerra">
+      <data key="d0">3</data>
+    </node>
+    <node id="Guerrilla">
+      <data key="d0">7</data>
+    </node>
+    <node id="Víctima de guerra">
+      <data key="d0">17</data>
+    </node>
+    <node id="Guerra mundial">
+      <data key="d0">1</data>
+    </node>
+    <node id="Guerra urbana">
+      <data key="d0">1</data>
+    </node>
+    <node id="Guerra civil">
+      <data key="d0">1</data>
+    </node>
+    <node id="Archivos">
+      <data key="d0">2</data>
+    </node>
+    <node id="Archivos audiovisuales">
+      <data key="d0">1</data>
+    </node>
+    <node id="Inmigración">
+      <data key="d0">2</data>
+    </node>
+    <node id="Migración interna">
+      <data key="d0">1</data>
+    </node>
+    <node id="Deuda pública">
+      <data key="d0">1</data>
+    </node>
+    <node id="Deuda">
+      <data key="d0">2</data>
+    </node>
+    <node id="Biodiversidad">
+      <data key="d0">3</data>
+    </node>
+    <node id="Reservas de la biosfera">
+      <data key="d0">1</data>
+    </node>
+    <node id="Delincuencia juvenil">
+      <data key="d0">8</data>
+    </node>
+    <node id="Malestar de la juventud">
+      <data key="d0">3</data>
+    </node>
+    <node id="Participación juvenil">
+      <data key="d0">1</data>
+    </node>
+    <node id="Arte islámico">
+      <data key="d0">1</data>
+    </node>
+    <node id="Edificio religioso">
+      <data key="d0">1</data>
+    </node>
+    <node id="Ecosistema acuático">
+      <data key="d0">1</data>
+    </node>
+    <node id="Cambio climático">
+      <data key="d0">6</data>
+    </node>
+    <node id="Clima">
+      <data key="d0">1</data>
+    </node>
+    <node id="Climatología">
+      <data key="d0">1</data>
+    </node>
+    <node id="Leyenda">
+      <data key="d0">6</data>
+    </node>
+    <node id="Mitología">
+      <data key="d0">18</data>
+    </node>
+    <node id="Expedición científica">
+      <data key="d0">3</data>
+    </node>
+    <node id="Danza tradicional">
+      <data key="d0">2</data>
+    </node>
+    <node id="Danza">
+      <data key="d0">3</data>
+    </node>
+    <node id="Teatro tradicional">
+      <data key="d0">1</data>
+    </node>
+    <node id="Música tradicional">
+      <data key="d0">2</data>
+    </node>
+    <node id="Folklore">
+      <data key="d0">10</data>
+    </node>
+    <node id="Educación de chicas">
+      <data key="d0">1</data>
+    </node>
+    <node id="Literatura folklórica">
+      <data key="d0">4</data>
+    </node>
+    <node id="Costumbres y tradiciones">
+      <data key="d0">2</data>
+    </node>
+    <node id="Aptitud para la lectura">
+      <data key="d0">1</data>
+    </node>
+    <node id="Enseñanza de la lectura">
+      <data key="d0">1</data>
+    </node>
+    <node id="Espiritualismo">
+      <data key="d0">9</data>
+    </node>
+    <node id="Alemania">
+      <data key="d0">7</data>
+    </node>
+    <node id="Económicas">
+      <data key="d0">1</data>
+    </node>
+    <node id="Política económica">
+      <data key="d0">1</data>
+    </node>
+    <node id="Geografía económica">
+      <data key="d0">2</data>
+    </node>
+    <node id="Finanzas">
+      <data key="d0">1</data>
+    </node>
+    <node id="Historia económica">
+      <data key="d0">1</data>
+    </node>
+    <node id="Economista">
+      <data key="d0">1</data>
+    </node>
+    <node id="Conservación del agua">
+      <data key="d0">1</data>
+    </node>
+    <node id="Conservación de recursos">
+      <data key="d0">1</data>
+    </node>
+    <node id="Niño abandonado">
+      <data key="d0">2</data>
+    </node>
+    <node id="Niño desfavorecido">
+      <data key="d0">2</data>
+    </node>
+    <node id="Orfanato">
+      <data key="d0">1</data>
+    </node>
+    <node id="Niño en edad preescolar">
+      <data key="d0">3</data>
+    </node>
+    <node id="Bienestar de la infancia">
+      <data key="d0">5</data>
+    </node>
+    <node id="Valores sociales">
+      <data key="d0">2</data>
+    </node>
+    <node id="Valores morales">
+      <data key="d0">1</data>
+    </node>
+    <node id="Sociología de la comunicación">
+      <data key="d0">1</data>
+    </node>
+    <node id="Política de las ciencias sociales">
+      <data key="d0">1</data>
+    </node>
+    <node id="Sociología cultural">
+      <data key="d0">1</data>
+    </node>
+    <node id="Civilización">
+      <data key="d0">3</data>
+    </node>
+    <node id="Civilización antigua">
+      <data key="d0">4</data>
+    </node>
+    <node id="Taller educativo">
+      <data key="d0">1</data>
+    </node>
+    <node id="Calidad de la educación">
+      <data key="d0">2</data>
+    </node>
+    <node id="Educación moral">
+      <data key="d0">3</data>
+    </node>
+    <node id="Reforma de la educación">
+      <data key="d0">1</data>
+    </node>
+    <node id="Ambiente educacional">
+      <data key="d0">2</data>
+    </node>
+    <node id="Planificación de la educación">
+      <data key="d0">2</data>
+    </node>
+    <node id="Administración de la educación">
+      <data key="d0">1</data>
+    </node>
+    <node id="Educación nutricional">
+      <data key="d0">1</data>
+    </node>
+    <node id="Educación comparada">
+      <data key="d0">1</data>
+    </node>
+    <node id="Educación de ciegos">
+      <data key="d0">1</data>
+    </node>
+    <node id="Mar">
+      <data key="d0">1</data>
+    </node>
+    <node id="URSS">
+      <data key="d0">1</data>
+    </node>
+    <node id="Rusia">
+      <data key="d0">7</data>
+    </node>
+    <node id="Cosmología">
+      <data key="d0">4</data>
+    </node>
+    <node id="Astronomía">
+      <data key="d0">3</data>
+    </node>
+    <node id="Población indígena">
+      <data key="d0">1</data>
+    </node>
+    <node id="Instrumento musical">
+      <data key="d0">8</data>
+    </node>
+    <node id="Músico">
+      <data key="d0">1</data>
+    </node>
+    <node id="Forma musical">
+      <data key="d0">1</data>
+    </node>
+    <node id="Transporte aéreo">
+      <data key="d0">2</data>
+    </node>
+    <node id="Transporte por carretera">
+      <data key="d0">2</data>
+    </node>
+    <node id="Transporte ferroviario">
+      <data key="d0">1</data>
+    </node>
+    <node id="Literatura africana">
+      <data key="d0">4</data>
+    </node>
+    <node id="Arte africano">
+      <data key="d0">1</data>
+    </node>
+    <node id="Jardin zoológico">
+      <data key="d0">1</data>
+    </node>
+    <node id="Teoría del arte">
+      <data key="d0">1</data>
+    </node>
+    <node id="Ópera">
+      <data key="d0">1</data>
+    </node>
+    <node id="Investigación ecológica">
+      <data key="d0">1</data>
+    </node>
+    <node id="Investigación">
+      <data key="d0">2</data>
+    </node>
+    <node id="Bienestar de la madre">
+      <data key="d0">1</data>
+    </node>
+    <node id="Clase campesina">
+      <data key="d0">2</data>
+    </node>
+    <node id="Clase social">
+      <data key="d0">3</data>
+    </node>
+    <node id="Prisionero de guerra">
+      <data key="d0">1</data>
+    </node>
+    <node id="País devastado por la guerra">
+      <data key="d0">3</data>
+    </node>
+    <node id="Estilo de vida">
+      <data key="d0">2</data>
+    </node>
+    <node id="Vida cotidiana">
+      <data key="d0">4</data>
+    </node>
+    <node id="Monarquía">
+      <data key="d0">2</data>
+    </node>
+    <node id="Aristocracia">
+      <data key="d0">1</data>
+    </node>
+    <node id="Papel">
+      <data key="d0">1</data>
+    </node>
+    <node id="Tecnología del papel">
+      <data key="d0">4</data>
+    </node>
+    <node id="Cambio cultural">
+      <data key="d0">1</data>
+    </node>
+    <node id="Cambio social">
+      <data key="d0">1</data>
+    </node>
+    <node id="Desarrollo humano">
+      <data key="d0">2</data>
+    </node>
+    <node id="Informática">
+      <data key="d0">1</data>
+    </node>
+    <node id="Cartografía">
+      <data key="d0">3</data>
+    </node>
+    <node id="Mapa">
+      <data key="d0">1</data>
+    </node>
+    <node id="Prisionero">
+      <data key="d0">1</data>
+    </node>
+    <node id="Prisión">
+      <data key="d0">1</data>
+    </node>
+    <node id="Fisiología humana">
+      <data key="d0">5</data>
+    </node>
+    <node id="Biofísica">
+      <data key="d0">1</data>
+    </node>
+    <node id="Budismo">
+      <data key="d0">3</data>
+    </node>
+    <node id="Promoción de la lectura">
+      <data key="d0">2</data>
+    </node>
+    <node id="Oportunidades de empleo">
+      <data key="d0">1</data>
+    </node>
+    <node id="Servicio de empleo">
+      <data key="d0">1</data>
+    </node>
+    <node id="Arte chino">
+      <data key="d0">3</data>
+    </node>
+    <node id="Arte asiático">
+      <data key="d0">1</data>
+    </node>
+    <node id="Arte moderno">
+      <data key="d0">3</data>
+    </node>
+    <node id="Ensayo literario">
+      <data key="d0">3</data>
+    </node>
+    <node id="Derechos del niño">
+      <data key="d0">5</data>
+    </node>
+    <node id="Derechos humanos">
+      <data key="d0">2</data>
+    </node>
+    <node id="Física">
+      <data key="d0">4</data>
+    </node>
+    <node id="Ciencias de la tierra">
+      <data key="d0">3</data>
+    </node>
+    <node id="Científico">
+      <data key="d0">1</data>
+    </node>
+    <node id="Ciencias médicas">
+      <data key="d0">1</data>
+    </node>
+    <node id="Innovación científica">
+      <data key="d0">1</data>
+    </node>
+    <node id="Innovación">
+      <data key="d0">2</data>
+    </node>
+    <node id="Innovación educacional">
+      <data key="d0">2</data>
+    </node>
+    <node id="Ciencia y desarrollo">
+      <data key="d0">2</data>
+    </node>
+    <node id="Albergue juvenil">
+      <data key="d0">1</data>
+    </node>
+    <node id="Tailandia">
+      <data key="d0">1</data>
+    </node>
+    <node id="Myanmar">
+      <data key="d0">1</data>
+    </node>
+    <node id="Democratización de la educación">
+      <data key="d0">1</data>
+    </node>
+    <node id="Violación de los derechos humanos">
+      <data key="d0">4</data>
+    </node>
+    <node id="Derechos civiles">
+      <data key="d0">7</data>
+    </node>
+    <node id="Restablecimiento de la paz">
+      <data key="d0">3</data>
+    </node>
+    <node id="Acuerdo de paz">
+      <data key="d0">7</data>
+    </node>
+    <node id="Comportamiento sexual">
+      <data key="d0">4</data>
+    </node>
+    <node id="Sexo">
+      <data key="d0">3</data>
+    </node>
+    <node id="Planta medicinal">
+      <data key="d0">6</data>
+    </node>
+    <node id="Botánica">
+      <data key="d0">3</data>
+    </node>
+    <node id="Hortalizas">
+      <data key="d0">1</data>
+    </node>
+    <node id="Conflicto étnico">
+      <data key="d0">1</data>
+    </node>
+    <node id="Artesanía">
+      <data key="d0">12</data>
+    </node>
+    <node id="Artesano">
+      <data key="d0">1</data>
+    </node>
+    <node id="Colonización">
+      <data key="d0">1</data>
+    </node>
+    <node id="Descolonización">
+      <data key="d0">1</data>
+    </node>
+    <node id="País colonial">
+      <data key="d0">2</data>
+    </node>
+    <node id="Educación de sordos">
+      <data key="d0">1</data>
+    </node>
+    <node id="Chile">
+      <data key="d0">2</data>
+    </node>
+    <node id="Perú">
+      <data key="d0">8</data>
+    </node>
+    <node id="Epidemia">
+      <data key="d0">2</data>
+    </node>
+    <node id="Pandemia">
+      <data key="d0">1</data>
+    </node>
+    <node id="Comportamiento cultural">
+      <data key="d0">1</data>
+    </node>
+    <node id="Paisaje cultural">
+      <data key="d0">1</data>
+    </node>
+    <node id="Participación cultural">
+      <data key="d0">1</data>
+    </node>
+    <node id="Medio ambiente terrestre">
+      <data key="d0">1</data>
+    </node>
+    <node id="Medio ambiente">
+      <data key="d0">1</data>
+    </node>
+    <node id="Fotografía">
+      <data key="d0">3</data>
+    </node>
+    <node id="Fotografías">
+      <data key="d0">2</data>
+    </node>
+    <node id="Crítica literaria">
+      <data key="d0">4</data>
+    </node>
+    <node id="Historia literaria">
+      <data key="d0">1</data>
+    </node>
+    <node id="Estilo literario">
+      <data key="d0">1</data>
+    </node>
+    <node id="Condición social">
+      <data key="d0">1</data>
+    </node>
+    <node id="Desigualdad social">
+      <data key="d0">1</data>
+    </node>
+    <node id="Ballet">
+      <data key="d0">2</data>
+    </node>
+    <node id="Sociedad tradicional">
+      <data key="d0">2</data>
+    </node>
+    <node id="Bailarín">
+      <data key="d0">1</data>
+    </node>
+    <node id="Nicaragua">
+      <data key="d0">2</data>
+    </node>
+    <node id="Historia">
+      <data key="d0">1</data>
+    </node>
+    <node id="Capitalismo">
+      <data key="d0">3</data>
+    </node>
+    <node id="Comunismo">
+      <data key="d0">1</data>
+    </node>
+    <node id="Homofobia">
+      <data key="d0">1</data>
+    </node>
+    <node id="Xenofobia">
+      <data key="d0">1</data>
+    </node>
+    <node id="Enseñanza de la literatura">
+      <data key="d0">1</data>
+    </node>
+    <node id="Economía cultural">
+      <data key="d0">1</data>
+    </node>
+    <node id="Administración cultural">
+      <data key="d0">1</data>
+    </node>
+    <node id="Aprendizaje socioemocional">
+      <data key="d0">1</data>
+    </node>
+    <node id="Enfermedad">
+      <data key="d0">7</data>
+    </node>
+    <node id="Enfermedad animal">
+      <data key="d0">1</data>
+    </node>
+    <node id="Recursos naturales">
+      <data key="d0">1</data>
+    </node>
+    <node id="Derechos de los animales">
+      <data key="d0">1</data>
+    </node>
+    <node id="Comunicación política">
+      <data key="d0">1</data>
+    </node>
+    <node id="Comunicación de masas">
+      <data key="d0">1</data>
+    </node>
+    <node id="Participación social">
+      <data key="d0">3</data>
+    </node>
+    <node id="Participación estudiantil">
+      <data key="d0">1</data>
+    </node>
+    <node id="Contratación">
+      <data key="d0">1</data>
+    </node>
+    <node id="Derecho de los contratos">
+      <data key="d0">1</data>
+    </node>
+    <node id="Médico">
+      <data key="d0">1</data>
+    </node>
+    <node id="Salud materno-infantil">
+      <data key="d0">1</data>
+    </node>
+    <node id="Química inorgánica">
+      <data key="d0">1</data>
+    </node>
+    <node id="Elemento químico">
+      <data key="d0">1</data>
+    </node>
+    <node id="Química">
+      <data key="d0">1</data>
+    </node>
+    <node id="Geografía histórica">
+      <data key="d0">2</data>
+    </node>
+    <node id="Geografía política">
+      <data key="d0">1</data>
+    </node>
+    <node id="Historia natural">
+      <data key="d0">1</data>
+    </node>
+    <node id="Geofísica">
+      <data key="d0">3</data>
+    </node>
+    <node id="Geometría">
+      <data key="d0">3</data>
+    </node>
+    <node id="Personal científico">
+      <data key="d0">1</data>
+    </node>
+    <node id="Militarismo">
+      <data key="d0">1</data>
+    </node>
+    <node id="Fuerzas armadas">
+      <data key="d0">1</data>
+    </node>
+    <node id="Adaptación biológica">
+      <data key="d0">1</data>
+    </node>
+    <node id="Psicoterapia">
+      <data key="d0">2</data>
+    </node>
+    <node id="Ecología humana">
+      <data key="d0">1</data>
+    </node>
+    <node id="Inventiva">
+      <data key="d0">1</data>
+    </node>
+    <node id="Minería">
+      <data key="d0">3</data>
+    </node>
+    <node id="Metalurgia">
+      <data key="d0">1</data>
+    </node>
+    <node id="Programación informática">
+      <data key="d0">2</data>
+    </node>
+    <node id="Lenguaje de programación">
+      <data key="d0">1</data>
+    </node>
+    <node id="Sociología urbana">
+      <data key="d0">4</data>
+    </node>
+    <node id="Arquitecto">
+      <data key="d0">1</data>
+    </node>
+    <node id="Edificio">
+      <data key="d0">1</data>
+    </node>
+    <node id="Estudios sobre las mujeres">
+      <data key="d0">1</data>
+    </node>
+    <node id="Biología espacial">
+      <data key="d0">1</data>
+    </node>
+    <node id="Humanidades">
+      <data key="d0">3</data>
+    </node>
+    <node id="Humanismo">
+      <data key="d0">1</data>
+    </node>
+    <node id="Proyecto de desarrollo">
+      <data key="d0">1</data>
+    </node>
+    <node id="Desarrollo económico y social">
+      <data key="d0">1</data>
+    </node>
+    <node id="Gestión del personal">
+      <data key="d0">1</data>
+    </node>
+    <node id="Gestión industrial">
+      <data key="d0">1</data>
+    </node>
+    <node id="Colección de museo">
+      <data key="d0">1</data>
+    </node>
+    <node id="Ciego">
+      <data key="d0">1</data>
+    </node>
+    <node id="Ceguera">
+      <data key="d0">1</data>
+    </node>
+    <node id="Contabilidad">
+      <data key="d0">2</data>
+    </node>
+    <node id="Contabilidad de costes">
+      <data key="d0">1</data>
+    </node>
+    <node id="Lectura oral">
+      <data key="d0">1</data>
+    </node>
+    <node id="Expresión oral">
+      <data key="d0">1</data>
+    </node>
+    <node id="Dirección de proyecto">
+      <data key="d0">1</data>
+    </node>
+    <node id="Ciclo hidrológico">
+      <data key="d0">1</data>
+    </node>
+    <node id="Ciclo de vida">
+      <data key="d0">1</data>
+    </node>
+    <node id="Lengua romance">
+      <data key="d0">4</data>
+    </node>
+    <node id="Conservación de la naturaleza">
+      <data key="d0">2</data>
+    </node>
+    <node id="Protección del paisaje">
+      <data key="d0">1</data>
+    </node>
+    <node id="Escultor">
+      <data key="d0">2</data>
+    </node>
+    <node id="Escultura">
+      <data key="d0">1</data>
+    </node>
+    <node id="Fascismo">
+      <data key="d0">2</data>
+    </node>
+    <node id="Nazismo">
+      <data key="d0">2</data>
+    </node>
+    <node id="Ensayo">
+      <data key="d0">1</data>
+    </node>
+    <node id="Tecnología de la madera">
+      <data key="d0">1</data>
+    </node>
+    <node id="Trabajo en madera">
+      <data key="d0">2</data>
+    </node>
+    <node id="Máquina">
+      <data key="d0">1</data>
+    </node>
+    <node id="Diseño urbano">
+      <data key="d0">1</data>
+    </node>
+    <node id="Desarrollo urbano">
+      <data key="d0">3</data>
+    </node>
+    <node id="Derechos culturales">
+      <data key="d0">1</data>
+    </node>
+    <node id="Intelectuales">
+      <data key="d0">2</data>
+    </node>
+    <node id="Inteligencia">
+      <data key="d0">1</data>
+    </node>
+    <node id="Patrimonio cultural">
+      <data key="d0">1</data>
+    </node>
+    <node id="Observatorio astronómico">
+      <data key="d0">1</data>
+    </node>
+    <node id="Microbiología">
+      <data key="d0">1</data>
+    </node>
+    <node id="Parapsicología">
+      <data key="d0">2</data>
+    </node>
+    <node id="Evaluación de proyecto">
+      <data key="d0">1</data>
+    </node>
+    <node id="Yiddish">
+      <data key="d0">1</data>
+    </node>
+    <node id="Judío">
+      <data key="d0">1</data>
+    </node>
+    <node id="Marketing">
+      <data key="d0">2</data>
+    </node>
+    <node id="Estudio de mercado">
+      <data key="d0">1</data>
+    </node>
+    <node id="Derechos sociales y económicos">
+      <data key="d0">1</data>
+    </node>
+    <node id="Museo de historia natural">
+      <data key="d0">1</data>
+    </node>
+    <edge source="Educación ciudadana" target="Educación comunitaria">
+      <data key="d1">0.7535125017166138</data>
+    </edge>
+    <edge source="Educación ciudadana" target="Educación">
+      <data key="d1">0.7769970893859863</data>
+    </edge>
+    <edge source="Educación ciudadana" target="Educación para los derechos humanos">
+      <data key="d1">0.7155817747116089</data>
+    </edge>
+    <edge source="Educación comunitaria" target="Educación">
+      <data key="d1">0.7383747696876526</data>
+    </edge>
+    <edge source="Educación comunitaria" target="Relación escuela-comunidad">
+      <data key="d1">0.7941665649414062</data>
+    </edge>
+    <edge source="Educación comunitaria" target="Desarrollo comunitario">
+      <data key="d1">0.7665050625801086</data>
+    </edge>
+    <edge source="Educación comunitaria" target="Comunidad">
+      <data key="d1">0.7503685355186462</data>
+    </edge>
+    <edge source="Educación" target="Juego educativo">
+      <data key="d1">0.7249026894569397</data>
+    </edge>
+    <edge source="Educación" target="Educación musical">
+      <data key="d1">0.7397661209106445</data>
+    </edge>
+    <edge source="Educación" target="Ciencias de la educación">
+      <data key="d1">0.8041765689849854</data>
+    </edge>
+    <edge source="Educación" target="Idioma de enseñanza">
+      <data key="d1">0.7073233127593994</data>
+    </edge>
+    <edge source="Educación" target="Discriminación educacional">
+      <data key="d1">0.7050917148590088</data>
+    </edge>
+    <edge source="Educación" target="Educación artística">
+      <data key="d1">0.7388468980789185</data>
+    </edge>
+    <edge source="Educación" target="Taller educativo">
+      <data key="d1">0.7322521209716797</data>
+    </edge>
+    <edge source="Educación" target="Calidad de la educación">
+      <data key="d1">0.7390340566635132</data>
+    </edge>
+    <edge source="Educación" target="Educación moral">
+      <data key="d1">0.7249926924705505</data>
+    </edge>
+    <edge source="Educación" target="Educación inclusiva">
+      <data key="d1">0.734549880027771</data>
+    </edge>
+    <edge source="Educación" target="Reforma de la educación">
+      <data key="d1">0.7358591556549072</data>
+    </edge>
+    <edge source="Educación" target="Ambiente educacional">
+      <data key="d1">0.7521624565124512</data>
+    </edge>
+    <edge source="Educación" target="Experimento educacional">
+      <data key="d1">0.704620897769928</data>
+    </edge>
+    <edge source="Educación" target="Planificación de la educación">
+      <data key="d1">0.7274912595748901</data>
+    </edge>
+    <edge source="Educación" target="Educación para los derechos humanos">
+      <data key="d1">0.7078481316566467</data>
+    </edge>
+    <edge source="Educación" target="Educación de la mujer">
+      <data key="d1">0.701645016670227</data>
+    </edge>
+    <edge source="Educación" target="Educación física">
+      <data key="d1">0.7809402346611023</data>
+    </edge>
+    <edge source="Educación" target="Administración de la educación">
+      <data key="d1">0.7560820579528809</data>
+    </edge>
+    <edge source="Educación" target="Educación nutricional">
+      <data key="d1">0.7011932134628296</data>
+    </edge>
+    <edge source="Educación" target="Educación cultural">
+      <data key="d1">0.7798857092857361</data>
+    </edge>
+    <edge source="Educación" target="Filosofía de la educación">
+      <data key="d1">0.7068026661872864</data>
+    </edge>
+    <edge source="Educación" target="Educación comparada">
+      <data key="d1">0.7213351726531982</data>
+    </edge>
+    <edge source="Educación" target="Educación de ciegos">
+      <data key="d1">0.7107459306716919</data>
+    </edge>
+    <edge source="Educación para los derechos humanos" target="Educación para la paz">
+      <data key="d1">0.7356196641921997</data>
+    </edge>
+    <edge source="Educación para los derechos humanos" target="Derechos humanos">
+      <data key="d1">0.7794679403305054</data>
+    </edge>
+    <edge source="Libro para niños" target="Película para niños">
+      <data key="d1">0.7563623785972595</data>
+    </edge>
+    <edge source="Libro para niños" target="Biblioteca para niños">
+      <data key="d1">0.8265995979309082</data>
+    </edge>
+    <edge source="Biblioteca para niños" target="Biblioteca pública">
+      <data key="d1">0.7391737103462219</data>
+    </edge>
+    <edge source="Biblioteca para niños" target="Biblioteca para ciegos">
+      <data key="d1">0.7272811532020569</data>
+    </edge>
+    <edge source="Biblioteca para niños" target="Biblioteca de arte">
+      <data key="d1">0.7021040320396423</data>
+    </edge>
+    <edge source="Biblioteca para niños" target="Colecciones de biblioteca">
+      <data key="d1">0.7081352472305298</data>
+    </edge>
+    <edge source="Colombia" target="Costa Rica">
+      <data key="d1">0.7605853080749512</data>
+    </edge>
+    <edge source="Colombia" target="Ecuador">
+      <data key="d1">0.7408063411712646</data>
+    </edge>
+    <edge source="Colombia" target="Guatemala">
+      <data key="d1">0.7408174872398376</data>
+    </edge>
+    <edge source="Costa Rica" target="Guatemala">
+      <data key="d1">0.7155323624610901</data>
+    </edge>
+    <edge source="Costa Rica" target="Nicaragua">
+      <data key="d1">0.7032661437988281</data>
+    </edge>
+    <edge source="Ecuador" target="Español">
+      <data key="d1">0.7049882411956787</data>
+    </edge>
+    <edge source="Ecuador" target="España">
+      <data key="d1">0.7285889983177185</data>
+    </edge>
+    <edge source="Ecuador" target="Chile">
+      <data key="d1">0.7177298069000244</data>
+    </edge>
+    <edge source="Ecuador" target="Guatemala">
+      <data key="d1">0.700398325920105</data>
+    </edge>
+    <edge source="Guatemala" target="Nicaragua">
+      <data key="d1">0.7002291679382324</data>
+    </edge>
+    <edge source="Educación sexual" target="Educación de la mujer">
+      <data key="d1">0.7050480842590332</data>
+    </edge>
+    <edge source="Educación sexual" target="Escuela de sexo único">
+      <data key="d1">0.7332491278648376</data>
+    </edge>
+    <edge source="Educación de la mujer" target="Educación de chicas">
+      <data key="d1">0.8414032459259033</data>
+    </edge>
+    <edge source="Educación de la mujer" target="Estudios sobre las mujeres">
+      <data key="d1">0.7013559341430664</data>
+    </edge>
+    <edge source="Escuela de sexo único" target="Educación de chicas">
+      <data key="d1">0.7392863631248474</data>
+    </edge>
+    <edge source="Nanotecnología" target="Tecnología">
+      <data key="d1">0.7183513045310974</data>
+    </edge>
+    <edge source="Tecnología" target="Informática">
+      <data key="d1">0.7074351906776428</data>
+    </edge>
+    <edge source="Diversidad cultural" target="Conflicto cultural">
+      <data key="d1">0.7035039663314819</data>
+    </edge>
+    <edge source="Diversidad cultural" target="Identidad cultural">
+      <data key="d1">0.7596865296363831</data>
+    </edge>
+    <edge source="Diversidad cultural" target="Desarrollo cultural">
+      <data key="d1">0.7004538178443909</data>
+    </edge>
+    <edge source="Conflicto cultural" target="Solución de conflictos">
+      <data key="d1">0.7065229415893555</data>
+    </edge>
+    <edge source="Conflicto cultural" target="Conflicto étnico">
+      <data key="d1">0.7816800475120544</data>
+    </edge>
+    <edge source="Conflicto cultural" target="Comportamiento cultural">
+      <data key="d1">0.7226159572601318</data>
+    </edge>
+    <edge source="Conflicto cultural" target="Conflicto social">
+      <data key="d1">0.754711389541626</data>
+    </edge>
+    <edge source="Conflicto cultural" target="Política cultural">
+      <data key="d1">0.7246208786964417</data>
+    </edge>
+    <edge source="Identidad cultural" target="Cultura nacional">
+      <data key="d1">0.7381307482719421</data>
+    </edge>
+    <edge source="Identidad cultural" target="Identidad">
+      <data key="d1">0.8281278014183044</data>
+    </edge>
+    <edge source="Identidad cultural" target="Comportamiento cultural">
+      <data key="d1">0.7037679553031921</data>
+    </edge>
+    <edge source="Identidad cultural" target="Valor cultural">
+      <data key="d1">0.7214728593826294</data>
+    </edge>
+    <edge source="Identidad cultural" target="Información cultural">
+      <data key="d1">0.7271390557289124</data>
+    </edge>
+    <edge source="Desarrollo cultural" target="Cultura nacional">
+      <data key="d1">0.7285395860671997</data>
+    </edge>
+    <edge source="Desarrollo cultural" target="Comportamiento cultural">
+      <data key="d1">0.7327436208724976</data>
+    </edge>
+    <edge source="Desarrollo cultural" target="Economía cultural">
+      <data key="d1">0.7420625686645508</data>
+    </edge>
+    <edge source="Desarrollo cultural" target="Cambio cultural">
+      <data key="d1">0.7385653257369995</data>
+    </edge>
+    <edge source="Desarrollo cultural" target="Paisaje cultural">
+      <data key="d1">0.7084422707557678</data>
+    </edge>
+    <edge source="Desarrollo cultural" target="Participación cultural">
+      <data key="d1">0.7234644889831543</data>
+    </edge>
+    <edge source="Desarrollo cultural" target="Cultura y desarrollo">
+      <data key="d1">0.942803144454956</data>
+    </edge>
+    <edge source="Desarrollo cultural" target="Valor cultural">
+      <data key="d1">0.7320176362991333</data>
+    </edge>
+    <edge source="Desarrollo cultural" target="Política cultural">
+      <data key="d1">0.7572243809700012</data>
+    </edge>
+    <edge source="Desarrollo cultural" target="Educación cultural">
+      <data key="d1">0.7830178141593933</data>
+    </edge>
+    <edge source="Desarrollo cultural" target="Administración cultural">
+      <data key="d1">0.7349179983139038</data>
+    </edge>
+    <edge source="Desarrollo cultural" target="Información cultural">
+      <data key="d1">0.7278321981430054</data>
+    </edge>
+    <edge source="Desarrollo cultural" target="Derechos culturales">
+      <data key="d1">0.710996687412262</data>
+    </edge>
+    <edge source="Mujer periodista" target="Periodista">
+      <data key="d1">0.8245590925216675</data>
+    </edge>
+    <edge source="Mujer periodista" target="Mujer">
+      <data key="d1">0.7402987480163574</data>
+    </edge>
+    <edge source="Mujer periodista" target="Periodismo">
+      <data key="d1">0.7596971392631531</data>
+    </edge>
+    <edge source="Periodista" target="Periodismo">
+      <data key="d1">0.9038035869598389</data>
+    </edge>
+    <edge source="Mujer" target="Mujer rural">
+      <data key="d1">0.7409837245941162</data>
+    </edge>
+    <edge source="Mujer" target="Hombre">
+      <data key="d1">0.7510944604873657</data>
+    </edge>
+    <edge source="Mujer" target="Derechos de la mujer">
+      <data key="d1">0.7282960414886475</data>
+    </edge>
+    <edge source="Mujer" target="Mujer artista">
+      <data key="d1">0.7567751407623291</data>
+    </edge>
+    <edge source="Mujer" target="Igualdad de género">
+      <data key="d1">0.7292811274528503</data>
+    </edge>
+    <edge source="Juego educativo" target="Juguete educativo">
+      <data key="d1">0.8860751986503601</data>
+    </edge>
+    <edge source="Juego educativo" target="Juego">
+      <data key="d1">0.7657104730606079</data>
+    </edge>
+    <edge source="Juego educativo" target="Experimento educacional">
+      <data key="d1">0.7111319303512573</data>
+    </edge>
+    <edge source="Juguete educativo" target="Juguete">
+      <data key="d1">0.7893129587173462</data>
+    </edge>
+    <edge source="Juego" target="Juguete">
+      <data key="d1">0.7790333032608032</data>
+    </edge>
+    <edge source="Experimento educacional" target="Experimento">
+      <data key="d1">0.8473955392837524</data>
+    </edge>
+    <edge source="Experimento educacional" target="Experimento (en clase)">
+      <data key="d1">0.826350748538971</data>
+    </edge>
+    <edge source="Narración de cuentos" target="Cuento">
+      <data key="d1">0.7251172661781311</data>
+    </edge>
+    <edge source="Literatura eslava" target="Literatura">
+      <data key="d1">0.7071127891540527</data>
+    </edge>
+    <edge source="Literatura eslava" target="Literatura europea">
+      <data key="d1">0.7508240938186646</data>
+    </edge>
+    <edge source="Literatura eslava" target="Literatura escandinava">
+      <data key="d1">0.7017263770103455</data>
+    </edge>
+    <edge source="Literatura" target="Literatura norteamericana">
+      <data key="d1">0.7233458757400513</data>
+    </edge>
+    <edge source="Literatura" target="Literatura de ficción">
+      <data key="d1">0.7690603733062744</data>
+    </edge>
+    <edge source="Literatura" target="Literatura latinoamericana">
+      <data key="d1">0.7179074883460999</data>
+    </edge>
+    <edge source="Literatura" target="Literatura africana">
+      <data key="d1">0.7504614591598511</data>
+    </edge>
+    <edge source="Literatura" target="Obra literaria representativa">
+      <data key="d1">0.7394287586212158</data>
+    </edge>
+    <edge source="Literatura" target="Crítica literaria">
+      <data key="d1">0.7513541579246521</data>
+    </edge>
+    <edge source="Literatura" target="Historia literaria">
+      <data key="d1">0.7725069522857666</data>
+    </edge>
+    <edge source="Literatura" target="Literatura nacional">
+      <data key="d1">0.7722751498222351</data>
+    </edge>
+    <edge source="Literatura" target="Escritor">
+      <data key="d1">0.7093088626861572</data>
+    </edge>
+    <edge source="Literatura" target="Ensayo literario">
+      <data key="d1">0.7252230644226074</data>
+    </edge>
+    <edge source="Literatura" target="Enseñanza de la literatura">
+      <data key="d1">0.7639023065567017</data>
+    </edge>
+    <edge source="Literatura" target="Literatura europea">
+      <data key="d1">0.7496132254600525</data>
+    </edge>
+    <edge source="Exploración geográfica" target="Exploración marina">
+      <data key="d1">0.7032985687255859</data>
+    </edge>
+    <edge source="Exploración geográfica" target="Geografía física">
+      <data key="d1">0.7028059363365173</data>
+    </edge>
+    <edge source="Exploración geográfica" target="Geografía">
+      <data key="d1">0.7553900480270386</data>
+    </edge>
+    <edge source="Exploración marina" target="Biología marina">
+      <data key="d1">0.7004552483558655</data>
+    </edge>
+    <edge source="Geografía física" target="Geografía histórica">
+      <data key="d1">0.7047659158706665</data>
+    </edge>
+    <edge source="Geografía física" target="Geometría">
+      <data key="d1">0.7287611365318298</data>
+    </edge>
+    <edge source="Geografía física" target="Geografía económica">
+      <data key="d1">0.7258797883987427</data>
+    </edge>
+    <edge source="Geografía física" target="Geografía">
+      <data key="d1">0.9040968418121338</data>
+    </edge>
+    <edge source="Geografía física" target="Geofísica">
+      <data key="d1">0.790757954120636</data>
+    </edge>
+    <edge source="Geografía física" target="Geografía política">
+      <data key="d1">0.772828221321106</data>
+    </edge>
+    <edge source="Geografía" target="Cartografía">
+      <data key="d1">0.7390439510345459</data>
+    </edge>
+    <edge source="Geografía" target="Geografía histórica">
+      <data key="d1">0.794712483882904</data>
+    </edge>
+    <edge source="Geografía" target="Geometría">
+      <data key="d1">0.7410902976989746</data>
+    </edge>
+    <edge source="Geografía" target="Geografía económica">
+      <data key="d1">0.7992144823074341</data>
+    </edge>
+    <edge source="Geografía" target="Geofísica">
+      <data key="d1">0.7095485925674438</data>
+    </edge>
+    <edge source="Geografía" target="Geografía política">
+      <data key="d1">0.8480230569839478</data>
+    </edge>
+    <edge source="Literatura norteamericana" target="Literatura latinoamericana">
+      <data key="d1">0.829774022102356</data>
+    </edge>
+    <edge source="Literatura norteamericana" target="Literatura oceánica">
+      <data key="d1">0.7052187919616699</data>
+    </edge>
+    <edge source="Literatura norteamericana" target="Literatura nacional">
+      <data key="d1">0.7435057163238525</data>
+    </edge>
+    <edge source="Literatura latinoamericana" target="Literatura del Caribe">
+      <data key="d1">0.7384558916091919</data>
+    </edge>
+    <edge source="Literatura latinoamericana" target="Arte latinoamericano">
+      <data key="d1">0.7630134224891663</data>
+    </edge>
+    <edge source="Literatura latinoamericana" target="Cultura latinoamericana">
+      <data key="d1">0.8035605549812317</data>
+    </edge>
+    <edge source="Literatura latinoamericana" target="Literatura oceánica">
+      <data key="d1">0.7038041353225708</data>
+    </edge>
+    <edge source="Literatura latinoamericana" target="Literatura nacional">
+      <data key="d1">0.7049727439880371</data>
+    </edge>
+    <edge source="Literatura oceánica" target="Literatura del Caribe">
+      <data key="d1">0.7859286665916443</data>
+    </edge>
+    <edge source="Literatura nacional" target="Cultura nacional">
+      <data key="d1">0.7748715877532959</data>
+    </edge>
+    <edge source="Literatura nacional" target="Obra literaria representativa">
+      <data key="d1">0.7023671269416809</data>
+    </edge>
+    <edge source="Español" target="Portugués">
+      <data key="d1">0.7014269232749939</data>
+    </edge>
+    <edge source="Español" target="España">
+      <data key="d1">0.760152280330658</data>
+    </edge>
+    <edge source="Español" target="Inglés">
+      <data key="d1">0.886444628238678</data>
+    </edge>
+    <edge source="Portugués" target="Inglés">
+      <data key="d1">0.7093023061752319</data>
+    </edge>
+    <edge source="España" target="Argentina">
+      <data key="d1">0.7300999760627747</data>
+    </edge>
+    <edge source="Inglés" target="Lingüística">
+      <data key="d1">0.7543051242828369</data>
+    </edge>
+    <edge source="Relación padres-hijos" target="Padres (progenitores)">
+      <data key="d1">0.749020516872406</data>
+    </edge>
+    <edge source="Relación padres-hijos" target="Actitud de los padres">
+      <data key="d1">0.7276645302772522</data>
+    </edge>
+    <edge source="Padres (progenitores)" target="Actitud de los padres">
+      <data key="d1">0.710534930229187</data>
+    </edge>
+    <edge source="Fauna" target="Animal marino">
+      <data key="d1">0.7109946012496948</data>
+    </edge>
+    <edge source="Fauna" target="Animal">
+      <data key="d1">0.8020147085189819</data>
+    </edge>
+    <edge source="Fauna" target="Zoología">
+      <data key="d1">0.7212396860122681</data>
+    </edge>
+    <edge source="Fauna" target="Recursos animales">
+      <data key="d1">0.7000187039375305</data>
+    </edge>
+    <edge source="Animal marino" target="Biología marina">
+      <data key="d1">0.7575028538703918</data>
+    </edge>
+    <edge source="Animal marino" target="Animal">
+      <data key="d1">0.8006511330604553</data>
+    </edge>
+    <edge source="Animal marino" target="Animal acuático">
+      <data key="d1">0.8722646832466125</data>
+    </edge>
+    <edge source="Animal marino" target="Vida marina">
+      <data key="d1">0.7896712422370911</data>
+    </edge>
+    <edge source="Animal marino" target="Agua de mar">
+      <data key="d1">0.7077250480651855</data>
+    </edge>
+    <edge source="Animal" target="Comportamiento animal">
+      <data key="d1">0.7115604877471924</data>
+    </edge>
+    <edge source="Animal" target="Animal salvaje">
+      <data key="d1">0.790771484375</data>
+    </edge>
+    <edge source="Animal" target="Animal acuático">
+      <data key="d1">0.7985097169876099</data>
+    </edge>
+    <edge source="Animal" target="Animal doméstico">
+      <data key="d1">0.7763040065765381</data>
+    </edge>
+    <edge source="Animal" target="Zoología">
+      <data key="d1">0.7398549914360046</data>
+    </edge>
+    <edge source="Animal" target="Recursos animales">
+      <data key="d1">0.7278891205787659</data>
+    </edge>
+    <edge source="Animal" target="Mamífero">
+      <data key="d1">0.7483429312705994</data>
+    </edge>
+    <edge source="Animal" target="Ecología animal">
+      <data key="d1">0.733930230140686</data>
+    </edge>
+    <edge source="Zoología" target="Jardin zoológico">
+      <data key="d1">0.7417629361152649</data>
+    </edge>
+    <edge source="Zoología" target="Ecología animal">
+      <data key="d1">0.8027363419532776</data>
+    </edge>
+    <edge source="Zoología" target="Biología">
+      <data key="d1">0.7627759575843811</data>
+    </edge>
+    <edge source="Zoología" target="Ornitología">
+      <data key="d1">0.7448126077651978</data>
+    </edge>
+    <edge source="Recursos animales" target="Ecología animal">
+      <data key="d1">0.7140369415283203</data>
+    </edge>
+    <edge source="Recursos animales" target="Recursos naturales">
+      <data key="d1">0.75253826379776</data>
+    </edge>
+    <edge source="Recursos animales" target="Derechos de los animales">
+      <data key="d1">0.7080080509185791</data>
+    </edge>
+    <edge source="Biblioteca pública" target="Historia de las bibliotecas">
+      <data key="d1">0.7013403177261353</data>
+    </edge>
+    <edge source="Biblioteca pública" target="Biblioteca especializada">
+      <data key="d1">0.7326282262802124</data>
+    </edge>
+    <edge source="Biblioteca pública" target="Información/biblioteca, política">
+      <data key="d1">0.7288512587547302</data>
+    </edge>
+    <edge source="Biblioteca pública" target="Biblioteca para ciegos">
+      <data key="d1">0.7286063432693481</data>
+    </edge>
+    <edge source="Biblioteca pública" target="Información/biblioteca, personal">
+      <data key="d1">0.7109023928642273</data>
+    </edge>
+    <edge source="Biblioteca pública" target="Biblioteca de arte">
+      <data key="d1">0.7629780173301697</data>
+    </edge>
+    <edge source="Biblioteca pública" target="Colecciones de biblioteca">
+      <data key="d1">0.7585440278053284</data>
+    </edge>
+    <edge source="Historia de las bibliotecas" target="Colecciones de biblioteca">
+      <data key="d1">0.7296912670135498</data>
+    </edge>
+    <edge source="Biblioteca especializada" target="Información/biblioteca, personal">
+      <data key="d1">0.707776665687561</data>
+    </edge>
+    <edge source="Biblioteca especializada" target="Colecciones de biblioteca">
+      <data key="d1">0.7169700860977173</data>
+    </edge>
+    <edge source="Información/biblioteca, política" target="Información/biblioteca, personal">
+      <data key="d1">0.8344703912734985</data>
+    </edge>
+    <edge source="Biblioteca para ciegos" target="Educación de ciegos">
+      <data key="d1">0.7560011148452759</data>
+    </edge>
+    <edge source="Biblioteca de arte" target="Libro de arte">
+      <data key="d1">0.8446729183197021</data>
+    </edge>
+    <edge source="Biblioteca de arte" target="Colecciones de biblioteca">
+      <data key="d1">0.7569594979286194</data>
+    </edge>
+    <edge source="Colecciones de biblioteca" target="Colección de museo">
+      <data key="d1">0.7430030703544617</data>
+    </edge>
+    <edge source="Investigación sobre los conflictos" target="Solución de conflictos">
+      <data key="d1">0.8014455437660217</data>
+    </edge>
+    <edge source="Investigación sobre los conflictos" target="Conflicto social">
+      <data key="d1">0.7146920561790466</data>
+    </edge>
+    <edge source="Solución de conflictos" target="Conflicto social">
+      <data key="d1">0.7610981464385986</data>
+    </edge>
+    <edge source="Conflicto social" target="Conflicto étnico">
+      <data key="d1">0.7532510757446289</data>
+    </edge>
+    <edge source="Violencia de género" target="Violencia">
+      <data key="d1">0.8226452469825745</data>
+    </edge>
+    <edge source="Violencia de género" target="Igualdad de género">
+      <data key="d1">0.709886908531189</data>
+    </edge>
+    <edge source="Violencia" target="Delincuencia">
+      <data key="d1">0.7010670900344849</data>
+    </edge>
+    <edge source="Igualdad de género" target="Derechos de la mujer">
+      <data key="d1">0.7536993622779846</data>
+    </edge>
+    <edge source="Movimiento revolucionario" target="Movimiento obrero">
+      <data key="d1">0.7873682379722595</data>
+    </edge>
+    <edge source="Movimiento revolucionario" target="Movimiento juvenil">
+      <data key="d1">0.7202414870262146</data>
+    </edge>
+    <edge source="Movimiento revolucionario" target="Revolución">
+      <data key="d1">0.832640528678894</data>
+    </edge>
+    <edge source="Movimiento juvenil" target="Joven urbano">
+      <data key="d1">0.7006351351737976</data>
+    </edge>
+    <edge source="Movimiento juvenil" target="Joven">
+      <data key="d1">0.735186755657196</data>
+    </edge>
+    <edge source="Movimiento juvenil" target="Participación juvenil">
+      <data key="d1">0.7492425441741943</data>
+    </edge>
+    <edge source="Movimiento juvenil" target="Actividad juvenil">
+      <data key="d1">0.8081599473953247</data>
+    </edge>
+    <edge source="Homicidio" target="Crimen">
+      <data key="d1">0.7834397554397583</data>
+    </edge>
+    <edge source="Crimen" target="Delincuencia">
+      <data key="d1">0.755983829498291</data>
+    </edge>
+    <edge source="Crimen" target="Crimen de guerra">
+      <data key="d1">0.732423722743988</data>
+    </edge>
+    <edge source="Crimen" target="Criminología">
+      <data key="d1">0.7857788801193237</data>
+    </edge>
+    <edge source="Psicología del adolescente" target="Psicología del niño">
+      <data key="d1">0.7798049449920654</data>
+    </edge>
+    <edge source="Psicología del adolescente" target="Adolescencia">
+      <data key="d1">0.7140976190567017</data>
+    </edge>
+    <edge source="Psicología del adolescente" target="Psicología">
+      <data key="d1">0.7486023306846619</data>
+    </edge>
+    <edge source="Psicología del niño" target="Crianza del niño">
+      <data key="d1">0.7029622197151184</data>
+    </edge>
+    <edge source="Psicología del niño" target="Psicología">
+      <data key="d1">0.8074280619621277</data>
+    </edge>
+    <edge source="Adolescencia" target="Joven">
+      <data key="d1">0.7159038186073303</data>
+    </edge>
+    <edge source="Adolescencia" target="Infancia">
+      <data key="d1">0.7137599587440491</data>
+    </edge>
+    <edge source="Psicología" target="Psicoterapia">
+      <data key="d1">0.7751339077949524</data>
+    </edge>
+    <edge source="Psicología" target="Parapsicología">
+      <data key="d1">0.775409460067749</data>
+    </edge>
+    <edge source="Cultura nacional" target="Cultura y desarrollo">
+      <data key="d1">0.7058333158493042</data>
+    </edge>
+    <edge source="Cultura nacional" target="Valor cultural">
+      <data key="d1">0.742945671081543</data>
+    </edge>
+    <edge source="Cultura nacional" target="Política cultural">
+      <data key="d1">0.7752683758735657</data>
+    </edge>
+    <edge source="Cultura nacional" target="Educación cultural">
+      <data key="d1">0.71885746717453</data>
+    </edge>
+    <edge source="Cultura nacional" target="Historia nacional">
+      <data key="d1">0.7352238893508911</data>
+    </edge>
+    <edge source="Cultura nacional" target="Información cultural">
+      <data key="d1">0.7208681702613831</data>
+    </edge>
+    <edge source="Cultura y desarrollo" target="Economía cultural">
+      <data key="d1">0.7462859153747559</data>
+    </edge>
+    <edge source="Cultura y desarrollo" target="Política cultural">
+      <data key="d1">0.738982081413269</data>
+    </edge>
+    <edge source="Cultura y desarrollo" target="Educación cultural">
+      <data key="d1">0.7434048652648926</data>
+    </edge>
+    <edge source="Cultura y desarrollo" target="Administración cultural">
+      <data key="d1">0.7012906670570374</data>
+    </edge>
+    <edge source="Cultura y desarrollo" target="Derechos culturales">
+      <data key="d1">0.716982364654541</data>
+    </edge>
+    <edge source="Valor cultural" target="Valores sociales">
+      <data key="d1">0.7010002732276917</data>
+    </edge>
+    <edge source="Valor cultural" target="Comportamiento cultural">
+      <data key="d1">0.7334340810775757</data>
+    </edge>
+    <edge source="Valor cultural" target="Economía cultural">
+      <data key="d1">0.7366554141044617</data>
+    </edge>
+    <edge source="Valor cultural" target="Paisaje cultural">
+      <data key="d1">0.7081100940704346</data>
+    </edge>
+    <edge source="Valor cultural" target="Patrimonio cultural">
+      <data key="d1">0.7628063559532166</data>
+    </edge>
+    <edge source="Valor cultural" target="Política cultural">
+      <data key="d1">0.7314080595970154</data>
+    </edge>
+    <edge source="Valor cultural" target="Educación cultural">
+      <data key="d1">0.7167612314224243</data>
+    </edge>
+    <edge source="Valor cultural" target="Información cultural">
+      <data key="d1">0.7146117091178894</data>
+    </edge>
+    <edge source="Política cultural" target="Comportamiento cultural">
+      <data key="d1">0.738511860370636</data>
+    </edge>
+    <edge source="Política cultural" target="Economía cultural">
+      <data key="d1">0.7721984386444092</data>
+    </edge>
+    <edge source="Política cultural" target="Cambio cultural">
+      <data key="d1">0.7139418125152588</data>
+    </edge>
+    <edge source="Política cultural" target="Paisaje cultural">
+      <data key="d1">0.7060374617576599</data>
+    </edge>
+    <edge source="Política cultural" target="Participación cultural">
+      <data key="d1">0.7334067821502686</data>
+    </edge>
+    <edge source="Política cultural" target="Educación cultural">
+      <data key="d1">0.7610185146331787</data>
+    </edge>
+    <edge source="Política cultural" target="Administración cultural">
+      <data key="d1">0.8498044610023499</data>
+    </edge>
+    <edge source="Política cultural" target="Información cultural">
+      <data key="d1">0.7572557926177979</data>
+    </edge>
+    <edge source="Política cultural" target="Derechos culturales">
+      <data key="d1">0.7527024745941162</data>
+    </edge>
+    <edge source="Educación cultural" target="Educación musical">
+      <data key="d1">0.7117700576782227</data>
+    </edge>
+    <edge source="Educación cultural" target="Educación artística">
+      <data key="d1">0.7776278853416443</data>
+    </edge>
+    <edge source="Educación cultural" target="Economía cultural">
+      <data key="d1">0.7185935378074646</data>
+    </edge>
+    <edge source="Educación cultural" target="Administración cultural">
+      <data key="d1">0.7471820116043091</data>
+    </edge>
+    <edge source="Educación cultural" target="Información cultural">
+      <data key="d1">0.736425518989563</data>
+    </edge>
+    <edge source="Historia nacional" target="Historia">
+      <data key="d1">0.7484221458435059</data>
+    </edge>
+    <edge source="Historia nacional" target="Historia natural">
+      <data key="d1">0.7154272794723511</data>
+    </edge>
+    <edge source="Información cultural" target="Comportamiento cultural">
+      <data key="d1">0.704818069934845</data>
+    </edge>
+    <edge source="Información cultural" target="Economía cultural">
+      <data key="d1">0.7085361480712891</data>
+    </edge>
+    <edge source="Información cultural" target="Patrimonio cultural">
+      <data key="d1">0.7127830982208252</data>
+    </edge>
+    <edge source="Información cultural" target="Administración cultural">
+      <data key="d1">0.7417764663696289</data>
+    </edge>
+    <edge source="Información cultural" target="Derechos culturales">
+      <data key="d1">0.7066404223442078</data>
+    </edge>
+    <edge source="Poesía" target="Poeta">
+      <data key="d1">0.828122615814209</data>
+    </edge>
+    <edge source="Poesía" target="Poesía épica">
+      <data key="d1">0.821542501449585</data>
+    </edge>
+    <edge source="Poeta" target="Poesía épica">
+      <data key="d1">0.710801899433136</data>
+    </edge>
+    <edge source="Poeta" target="Escritor">
+      <data key="d1">0.751687228679657</data>
+    </edge>
+    <edge source="Educación musical" target="Educación artística">
+      <data key="d1">0.7515349388122559</data>
+    </edge>
+    <edge source="Educación musical" target="Música">
+      <data key="d1">0.789594829082489</data>
+    </edge>
+    <edge source="Educación musical" target="Musicología">
+      <data key="d1">0.7315723299980164</data>
+    </edge>
+    <edge source="Educación artística" target="Artes">
+      <data key="d1">0.7418529987335205</data>
+    </edge>
+    <edge source="Educación artística" target="Artes plásticas">
+      <data key="d1">0.7429275512695312</data>
+    </edge>
+    <edge source="Educación artística" target="Artes visuales">
+      <data key="d1">0.7224940657615662</data>
+    </edge>
+    <edge source="Educación artística" target="Artes escénicas">
+      <data key="d1">0.7050740122795105</data>
+    </edge>
+    <edge source="Música" target="Música pop">
+      <data key="d1">0.7490530014038086</data>
+    </edge>
+    <edge source="Música" target="Música popular">
+      <data key="d1">0.7779051065444946</data>
+    </edge>
+    <edge source="Música" target="Instrumento musical">
+      <data key="d1">0.7777119278907776</data>
+    </edge>
+    <edge source="Música" target="Músico">
+      <data key="d1">0.7950164079666138</data>
+    </edge>
+    <edge source="Música" target="Musicología">
+      <data key="d1">0.847432017326355</data>
+    </edge>
+    <edge source="Música" target="Música tradicional">
+      <data key="d1">0.7589124441146851</data>
+    </edge>
+    <edge source="Música" target="Forma musical">
+      <data key="d1">0.7889090180397034</data>
+    </edge>
+    <edge source="Musicología" target="Instrumento musical">
+      <data key="d1">0.7212705016136169</data>
+    </edge>
+    <edge source="Musicología" target="Músico">
+      <data key="d1">0.7333731055259705</data>
+    </edge>
+    <edge source="Musicología" target="Forma musical">
+      <data key="d1">0.7170418500900269</data>
+    </edge>
+    <edge source="Árbol" target="Bosque">
+      <data key="d1">0.7502487897872925</data>
+    </edge>
+    <edge source="Bosque" target="Bosque y selva tropicales">
+      <data key="d1">0.7111779451370239</data>
+    </edge>
+    <edge source="Derecho constitucional" target="Derecho">
+      <data key="d1">0.7522329092025757</data>
+    </edge>
+    <edge source="Derecho constitucional" target="Constitución">
+      <data key="d1">0.8039759993553162</data>
+    </edge>
+    <edge source="Derecho" target="Justicia">
+      <data key="d1">0.7086226940155029</data>
+    </edge>
+    <edge source="Derecho" target="Derecho de la familia">
+      <data key="d1">0.7127590775489807</data>
+    </edge>
+    <edge source="Derecho" target="Derechos humanos">
+      <data key="d1">0.7201641201972961</data>
+    </edge>
+    <edge source="Derecho" target="Derechos civiles">
+      <data key="d1">0.7201185822486877</data>
+    </edge>
+    <edge source="Derecho" target="Derecho administrativo">
+      <data key="d1">0.7460628747940063</data>
+    </edge>
+    <edge source="Derecho" target="Derecho de los contratos">
+      <data key="d1">0.706041157245636</data>
+    </edge>
+    <edge source="Prensa rural" target="Mujer rural">
+      <data key="d1">0.7088896632194519</data>
+    </edge>
+    <edge source="Prensa rural" target="Prensa local">
+      <data key="d1">0.8045549988746643</data>
+    </edge>
+    <edge source="Mujer rural" target="Desarrollo rural">
+      <data key="d1">0.7115355134010315</data>
+    </edge>
+    <edge source="Justicia" target="Administración de justicia">
+      <data key="d1">0.8094732165336609</data>
+    </edge>
+    <edge source="Justicia" target="Tribunal">
+      <data key="d1">0.701876163482666</data>
+    </edge>
+    <edge source="Justicia" target="Justicia social">
+      <data key="d1">0.8236482739448547</data>
+    </edge>
+    <edge source="Administración de justicia" target="Derecho administrativo">
+      <data key="d1">0.7369459867477417</data>
+    </edge>
+    <edge source="Justicia social" target="Política social">
+      <data key="d1">0.713207483291626</data>
+    </edge>
+    <edge source="Justicia social" target="Desigualdad social">
+      <data key="d1">0.7219739556312561</data>
+    </edge>
+    <edge source="Familia" target="Derecho de la familia">
+      <data key="d1">0.7944118976593018</data>
+    </edge>
+    <edge source="Familia" target="Desintegración de la familia">
+      <data key="d1">0.7691811919212341</data>
+    </edge>
+    <edge source="Familia" target="Casa">
+      <data key="d1">0.7108452916145325</data>
+    </edge>
+    <edge source="Familia" target="Educación a la vida familiar">
+      <data key="d1">0.7468435168266296</data>
+    </edge>
+    <edge source="Corrupción" target="Corrupción política">
+      <data key="d1">0.8965433239936829</data>
+    </edge>
+    <edge source="Afectividad" target="Desarrollo afectivo">
+      <data key="d1">0.7357491850852966</data>
+    </edge>
+    <edge source="Desarrollo afectivo" target="Aprendizaje socioemocional">
+      <data key="d1">0.7042933106422424</data>
+    </edge>
+    <edge source="Desarrollo de la personalidad" target="Desarrollo del niño">
+      <data key="d1">0.7166898846626282</data>
+    </edge>
+    <edge source="Desarrollo de la personalidad" target="Personalidad">
+      <data key="d1">0.722777783870697</data>
+    </edge>
+    <edge source="Desarrollo de la personalidad" target="Desarrollo mental">
+      <data key="d1">0.7364501357078552</data>
+    </edge>
+    <edge source="Desarrollo de la personalidad" target="Trastornos de la personalidad">
+      <data key="d1">0.7041362524032593</data>
+    </edge>
+    <edge source="Desarrollo del niño" target="Desarrollo del lenguaje">
+      <data key="d1">0.7066227197647095</data>
+    </edge>
+    <edge source="Desarrollo del niño" target="Desarrollo motor">
+      <data key="d1">0.7142289876937866</data>
+    </edge>
+    <edge source="Desarrollo del niño" target="Infancia">
+      <data key="d1">0.7075893878936768</data>
+    </edge>
+    <edge source="Desarrollo del niño" target="Niño en edad preescolar">
+      <data key="d1">0.7426000833511353</data>
+    </edge>
+    <edge source="Desarrollo del niño" target="Desarrollo humano">
+      <data key="d1">0.7123795747756958</data>
+    </edge>
+    <edge source="Desarrollo del niño" target="Crianza del niño">
+      <data key="d1">0.7803352475166321</data>
+    </edge>
+    <edge source="Desarrollo del niño" target="Desarrollo mental">
+      <data key="d1">0.7477567195892334</data>
+    </edge>
+    <edge source="Desarrollo mental" target="Desarrollo motor">
+      <data key="d1">0.7193284630775452</data>
+    </edge>
+    <edge source="Desarrollo mental" target="Salud mental">
+      <data key="d1">0.706224799156189</data>
+    </edge>
+    <edge source="Desarrollo mental" target="Desarrollo humano">
+      <data key="d1">0.7282021045684814</data>
+    </edge>
+    <edge source="Ciencia ficción" target="Literatura de ficción">
+      <data key="d1">0.7883806228637695</data>
+    </edge>
+    <edge source="Ciencia ficción" target="Ciencia">
+      <data key="d1">0.7511926293373108</data>
+    </edge>
+    <edge source="Ciencia" target="Filosofía de la ciencia">
+      <data key="d1">0.7361594438552856</data>
+    </edge>
+    <edge source="Ciencia" target="Expedición científica">
+      <data key="d1">0.747882604598999</data>
+    </edge>
+    <edge source="Ciencia" target="Ciencias sociales">
+      <data key="d1">0.7110710144042969</data>
+    </edge>
+    <edge source="Ciencia" target="Ciencias naturales">
+      <data key="d1">0.8500499129295349</data>
+    </edge>
+    <edge source="Ciencia" target="Ciencias ambientales">
+      <data key="d1">0.745282769203186</data>
+    </edge>
+    <edge source="Ciencia" target="Física">
+      <data key="d1">0.7815283536911011</data>
+    </edge>
+    <edge source="Ciencia" target="Ciencia política">
+      <data key="d1">0.7673396468162537</data>
+    </edge>
+    <edge source="Ciencia" target="Biofísica">
+      <data key="d1">0.7168905735015869</data>
+    </edge>
+    <edge source="Ciencia" target="Ciencias de la tierra">
+      <data key="d1">0.7532820105552673</data>
+    </edge>
+    <edge source="Ciencia" target="Personal científico">
+      <data key="d1">0.7348197102546692</data>
+    </edge>
+    <edge source="Ciencia" target="Biología">
+      <data key="d1">0.715304970741272</data>
+    </edge>
+    <edge source="Ciencia" target="Ciencia y desarrollo">
+      <data key="d1">0.7925583124160767</data>
+    </edge>
+    <edge source="Ciencia" target="Ciencia de la ciencia">
+      <data key="d1">0.9200616478919983</data>
+    </edge>
+    <edge source="Ciencia" target="Científico">
+      <data key="d1">0.8475063443183899</data>
+    </edge>
+    <edge source="Ciencia" target="Ciencias médicas">
+      <data key="d1">0.7438039779663086</data>
+    </edge>
+    <edge source="Biología marina" target="Biología">
+      <data key="d1">0.7680410146713257</data>
+    </edge>
+    <edge source="Biología marina" target="Vida marina">
+      <data key="d1">0.8543758988380432</data>
+    </edge>
+    <edge source="Biología" target="Ciencias naturales">
+      <data key="d1">0.7187334895133972</data>
+    </edge>
+    <edge source="Biología" target="Adaptación biológica">
+      <data key="d1">0.7136718034744263</data>
+    </edge>
+    <edge source="Biología" target="Biofísica">
+      <data key="d1">0.8308255672454834</data>
+    </edge>
+    <edge source="Biología" target="Biología espacial">
+      <data key="d1">0.7589874863624573</data>
+    </edge>
+    <edge source="Biología" target="Biología agrícola">
+      <data key="d1">0.8095023036003113</data>
+    </edge>
+    <edge source="Biología" target="Microbiología">
+      <data key="d1">0.750533401966095</data>
+    </edge>
+    <edge source="Vida marina" target="Agua de mar">
+      <data key="d1">0.7024778723716736</data>
+    </edge>
+    <edge source="Crianza del niño" target="Infancia">
+      <data key="d1">0.7155795097351074</data>
+    </edge>
+    <edge source="Hindustani" target="Hinduismo">
+      <data key="d1">0.7499293684959412</data>
+    </edge>
+    <edge source="Hinduismo" target="Budismo">
+      <data key="d1">0.7643660306930542</data>
+    </edge>
+    <edge source="Escritora" target="Escritura">
+      <data key="d1">0.7207868099212646</data>
+    </edge>
+    <edge source="Escritora" target="Escritor">
+      <data key="d1">0.8813325762748718</data>
+    </edge>
+    <edge source="Escritura" target="Escritor">
+      <data key="d1">0.7426589131355286</data>
+    </edge>
+    <edge source="Escritor" target="Dramaturgo">
+      <data key="d1">0.7110801935195923</data>
+    </edge>
+    <edge source="Muerte" target="Suicidio">
+      <data key="d1">0.7235705852508545</data>
+    </edge>
+    <edge source="Delincuencia" target="Delincuencia juvenil">
+      <data key="d1">0.7600010633468628</data>
+    </edge>
+    <edge source="Delincuencia" target="Criminología">
+      <data key="d1">0.7260004281997681</data>
+    </edge>
+    <edge source="Seguridad social" target="Política social">
+      <data key="d1">0.7240988612174988</data>
+    </edge>
+    <edge source="Política social" target="Valores sociales">
+      <data key="d1">0.713530957698822</data>
+    </edge>
+    <edge source="Política social" target="Ciencias sociales">
+      <data key="d1">0.7066954970359802</data>
+    </edge>
+    <edge source="Política social" target="Política de las ciencias sociales">
+      <data key="d1">0.7484889030456543</data>
+    </edge>
+    <edge source="Política social" target="Sociología política">
+      <data key="d1">0.750639021396637</data>
+    </edge>
+    <edge source="Política social" target="Derechos sociales y económicos">
+      <data key="d1">0.7038265466690063</data>
+    </edge>
+    <edge source="Creencia religiosa" target="Religión">
+      <data key="d1">0.8975257277488708</data>
+    </edge>
+    <edge source="Creencia religiosa" target="Actividad religiosa">
+      <data key="d1">0.7245627641677856</data>
+    </edge>
+    <edge source="Creencia religiosa" target="Historia religiosa">
+      <data key="d1">0.7078731656074524</data>
+    </edge>
+    <edge source="Creencia religiosa" target="Libertad religiosa">
+      <data key="d1">0.705828845500946</data>
+    </edge>
+    <edge source="Creencia religiosa" target="Cristianismo">
+      <data key="d1">0.7152745127677917</data>
+    </edge>
+    <edge source="Religión" target="Arte religioso">
+      <data key="d1">0.7308393716812134</data>
+    </edge>
+    <edge source="Religión" target="Actividad religiosa">
+      <data key="d1">0.7784793376922607</data>
+    </edge>
+    <edge source="Religión" target="Historia religiosa">
+      <data key="d1">0.7399718165397644</data>
+    </edge>
+    <edge source="Religión" target="Libertad religiosa">
+      <data key="d1">0.7374677062034607</data>
+    </edge>
+    <edge source="Religión" target="Cristianismo">
+      <data key="d1">0.7112262845039368</data>
+    </edge>
+    <edge source="Historia religiosa" target="Historia">
+      <data key="d1">0.7161589860916138</data>
+    </edge>
+    <edge source="Dramaturgo" target="Obra de teatro">
+      <data key="d1">0.7156121730804443</data>
+    </edge>
+    <edge source="Dramaturgo" target="Drama">
+      <data key="d1">0.7597017288208008</data>
+    </edge>
+    <edge source="Dramaturgo" target="Teatro">
+      <data key="d1">0.7630007863044739</data>
+    </edge>
+    <edge source="Obra de teatro" target="Drama">
+      <data key="d1">0.7760865092277527</data>
+    </edge>
+    <edge source="Obra de teatro" target="Teatro">
+      <data key="d1">0.8524709939956665</data>
+    </edge>
+    <edge source="Obra de teatro" target="Artes escénicas">
+      <data key="d1">0.7483325004577637</data>
+    </edge>
+    <edge source="Obra de teatro" target="Ópera">
+      <data key="d1">0.7075514793395996</data>
+    </edge>
+    <edge source="Drama" target="Teatro">
+      <data key="d1">0.8108028173446655</data>
+    </edge>
+    <edge source="Teatro" target="Teatro tradicional">
+      <data key="d1">0.7925742268562317</data>
+    </edge>
+    <edge source="Teatro" target="Artes escénicas">
+      <data key="d1">0.7964043617248535</data>
+    </edge>
+    <edge source="Teatro" target="Ópera">
+      <data key="d1">0.7026334404945374</data>
+    </edge>
+    <edge source="Filosofía de la ciencia" target="Filosofía política">
+      <data key="d1">0.7245396375656128</data>
+    </edge>
+    <edge source="Filosofía de la ciencia" target="Filosofía">
+      <data key="d1">0.8285599946975708</data>
+    </edge>
+    <edge source="Filosofía de la ciencia" target="Ciencia de la ciencia">
+      <data key="d1">0.8180185556411743</data>
+    </edge>
+    <edge source="Filosofía de la ciencia" target="Filosofía de la educación">
+      <data key="d1">0.7220941185951233</data>
+    </edge>
+    <edge source="Filosofía política" target="Filosofía">
+      <data key="d1">0.865761399269104</data>
+    </edge>
+    <edge source="Filosofía política" target="Ciencia política">
+      <data key="d1">0.7622279524803162</data>
+    </edge>
+    <edge source="Filosofía política" target="Filosofía de la educación">
+      <data key="d1">0.7064858078956604</data>
+    </edge>
+    <edge source="Filosofía política" target="Sociología política">
+      <data key="d1">0.7306751608848572</data>
+    </edge>
+    <edge source="Filosofía" target="Metafísica">
+      <data key="d1">0.7994580268859863</data>
+    </edge>
+    <edge source="Filosofía" target="Filosofía del espíritu">
+      <data key="d1">0.7860602140426636</data>
+    </edge>
+    <edge source="Filosofía" target="Filosofía de la educación">
+      <data key="d1">0.8005130290985107</data>
+    </edge>
+    <edge source="Ciencia de la ciencia" target="Ciencias de la educación">
+      <data key="d1">0.7199426889419556</data>
+    </edge>
+    <edge source="Ciencia de la ciencia" target="Expedición científica">
+      <data key="d1">0.7034696340560913</data>
+    </edge>
+    <edge source="Ciencia de la ciencia" target="Ciencias naturales">
+      <data key="d1">0.8133666515350342</data>
+    </edge>
+    <edge source="Ciencia de la ciencia" target="Ciencias ambientales">
+      <data key="d1">0.7003849148750305</data>
+    </edge>
+    <edge source="Ciencia de la ciencia" target="Física">
+      <data key="d1">0.7053279876708984</data>
+    </edge>
+    <edge source="Ciencia de la ciencia" target="Ciencia política">
+      <data key="d1">0.7464158535003662</data>
+    </edge>
+    <edge source="Ciencia de la ciencia" target="Política de las ciencias sociales">
+      <data key="d1">0.7077786326408386</data>
+    </edge>
+    <edge source="Ciencia de la ciencia" target="Ciencias de la tierra">
+      <data key="d1">0.7283204793930054</data>
+    </edge>
+    <edge source="Ciencia de la ciencia" target="Ciencia y desarrollo">
+      <data key="d1">0.7888728976249695</data>
+    </edge>
+    <edge source="Ciencia de la ciencia" target="Científico">
+      <data key="d1">0.8089841604232788</data>
+    </edge>
+    <edge source="Ciencia de la ciencia" target="Ciencias médicas">
+      <data key="d1">0.7291601896286011</data>
+    </edge>
+    <edge source="Filosofía de la educación" target="Ciencias de la educación">
+      <data key="d1">0.7720409035682678</data>
+    </edge>
+    <edge source="Joven" target="Joven urbano">
+      <data key="d1">0.7688078284263611</data>
+    </edge>
+    <edge source="Joven" target="Actividad juvenil">
+      <data key="d1">0.7182924747467041</data>
+    </edge>
+    <edge source="Infancia" target="Niño en edad preescolar">
+      <data key="d1">0.7256556749343872</data>
+    </edge>
+    <edge source="Infancia" target="Bienestar de la infancia">
+      <data key="d1">0.7123581171035767</data>
+    </edge>
+    <edge source="Electromagnetismo" target="Magnetismo">
+      <data key="d1">0.8359407782554626</data>
+    </edge>
+    <edge source="Ciencia política" target="Ciencias sociales">
+      <data key="d1">0.7182773947715759</data>
+    </edge>
+    <edge source="Ciencia política" target="Política de las ciencias sociales">
+      <data key="d1">0.8404847383499146</data>
+    </edge>
+    <edge source="Ciencia política" target="Geografía política">
+      <data key="d1">0.7087634205818176</data>
+    </edge>
+    <edge source="Ciencia política" target="Sociología política">
+      <data key="d1">0.7578561305999756</data>
+    </edge>
+    <edge source="Sociología política" target="Ciencias sociales">
+      <data key="d1">0.7454714775085449</data>
+    </edge>
+    <edge source="Sociología política" target="Sociología de la comunicación">
+      <data key="d1">0.7231962084770203</data>
+    </edge>
+    <edge source="Sociología política" target="Sociología urbana">
+      <data key="d1">0.717543363571167</data>
+    </edge>
+    <edge source="Sociología política" target="Política de las ciencias sociales">
+      <data key="d1">0.7415505051612854</data>
+    </edge>
+    <edge source="Sociología política" target="Sociología cultural">
+      <data key="d1">0.7717719078063965</data>
+    </edge>
+    <edge source="Sociología política" target="Geografía política">
+      <data key="d1">0.7187812328338623</data>
+    </edge>
+    <edge source="Comportamiento del docente" target="Comportamiento">
+      <data key="d1">0.7047646045684814</data>
+    </edge>
+    <edge source="Comportamiento" target="Comportamiento animal">
+      <data key="d1">0.8165808320045471</data>
+    </edge>
+    <edge source="Comportamiento" target="Comportamiento cultural">
+      <data key="d1">0.8013070225715637</data>
+    </edge>
+    <edge source="Comportamiento" target="Comportamiento sexual">
+      <data key="d1">0.7789151668548584</data>
+    </edge>
+    <edge source="Ciencias de la educación" target="Ciencias sociales">
+      <data key="d1">0.7329145073890686</data>
+    </edge>
+    <edge source="Ciencias de la educación" target="Ciencias naturales">
+      <data key="d1">0.7371466159820557</data>
+    </edge>
+    <edge source="Ciencias de la educación" target="Ciencias ambientales">
+      <data key="d1">0.7094392776489258</data>
+    </edge>
+    <edge source="Ciencias sociales" target="Ciencias naturales">
+      <data key="d1">0.748424232006073</data>
+    </edge>
+    <edge source="Ciencias sociales" target="Sociología de la comunicación">
+      <data key="d1">0.7232084274291992</data>
+    </edge>
+    <edge source="Ciencias sociales" target="Política de las ciencias sociales">
+      <data key="d1">0.8447295427322388</data>
+    </edge>
+    <edge source="Ciencias sociales" target="Sociología cultural">
+      <data key="d1">0.7298939228057861</data>
+    </edge>
+    <edge source="Ciencias naturales" target="Ciencias ambientales">
+      <data key="d1">0.8343378901481628</data>
+    </edge>
+    <edge source="Ciencias naturales" target="Física">
+      <data key="d1">0.7731441855430603</data>
+    </edge>
+    <edge source="Ciencias naturales" target="Biofísica">
+      <data key="d1">0.726259708404541</data>
+    </edge>
+    <edge source="Ciencias naturales" target="Ciencias de la tierra">
+      <data key="d1">0.7940689325332642</data>
+    </edge>
+    <edge source="Ciencias naturales" target="Científico">
+      <data key="d1">0.728112518787384</data>
+    </edge>
+    <edge source="Ciencias naturales" target="Ciencias médicas">
+      <data key="d1">0.728241503238678</data>
+    </edge>
+    <edge source="Ciencias ambientales" target="Investigación ecológica">
+      <data key="d1">0.7504808902740479</data>
+    </edge>
+    <edge source="Ciencias ambientales" target="Medio ambiente terrestre">
+      <data key="d1">0.716094970703125</data>
+    </edge>
+    <edge source="Ciencias ambientales" target="Ciencias de la tierra">
+      <data key="d1">0.8021436333656311</data>
+    </edge>
+    <edge source="Ciencias ambientales" target="Medio ambiente">
+      <data key="d1">0.8029844760894775</data>
+    </edge>
+    <edge source="Desarrollo comunitario" target="Comunidad">
+      <data key="d1">0.7270855903625488</data>
+    </edge>
+    <edge source="Desarrollo comunitario" target="Proyecto de desarrollo">
+      <data key="d1">0.7256352305412292</data>
+    </edge>
+    <edge source="Desarrollo comunitario" target="Desarrollo económico y social">
+      <data key="d1">0.7228967547416687</data>
+    </edge>
+    <edge source="Matemáticas" target="Álgebra">
+      <data key="d1">0.7218919396400452</data>
+    </edge>
+    <edge source="Matemáticas" target="Aritmética">
+      <data key="d1">0.783549427986145</data>
+    </edge>
+    <edge source="Metafísica" target="Filosofía del espíritu">
+      <data key="d1">0.754021167755127</data>
+    </edge>
+    <edge source="Filosofía del espíritu" target="Espiritualismo">
+      <data key="d1">0.7403425574302673</data>
+    </edge>
+    <edge source="Desarrollo rural" target="Migración rural">
+      <data key="d1">0.7442607283592224</data>
+    </edge>
+    <edge source="Arte latinoamericano" target="Cultura latinoamericana">
+      <data key="d1">0.8488426804542542</data>
+    </edge>
+    <edge source="Arte latinoamericano" target="Artes">
+      <data key="d1">0.7165216207504272</data>
+    </edge>
+    <edge source="Dibujo" target="Dibujos">
+      <data key="d1">0.8933088183403015</data>
+    </edge>
+    <edge source="Dibujo" target="Pintura">
+      <data key="d1">0.7078104615211487</data>
+    </edge>
+    <edge source="Dibujo" target="Dibujo técnico">
+      <data key="d1">0.7800024151802063</data>
+    </edge>
+    <edge source="Dibujo" target="Dibujo animado">
+      <data key="d1">0.8295697569847107</data>
+    </edge>
+    <edge source="Dibujos" target="Dibujo animado">
+      <data key="d1">0.734997034072876</data>
+    </edge>
+    <edge source="Pintura" target="Artes">
+      <data key="d1">0.7194523811340332</data>
+    </edge>
+    <edge source="Pintura" target="Artes plásticas">
+      <data key="d1">0.7315878868103027</data>
+    </edge>
+    <edge source="Música pop" target="Música popular">
+      <data key="d1">0.8096161484718323</data>
+    </edge>
+    <edge source="Música pop" target="Arte pop">
+      <data key="d1">0.8361315727233887</data>
+    </edge>
+    <edge source="Música popular" target="Folklore">
+      <data key="d1">0.7065407037734985</data>
+    </edge>
+    <edge source="Música popular" target="Música tradicional">
+      <data key="d1">0.8128089308738708</data>
+    </edge>
+    <edge source="Arte pop" target="Artes">
+      <data key="d1">0.700249433517456</data>
+    </edge>
+    <edge source="Arte pop" target="Artes plásticas">
+      <data key="d1">0.7321142554283142</data>
+    </edge>
+    <edge source="Arte prehistórico" target="Prehistoria">
+      <data key="d1">0.8205966353416443</data>
+    </edge>
+    <edge source="Arte prehistórico" target="Arte primitivo">
+      <data key="d1">0.8619247674942017</data>
+    </edge>
+    <edge source="Arte prehistórico" target="Hombre prehistórico">
+      <data key="d1">0.7608171701431274</data>
+    </edge>
+    <edge source="Arte prehistórico" target="Historia del arte">
+      <data key="d1">0.779971718788147</data>
+    </edge>
+    <edge source="Arte prehistórico" target="Arte antiguo">
+      <data key="d1">0.8285952806472778</data>
+    </edge>
+    <edge source="Prehistoria" target="Hombre prehistórico">
+      <data key="d1">0.8127260208129883</data>
+    </edge>
+    <edge source="Prehistoria" target="Historia antigua">
+      <data key="d1">0.7762234210968018</data>
+    </edge>
+    <edge source="Arte primitivo" target="Historia del arte">
+      <data key="d1">0.7197399735450745</data>
+    </edge>
+    <edge source="Arte primitivo" target="Arte antiguo">
+      <data key="d1">0.7898343801498413</data>
+    </edge>
+    <edge source="Historia del arte" target="Libro de arte">
+      <data key="d1">0.7081005573272705</data>
+    </edge>
+    <edge source="Historia del arte" target="Teoría del arte">
+      <data key="d1">0.7495452165603638</data>
+    </edge>
+    <edge source="Historia del arte" target="Artes">
+      <data key="d1">0.7137221097946167</data>
+    </edge>
+    <edge source="Historia del arte" target="Historia">
+      <data key="d1">0.7309205532073975</data>
+    </edge>
+    <edge source="Historia del arte" target="Arte antiguo">
+      <data key="d1">0.8170351982116699</data>
+    </edge>
+    <edge source="Arte antiguo" target="Arte chino">
+      <data key="d1">0.7073176503181458</data>
+    </edge>
+    <edge source="Arte antiguo" target="Arte medieval">
+      <data key="d1">0.7468199133872986</data>
+    </edge>
+    <edge source="Arte antiguo" target="Arte moderno">
+      <data key="d1">0.7322289943695068</data>
+    </edge>
+    <edge source="Arte antiguo" target="Artes">
+      <data key="d1">0.7015438079833984</data>
+    </edge>
+    <edge source="Arte antiguo" target="Historia antigua">
+      <data key="d1">0.7614192962646484</data>
+    </edge>
+    <edge source="Experimento" target="Experimento (en clase)">
+      <data key="d1">0.8527777791023254</data>
+    </edge>
+    <edge source="Lingüista" target="Lingüística">
+      <data key="d1">0.7946447730064392</data>
+    </edge>
+    <edge source="Lingüística" target="Lengua indígena">
+      <data key="d1">0.7018020153045654</data>
+    </edge>
+    <edge source="Lingüística" target="Lengua romance">
+      <data key="d1">0.7181689143180847</data>
+    </edge>
+    <edge source="Cambio de actitud" target="Cambio organizacional">
+      <data key="d1">0.710116982460022</data>
+    </edge>
+    <edge source="Cambio organizacional" target="Cambio cultural">
+      <data key="d1">0.7099433541297913</data>
+    </edge>
+    <edge source="Cambio organizacional" target="Cambio social">
+      <data key="d1">0.7357004284858704</data>
+    </edge>
+    <edge source="Medicina deportiva" target="Deporte">
+      <data key="d1">0.7509273290634155</data>
+    </edge>
+    <edge source="Deporte" target="Calcio">
+      <data key="d1">0.7603676915168762</data>
+    </edge>
+    <edge source="Deporte" target="Educación física">
+      <data key="d1">0.7092146277427673</data>
+    </edge>
+    <edge source="Dictadura" target="Democracia">
+      <data key="d1">0.7060430645942688</data>
+    </edge>
+    <edge source="Educación para la paz" target="Consolidación de la paz">
+      <data key="d1">0.7152432203292847</data>
+    </edge>
+    <edge source="Consolidación de la paz" target="Restablecimiento de la paz">
+      <data key="d1">0.8786849975585938</data>
+    </edge>
+    <edge source="Consolidación de la paz" target="Acuerdo de paz">
+      <data key="d1">0.7879917621612549</data>
+    </edge>
+    <edge source="Agricultura" target="Agrosilvicultura">
+      <data key="d1">0.8138925433158875</data>
+    </edge>
+    <edge source="Agricultura" target="Horticultura">
+      <data key="d1">0.8030308485031128</data>
+    </edge>
+    <edge source="Agricultura" target="Biología agrícola">
+      <data key="d1">0.7955557703971863</data>
+    </edge>
+    <edge source="Agricultura" target="Maquinaria agrícola">
+      <data key="d1">0.7698928713798523</data>
+    </edge>
+    <edge source="Agrosilvicultura" target="Horticultura">
+      <data key="d1">0.7659006714820862</data>
+    </edge>
+    <edge source="Agrosilvicultura" target="Biología agrícola">
+      <data key="d1">0.7116416692733765</data>
+    </edge>
+    <edge source="Horticultura" target="Botánica">
+      <data key="d1">0.7807462215423584</data>
+    </edge>
+    <edge source="Horticultura" target="Biología agrícola">
+      <data key="d1">0.7213014960289001</data>
+    </edge>
+    <edge source="Horticultura" target="Hortalizas">
+      <data key="d1">0.8016071319580078</data>
+    </edge>
+    <edge source="Maquinaria agrícola" target="Máquina">
+      <data key="d1">0.7324885129928589</data>
+    </edge>
+    <edge source="Construcción de viviendas" target="Arquitectura">
+      <data key="d1">0.7248817682266235</data>
+    </edge>
+    <edge source="Arquitectura" target="Arquitecto">
+      <data key="d1">0.8965213894844055</data>
+    </edge>
+    <edge source="Arquitectura" target="Edificio">
+      <data key="d1">0.8061887621879578</data>
+    </edge>
+    <edge source="Libro de arte" target="Artes gráficas">
+      <data key="d1">0.7463183403015137</data>
+    </edge>
+    <edge source="Libro de arte" target="Obra literaria representativa">
+      <data key="d1">0.7125769257545471</data>
+    </edge>
+    <edge source="Libro de arte" target="Artes">
+      <data key="d1">0.7583010792732239</data>
+    </edge>
+    <edge source="Libro de arte" target="Artes plásticas">
+      <data key="d1">0.7177082896232605</data>
+    </edge>
+    <edge source="Libro de arte" target="Artes visuales">
+      <data key="d1">0.7124225497245789</data>
+    </edge>
+    <edge source="Libro de arte" target="Crítica de arte">
+      <data key="d1">0.7042903900146484</data>
+    </edge>
+    <edge source="Artes gráficas" target="Artes textiles">
+      <data key="d1">0.7414251565933228</data>
+    </edge>
+    <edge source="Artes gráficas" target="Artes">
+      <data key="d1">0.8060329556465149</data>
+    </edge>
+    <edge source="Artes gráficas" target="Artes plásticas">
+      <data key="d1">0.8171544671058655</data>
+    </edge>
+    <edge source="Artes gráficas" target="Artes decorativas">
+      <data key="d1">0.7378182411193848</data>
+    </edge>
+    <edge source="Artes gráficas" target="Artes visuales">
+      <data key="d1">0.8503755927085876</data>
+    </edge>
+    <edge source="Artes gráficas" target="Artes escénicas">
+      <data key="d1">0.7179291844367981</data>
+    </edge>
+    <edge source="Obra literaria representativa" target="Ensayo literario">
+      <data key="d1">0.7023525238037109</data>
+    </edge>
+    <edge source="Artes" target="Arte religioso">
+      <data key="d1">0.7024858593940735</data>
+    </edge>
+    <edge source="Artes" target="Artesanía">
+      <data key="d1">0.7656548023223877</data>
+    </edge>
+    <edge source="Artes" target="Artesano">
+      <data key="d1">0.8038471937179565</data>
+    </edge>
+    <edge source="Artes" target="Artes textiles">
+      <data key="d1">0.7737154364585876</data>
+    </edge>
+    <edge source="Artes" target="Artes plásticas">
+      <data key="d1">0.8416642546653748</data>
+    </edge>
+    <edge source="Artes" target="Artes decorativas">
+      <data key="d1">0.7975029349327087</data>
+    </edge>
+    <edge source="Artes" target="Artes visuales">
+      <data key="d1">0.8265789151191711</data>
+    </edge>
+    <edge source="Artes" target="Artes escénicas">
+      <data key="d1">0.7977752685546875</data>
+    </edge>
+    <edge source="Artes plásticas" target="Artesanía">
+      <data key="d1">0.7008557319641113</data>
+    </edge>
+    <edge source="Artes plásticas" target="Artes textiles">
+      <data key="d1">0.7323247194290161</data>
+    </edge>
+    <edge source="Artes plásticas" target="Artes decorativas">
+      <data key="d1">0.7752220034599304</data>
+    </edge>
+    <edge source="Artes plásticas" target="Artes visuales">
+      <data key="d1">0.8392236232757568</data>
+    </edge>
+    <edge source="Artes plásticas" target="Crítica de arte">
+      <data key="d1">0.7158907651901245</data>
+    </edge>
+    <edge source="Artes plásticas" target="Artes escénicas">
+      <data key="d1">0.7711831331253052</data>
+    </edge>
+    <edge source="Artes visuales" target="Artes textiles">
+      <data key="d1">0.7270458936691284</data>
+    </edge>
+    <edge source="Artes visuales" target="Artes decorativas">
+      <data key="d1">0.7662479877471924</data>
+    </edge>
+    <edge source="Artes visuales" target="Crítica de arte">
+      <data key="d1">0.7044032216072083</data>
+    </edge>
+    <edge source="Artes visuales" target="Artes escénicas">
+      <data key="d1">0.7701683640480042</data>
+    </edge>
+    <edge source="Crítica de arte" target="Teoría del arte">
+      <data key="d1">0.707207977771759</data>
+    </edge>
+    <edge source="Crítica de arte" target="Crítica literaria">
+      <data key="d1">0.7303955554962158</data>
+    </edge>
+    <edge source="Historia antigua" target="Civilización antigua">
+      <data key="d1">0.7732242941856384</data>
+    </edge>
+    <edge source="Historia antigua" target="Geografía histórica">
+      <data key="d1">0.7138817310333252</data>
+    </edge>
+    <edge source="Historia antigua" target="Historia">
+      <data key="d1">0.8162074089050293</data>
+    </edge>
+    <edge source="Historia antigua" target="Historia natural">
+      <data key="d1">0.715022623538971</data>
+    </edge>
+    <edge source="Enciclopedia" target="Diccionario">
+      <data key="d1">0.7037811279296875</data>
+    </edge>
+    <edge source="Comercio internacional" target="Libre comercio">
+      <data key="d1">0.7861685752868652</data>
+    </edge>
+    <edge source="Comercio internacional" target="Relaciones económicas internacionales">
+      <data key="d1">0.7600837349891663</data>
+    </edge>
+    <edge source="Argentina" target="Chile">
+      <data key="d1">0.7350447773933411</data>
+    </edge>
+    <edge source="Animal acuático" target="Ecosistema acuático">
+      <data key="d1">0.7922738194465637</data>
+    </edge>
+    <edge source="Agua de mar" target="Agua">
+      <data key="d1">0.8461345434188843</data>
+    </edge>
+    <edge source="Agua de mar" target="Mar">
+      <data key="d1">0.7690067887306213</data>
+    </edge>
+    <edge source="Entomología" target="Ornitología">
+      <data key="d1">0.8160545825958252</data>
+    </edge>
+    <edge source="Edad Media" target="Arte medieval">
+      <data key="d1">0.7129839658737183</data>
+    </edge>
+    <edge source="Edad Media" target="Historia medieval">
+      <data key="d1">0.7307811975479126</data>
+    </edge>
+    <edge source="Arte medieval" target="Historia medieval">
+      <data key="d1">0.7695044279098511</data>
+    </edge>
+    <edge source="Historia medieval" target="Historia">
+      <data key="d1">0.7150702476501465</data>
+    </edge>
+    <edge source="Artes textiles" target="Artesanía">
+      <data key="d1">0.7630215883255005</data>
+    </edge>
+    <edge source="Artes textiles" target="Artes decorativas">
+      <data key="d1">0.7451589107513428</data>
+    </edge>
+    <edge source="Artes decorativas" target="Arte religioso">
+      <data key="d1">0.7071249485015869</data>
+    </edge>
+    <edge source="Artes decorativas" target="Artesanía">
+      <data key="d1">0.7575634121894836</data>
+    </edge>
+    <edge source="Estereotipo sexual" target="Rol sexual">
+      <data key="d1">0.7180337905883789</data>
+    </edge>
+    <edge source="Estereotipo sexual" target="Discriminación sexual">
+      <data key="d1">0.7395337224006653</data>
+    </edge>
+    <edge source="Rol sexual" target="Comportamiento sexual">
+      <data key="d1">0.7325392961502075</data>
+    </edge>
+    <edge source="Rol sexual" target="Sexo">
+      <data key="d1">0.7430797219276428</data>
+    </edge>
+    <edge source="Discriminación educacional" target="Educación inclusiva">
+      <data key="d1">0.7195240259170532</data>
+    </edge>
+    <edge source="Bosque y selva tropicales" target="Amazonia">
+      <data key="d1">0.7088255882263184</data>
+    </edge>
+    <edge source="Comportamiento animal" target="Ecología animal">
+      <data key="d1">0.7109760642051697</data>
+    </edge>
+    <edge source="Ecología animal" target="Ecología humana">
+      <data key="d1">0.7275620698928833</data>
+    </edge>
+    <edge source="Ecología animal" target="Enfermedad animal">
+      <data key="d1">0.7207750082015991</data>
+    </edge>
+    <edge source="Consumo alimenticio" target="Dietética">
+      <data key="d1">0.7086836695671082</data>
+    </edge>
+    <edge source="Dietética" target="Educación nutricional">
+      <data key="d1">0.7124589681625366</data>
+    </edge>
+    <edge source="Salud mental" target="Estrés mental">
+      <data key="d1">0.7275241613388062</data>
+    </edge>
+    <edge source="Salud mental" target="Salud">
+      <data key="d1">0.7068035006523132</data>
+    </edge>
+    <edge source="Salud" target="Enfermedad">
+      <data key="d1">0.7299947738647461</data>
+    </edge>
+    <edge source="Salud" target="Médico">
+      <data key="d1">0.7203748226165771</data>
+    </edge>
+    <edge source="Salud" target="Ciencias médicas">
+      <data key="d1">0.7155556678771973</data>
+    </edge>
+    <edge source="Arte religioso" target="Arte islámico">
+      <data key="d1">0.725152850151062</data>
+    </edge>
+    <edge source="Arte religioso" target="Edificio religioso">
+      <data key="d1">0.7391265630722046</data>
+    </edge>
+    <edge source="Viaje" target="Guía de viaje">
+      <data key="d1">0.789153516292572</data>
+    </edge>
+    <edge source="Viaje" target="Viaje de estudios">
+      <data key="d1">0.7290595173835754</data>
+    </edge>
+    <edge source="Viaje" target="Vacaciones">
+      <data key="d1">0.7379639744758606</data>
+    </edge>
+    <edge source="Viaje" target="Turismo">
+      <data key="d1">0.7296017408370972</data>
+    </edge>
+    <edge source="Alumno desertor" target="Estudiante">
+      <data key="d1">0.7437695264816284</data>
+    </edge>
+    <edge source="Alumno desertor" target="Estudiante universitario">
+      <data key="d1">0.7041932344436646</data>
+    </edge>
+    <edge source="Estudiante" target="Estudiante universitario">
+      <data key="d1">0.8962125182151794</data>
+    </edge>
+    <edge source="Matrimonio" target="Matrimonio infantil">
+      <data key="d1">0.7972182631492615</data>
+    </edge>
+    <edge source="Comunicación interpersonal" target="Comunicación">
+      <data key="d1">0.7362305521965027</data>
+    </edge>
+    <edge source="Comunicación" target="Sociología de la comunicación">
+      <data key="d1">0.7501026391983032</data>
+    </edge>
+    <edge source="Comunicación" target="Comunicación política">
+      <data key="d1">0.8302167057991028</data>
+    </edge>
+    <edge source="Comunicación" target="Comunicación de masas">
+      <data key="d1">0.7919673919677734</data>
+    </edge>
+    <edge source="Educación física" target="Física">
+      <data key="d1">0.70087069272995</data>
+    </edge>
+    <edge source="Francia" target="Francés">
+      <data key="d1">0.7805773615837097</data>
+    </edge>
+    <edge source="Francia" target="Bélgica">
+      <data key="d1">0.7512596249580383</data>
+    </edge>
+    <edge source="Lengua esquimal" target="Lengua indígena">
+      <data key="d1">0.7121664881706238</data>
+    </edge>
+    <edge source="Lengua indígena" target="Población indígena">
+      <data key="d1">0.7719441056251526</data>
+    </edge>
+    <edge source="Administración de empresas" target="Derecho administrativo">
+      <data key="d1">0.7305710315704346</data>
+    </edge>
+    <edge source="Administración de empresas" target="Gestión">
+      <data key="d1">0.7391944527626038</data>
+    </edge>
+    <edge source="Gestión" target="Gestión del personal">
+      <data key="d1">0.7632871270179749</data>
+    </edge>
+    <edge source="Gestión" target="Gestión industrial">
+      <data key="d1">0.7897717952728271</data>
+    </edge>
+    <edge source="Australia" target="Austria">
+      <data key="d1">0.7404886484146118</data>
+    </edge>
+    <edge source="Austria" target="Alemania">
+      <data key="d1">0.7480745911598206</data>
+    </edge>
+    <edge source="Crimen de guerra" target="Guerra">
+      <data key="d1">0.7421736717224121</data>
+    </edge>
+    <edge source="Crimen de guerra" target="Víctima de guerra">
+      <data key="d1">0.8122029900550842</data>
+    </edge>
+    <edge source="Crimen de guerra" target="Prisionero de guerra">
+      <data key="d1">0.7269601821899414</data>
+    </edge>
+    <edge source="Agua" target="Abastecimiento de agua">
+      <data key="d1">0.7171440720558167</data>
+    </edge>
+    <edge source="Actividad juvenil" target="Delincuencia juvenil">
+      <data key="d1">0.7322931885719299</data>
+    </edge>
+    <edge source="Actividad juvenil" target="Albergue juvenil">
+      <data key="d1">0.7044789791107178</data>
+    </edge>
+    <edge source="Actividad juvenil" target="Participación juvenil">
+      <data key="d1">0.8385814428329468</data>
+    </edge>
+    <edge source="Guerra" target="Guerrilla">
+      <data key="d1">0.7068619132041931</data>
+    </edge>
+    <edge source="Guerra" target="Víctima de guerra">
+      <data key="d1">0.7261964082717896</data>
+    </edge>
+    <edge source="Guerra" target="Guerra mundial">
+      <data key="d1">0.7905868887901306</data>
+    </edge>
+    <edge source="Guerra" target="Guerra urbana">
+      <data key="d1">0.7239970564842224</data>
+    </edge>
+    <edge source="Guerra" target="Guerra civil">
+      <data key="d1">0.7631428837776184</data>
+    </edge>
+    <edge source="Víctima de guerra" target="Prisionero de guerra">
+      <data key="d1">0.7818811535835266</data>
+    </edge>
+    <edge source="Víctima de guerra" target="País devastado por la guerra">
+      <data key="d1">0.7249876260757446</data>
+    </edge>
+    <edge source="Archivos" target="Archivos audiovisuales">
+      <data key="d1">0.81448894739151</data>
+    </edge>
+    <edge source="Inmigración" target="Migración interna">
+      <data key="d1">0.7677081823348999</data>
+    </edge>
+    <edge source="Deuda pública" target="Deuda">
+      <data key="d1">0.8237788677215576</data>
+    </edge>
+    <edge source="Biodiversidad" target="Reservas de la biosfera">
+      <data key="d1">0.7163631319999695</data>
+    </edge>
+    <edge source="Reservas de la biosfera" target="Conservación de la naturaleza">
+      <data key="d1">0.7072163820266724</data>
+    </edge>
+    <edge source="Delincuencia juvenil" target="Malestar de la juventud">
+      <data key="d1">0.7324084043502808</data>
+    </edge>
+    <edge source="Delincuencia juvenil" target="Participación juvenil">
+      <data key="d1">0.7077645063400269</data>
+    </edge>
+    <edge source="Participación juvenil" target="Participación estudiantil">
+      <data key="d1">0.722998321056366</data>
+    </edge>
+    <edge source="Edificio religioso" target="Edificio">
+      <data key="d1">0.8012146949768066</data>
+    </edge>
+    <edge source="Cambio climático" target="Clima">
+      <data key="d1">0.7671413421630859</data>
+    </edge>
+    <edge source="Cambio climático" target="Climatología">
+      <data key="d1">0.7436049580574036</data>
+    </edge>
+    <edge source="Clima" target="Climatología">
+      <data key="d1">0.8713873028755188</data>
+    </edge>
+    <edge source="Leyenda" target="Mitología">
+      <data key="d1">0.7000732421875</data>
+    </edge>
+    <edge source="Danza tradicional" target="Danza">
+      <data key="d1">0.8268301486968994</data>
+    </edge>
+    <edge source="Danza tradicional" target="Teatro tradicional">
+      <data key="d1">0.7708872556686401</data>
+    </edge>
+    <edge source="Danza tradicional" target="Música tradicional">
+      <data key="d1">0.792267382144928</data>
+    </edge>
+    <edge source="Danza" target="Ballet">
+      <data key="d1">0.8329484462738037</data>
+    </edge>
+    <edge source="Teatro tradicional" target="Sociedad tradicional">
+      <data key="d1">0.7236604690551758</data>
+    </edge>
+    <edge source="Teatro tradicional" target="Música tradicional">
+      <data key="d1">0.7617241144180298</data>
+    </edge>
+    <edge source="Música tradicional" target="Folklore">
+      <data key="d1">0.7438355088233948</data>
+    </edge>
+    <edge source="Música tradicional" target="Literatura folklórica">
+      <data key="d1">0.7087030410766602</data>
+    </edge>
+    <edge source="Música tradicional" target="Sociedad tradicional">
+      <data key="d1">0.7036625146865845</data>
+    </edge>
+    <edge source="Folklore" target="Literatura folklórica">
+      <data key="d1">0.8508575558662415</data>
+    </edge>
+    <edge source="Folklore" target="Costumbres y tradiciones">
+      <data key="d1">0.7299680709838867</data>
+    </edge>
+    <edge source="Costumbres y tradiciones" target="Sociedad tradicional">
+      <data key="d1">0.7108707427978516</data>
+    </edge>
+    <edge source="Aptitud para la lectura" target="Enseñanza de la lectura">
+      <data key="d1">0.7551923990249634</data>
+    </edge>
+    <edge source="Enseñanza de la lectura" target="Promoción de la lectura">
+      <data key="d1">0.7790825963020325</data>
+    </edge>
+    <edge source="Enseñanza de la lectura" target="Enseñanza de la literatura">
+      <data key="d1">0.7989704012870789</data>
+    </edge>
+    <edge source="Económicas" target="Política económica">
+      <data key="d1">0.775892972946167</data>
+    </edge>
+    <edge source="Económicas" target="Geografía económica">
+      <data key="d1">0.7507656216621399</data>
+    </edge>
+    <edge source="Económicas" target="Finanzas">
+      <data key="d1">0.7597126364707947</data>
+    </edge>
+    <edge source="Económicas" target="Historia económica">
+      <data key="d1">0.7287178039550781</data>
+    </edge>
+    <edge source="Económicas" target="Economista">
+      <data key="d1">0.7778719663619995</data>
+    </edge>
+    <edge source="Política económica" target="Historia económica">
+      <data key="d1">0.7061165571212769</data>
+    </edge>
+    <edge source="Política económica" target="Economista">
+      <data key="d1">0.7018483281135559</data>
+    </edge>
+    <edge source="Geografía económica" target="Geografía política">
+      <data key="d1">0.7420170903205872</data>
+    </edge>
+    <edge source="Historia económica" target="Historia">
+      <data key="d1">0.7230088114738464</data>
+    </edge>
+    <edge source="Conservación del agua" target="Conservación de recursos">
+      <data key="d1">0.7916578650474548</data>
+    </edge>
+    <edge source="Conservación de recursos" target="Conservación de la naturaleza">
+      <data key="d1">0.7614311575889587</data>
+    </edge>
+    <edge source="Conservación de recursos" target="Recursos naturales">
+      <data key="d1">0.7455676794052124</data>
+    </edge>
+    <edge source="Niño abandonado" target="Niño desfavorecido">
+      <data key="d1">0.7426025867462158</data>
+    </edge>
+    <edge source="Niño abandonado" target="Orfanato">
+      <data key="d1">0.7047805190086365</data>
+    </edge>
+    <edge source="Niño desfavorecido" target="Niño en edad preescolar">
+      <data key="d1">0.7194488644599915</data>
+    </edge>
+    <edge source="Niño desfavorecido" target="Bienestar de la infancia">
+      <data key="d1">0.7192186713218689</data>
+    </edge>
+    <edge source="Bienestar de la infancia" target="Bienestar de la madre">
+      <data key="d1">0.7115222811698914</data>
+    </edge>
+    <edge source="Valores sociales" target="Valores morales">
+      <data key="d1">0.7778424024581909</data>
+    </edge>
+    <edge source="Valores morales" target="Educación moral">
+      <data key="d1">0.7408145666122437</data>
+    </edge>
+    <edge source="Sociología de la comunicación" target="Sociología cultural">
+      <data key="d1">0.7446292042732239</data>
+    </edge>
+    <edge source="Sociología cultural" target="Sociología urbana">
+      <data key="d1">0.7334991693496704</data>
+    </edge>
+    <edge source="Civilización" target="Civilización antigua">
+      <data key="d1">0.7995349764823914</data>
+    </edge>
+    <edge source="Reforma de la educación" target="Democratización de la educación">
+      <data key="d1">0.7374677062034607</data>
+    </edge>
+    <edge source="Planificación de la educación" target="Administración de la educación">
+      <data key="d1">0.7261401414871216</data>
+    </edge>
+    <edge source="Educación de ciegos" target="Educación de sordos">
+      <data key="d1">0.8152800798416138</data>
+    </edge>
+    <edge source="URSS" target="Rusia">
+      <data key="d1">0.7659802436828613</data>
+    </edge>
+    <edge source="Cosmología" target="Astronomía">
+      <data key="d1">0.7573421597480774</data>
+    </edge>
+    <edge source="Astronomía" target="Observatorio astronómico">
+      <data key="d1">0.8025985956192017</data>
+    </edge>
+    <edge source="Instrumento musical" target="Músico">
+      <data key="d1">0.7645038962364197</data>
+    </edge>
+    <edge source="Instrumento musical" target="Forma musical">
+      <data key="d1">0.7060047388076782</data>
+    </edge>
+    <edge source="Transporte aéreo" target="Transporte por carretera">
+      <data key="d1">0.7277776002883911</data>
+    </edge>
+    <edge source="Transporte aéreo" target="Transporte ferroviario">
+      <data key="d1">0.7281947135925293</data>
+    </edge>
+    <edge source="Transporte por carretera" target="Transporte ferroviario">
+      <data key="d1">0.739889919757843</data>
+    </edge>
+    <edge source="Literatura africana" target="Arte africano">
+      <data key="d1">0.7486741542816162</data>
+    </edge>
+    <edge source="Investigación ecológica" target="Investigación">
+      <data key="d1">0.7794182300567627</data>
+    </edge>
+    <edge source="Bienestar de la madre" target="Salud materno-infantil">
+      <data key="d1">0.7002654075622559</data>
+    </edge>
+    <edge source="Clase campesina" target="Clase social">
+      <data key="d1">0.726460337638855</data>
+    </edge>
+    <edge source="Clase social" target="Condición social">
+      <data key="d1">0.8015503287315369</data>
+    </edge>
+    <edge source="Clase social" target="Desigualdad social">
+      <data key="d1">0.7483540177345276</data>
+    </edge>
+    <edge source="Prisionero de guerra" target="Prisionero">
+      <data key="d1">0.8271075487136841</data>
+    </edge>
+    <edge source="Prisionero de guerra" target="Prisión">
+      <data key="d1">0.7104379534721375</data>
+    </edge>
+    <edge source="Estilo de vida" target="Vida cotidiana">
+      <data key="d1">0.7776013016700745</data>
+    </edge>
+    <edge source="Monarquía" target="Aristocracia">
+      <data key="d1">0.7484247088432312</data>
+    </edge>
+    <edge source="Papel" target="Tecnología del papel">
+      <data key="d1">0.7626063823699951</data>
+    </edge>
+    <edge source="Cambio cultural" target="Comportamiento cultural">
+      <data key="d1">0.7797757983207703</data>
+    </edge>
+    <edge source="Cambio cultural" target="Cambio social">
+      <data key="d1">0.7526931166648865</data>
+    </edge>
+    <edge source="Informática" target="Programación informática">
+      <data key="d1">0.82780921459198</data>
+    </edge>
+    <edge source="Cartografía" target="Mapa">
+      <data key="d1">0.7971037030220032</data>
+    </edge>
+    <edge source="Prisionero" target="Prisión">
+      <data key="d1">0.8613656759262085</data>
+    </edge>
+    <edge source="Fisiología humana" target="Biofísica">
+      <data key="d1">0.7310685515403748</data>
+    </edge>
+    <edge source="Biofísica" target="Física">
+      <data key="d1">0.7839658260345459</data>
+    </edge>
+    <edge source="Biofísica" target="Biología espacial">
+      <data key="d1">0.7134039402008057</data>
+    </edge>
+    <edge source="Oportunidades de empleo" target="Servicio de empleo">
+      <data key="d1">0.7346339225769043</data>
+    </edge>
+    <edge source="Arte chino" target="Arte asiático">
+      <data key="d1">0.826631486415863</data>
+    </edge>
+    <edge source="Ensayo literario" target="Crítica literaria">
+      <data key="d1">0.8123400211334229</data>
+    </edge>
+    <edge source="Ensayo literario" target="Estilo literario">
+      <data key="d1">0.7517097592353821</data>
+    </edge>
+    <edge source="Ensayo literario" target="Ensayo">
+      <data key="d1">0.7709962129592896</data>
+    </edge>
+    <edge source="Derechos del niño" target="Derechos humanos">
+      <data key="d1">0.7135578393936157</data>
+    </edge>
+    <edge source="Derechos humanos" target="Violación de los derechos humanos">
+      <data key="d1">0.8095135688781738</data>
+    </edge>
+    <edge source="Derechos humanos" target="Derechos civiles">
+      <data key="d1">0.7425190210342407</data>
+    </edge>
+    <edge source="Física" target="Geofísica">
+      <data key="d1">0.705866813659668</data>
+    </edge>
+    <edge source="Física" target="Química">
+      <data key="d1">0.7089238166809082</data>
+    </edge>
+    <edge source="Ciencias de la tierra" target="Medio ambiente terrestre">
+      <data key="d1">0.7352376580238342</data>
+    </edge>
+    <edge source="Ciencias de la tierra" target="Geofísica">
+      <data key="d1">0.722528874874115</data>
+    </edge>
+    <edge source="Científico" target="Personal científico">
+      <data key="d1">0.794096827507019</data>
+    </edge>
+    <edge source="Ciencias médicas" target="Médico">
+      <data key="d1">0.7389470338821411</data>
+    </edge>
+    <edge source="Innovación científica" target="Innovación">
+      <data key="d1">0.8530457019805908</data>
+    </edge>
+    <edge source="Innovación científica" target="Innovación educacional">
+      <data key="d1">0.7420587539672852</data>
+    </edge>
+    <edge source="Innovación científica" target="Ciencia y desarrollo">
+      <data key="d1">0.7373193502426147</data>
+    </edge>
+    <edge source="Innovación" target="Innovación educacional">
+      <data key="d1">0.8024082183837891</data>
+    </edge>
+    <edge source="Innovación" target="Inventiva">
+      <data key="d1">0.7269072532653809</data>
+    </edge>
+    <edge source="Tailandia" target="Myanmar">
+      <data key="d1">0.7109180688858032</data>
+    </edge>
+    <edge source="Restablecimiento de la paz" target="Acuerdo de paz">
+      <data key="d1">0.7676994204521179</data>
+    </edge>
+    <edge source="Comportamiento sexual" target="Sexo">
+      <data key="d1">0.728522539138794</data>
+    </edge>
+    <edge source="Planta medicinal" target="Botánica">
+      <data key="d1">0.7033522129058838</data>
+    </edge>
+    <edge source="Artesanía" target="Artesano">
+      <data key="d1">0.8444256782531738</data>
+    </edge>
+    <edge source="Colonización" target="Descolonización">
+      <data key="d1">0.8298362493515015</data>
+    </edge>
+    <edge source="Colonización" target="País colonial">
+      <data key="d1">0.7498646378517151</data>
+    </edge>
+    <edge source="Chile" target="Perú">
+      <data key="d1">0.7030890583992004</data>
+    </edge>
+    <edge source="Epidemia" target="Pandemia">
+      <data key="d1">0.7839474678039551</data>
+    </edge>
+    <edge source="Comportamiento cultural" target="Paisaje cultural">
+      <data key="d1">0.701427161693573</data>
+    </edge>
+    <edge source="Comportamiento cultural" target="Participación cultural">
+      <data key="d1">0.7661672830581665</data>
+    </edge>
+    <edge source="Paisaje cultural" target="Participación cultural">
+      <data key="d1">0.7094048857688904</data>
+    </edge>
+    <edge source="Paisaje cultural" target="Patrimonio cultural">
+      <data key="d1">0.741701066493988</data>
+    </edge>
+    <edge source="Participación cultural" target="Participación social">
+      <data key="d1">0.7526190876960754</data>
+    </edge>
+    <edge source="Medio ambiente terrestre" target="Medio ambiente">
+      <data key="d1">0.8558809161186218</data>
+    </edge>
+    <edge source="Fotografía" target="Fotografías">
+      <data key="d1">0.9155114889144897</data>
+    </edge>
+    <edge source="Crítica literaria" target="Historia literaria">
+      <data key="d1">0.7006127834320068</data>
+    </edge>
+    <edge source="Crítica literaria" target="Estilo literario">
+      <data key="d1">0.7358704209327698</data>
+    </edge>
+    <edge source="Historia literaria" target="Historia">
+      <data key="d1">0.7116793394088745</data>
+    </edge>
+    <edge source="Condición social" target="Desigualdad social">
+      <data key="d1">0.7294514179229736</data>
+    </edge>
+    <edge source="Ballet" target="Bailarín">
+      <data key="d1">0.7094759941101074</data>
+    </edge>
+    <edge source="Historia" target="Geografía histórica">
+      <data key="d1">0.7623245716094971</data>
+    </edge>
+    <edge source="Historia" target="Historia natural">
+      <data key="d1">0.7782725095748901</data>
+    </edge>
+    <edge source="Capitalismo" target="Comunismo">
+      <data key="d1">0.7526248693466187</data>
+    </edge>
+    <edge source="Comunismo" target="Fascismo">
+      <data key="d1">0.7469545006752014</data>
+    </edge>
+    <edge source="Homofobia" target="Xenofobia">
+      <data key="d1">0.7135235071182251</data>
+    </edge>
+    <edge source="Economía cultural" target="Administración cultural">
+      <data key="d1">0.744429886341095</data>
+    </edge>
+    <edge source="Administración cultural" target="Derechos culturales">
+      <data key="d1">0.7217293381690979</data>
+    </edge>
+    <edge source="Enfermedad" target="Enfermedad animal">
+      <data key="d1">0.7718600034713745</data>
+    </edge>
+    <edge source="Participación social" target="Participación estudiantil">
+      <data key="d1">0.7274867296218872</data>
+    </edge>
+    <edge source="Contratación" target="Derecho de los contratos">
+      <data key="d1">0.7061825394630432</data>
+    </edge>
+    <edge source="Química inorgánica" target="Elemento químico">
+      <data key="d1">0.7041004300117493</data>
+    </edge>
+    <edge source="Química inorgánica" target="Química">
+      <data key="d1">0.7990853190422058</data>
+    </edge>
+    <edge source="Elemento químico" target="Química">
+      <data key="d1">0.8056624531745911</data>
+    </edge>
+    <edge source="Geografía histórica" target="Geografía política">
+      <data key="d1">0.7370345592498779</data>
+    </edge>
+    <edge source="Geografía histórica" target="Historia natural">
+      <data key="d1">0.7106479406356812</data>
+    </edge>
+    <edge source="Historia natural" target="Museo de historia natural">
+      <data key="d1">0.7829754948616028</data>
+    </edge>
+    <edge source="Militarismo" target="Fuerzas armadas">
+      <data key="d1">0.7071905732154846</data>
+    </edge>
+    <edge source="Minería" target="Metalurgia">
+      <data key="d1">0.7081322073936462</data>
+    </edge>
+    <edge source="Programación informática" target="Lenguaje de programación">
+      <data key="d1">0.7562525272369385</data>
+    </edge>
+    <edge source="Arquitecto" target="Edificio">
+      <data key="d1">0.7471145391464233</data>
+    </edge>
+    <edge source="Humanidades" target="Humanismo">
+      <data key="d1">0.7706420421600342</data>
+    </edge>
+    <edge source="Proyecto de desarrollo" target="Dirección de proyecto">
+      <data key="d1">0.7798032760620117</data>
+    </edge>
+    <edge source="Proyecto de desarrollo" target="Evaluación de proyecto">
+      <data key="d1">0.7127120494842529</data>
+    </edge>
+    <edge source="Desarrollo económico y social" target="Derechos sociales y económicos">
+      <data key="d1">0.7476696968078613</data>
+    </edge>
+    <edge source="Ciego" target="Ceguera">
+      <data key="d1">0.7784245014190674</data>
+    </edge>
+    <edge source="Contabilidad" target="Contabilidad de costes">
+      <data key="d1">0.8078781962394714</data>
+    </edge>
+    <edge source="Lectura oral" target="Expresión oral">
+      <data key="d1">0.7742254137992859</data>
+    </edge>
+    <edge source="Ciclo hidrológico" target="Ciclo de vida">
+      <data key="d1">0.7236784100532532</data>
+    </edge>
+    <edge source="Conservación de la naturaleza" target="Protección del paisaje">
+      <data key="d1">0.7418276071548462</data>
+    </edge>
+    <edge source="Escultor" target="Escultura">
+      <data key="d1">0.8990199565887451</data>
+    </edge>
+    <edge source="Fascismo" target="Nazismo">
+      <data key="d1">0.8003919720649719</data>
+    </edge>
+    <edge source="Tecnología de la madera" target="Trabajo en madera">
+      <data key="d1">0.7977613806724548</data>
+    </edge>
+    <edge source="Diseño urbano" target="Desarrollo urbano">
+      <data key="d1">0.7917168736457825</data>
+    </edge>
+    <edge source="Derechos culturales" target="Patrimonio cultural">
+      <data key="d1">0.724493682384491</data>
+    </edge>
+    <edge source="Intelectuales" target="Inteligencia">
+      <data key="d1">0.7208968997001648</data>
+    </edge>
+    <edge source="Yiddish" target="Judío">
+      <data key="d1">0.7679497599601746</data>
+    </edge>
+    <edge source="Marketing" target="Estudio de mercado">
+      <data key="d1">0.7135998010635376</data>
+    </edge>
+  </graph>
+</graphml>
