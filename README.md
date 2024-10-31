@@ -2,14 +2,14 @@
 
 ## Descripción General
 
-**BibloClean** es un paquete Python diseñado para el procesamiento integral de datos bibliográficos, utilizando un pipeline ETL (Extracción, Transformación, Carga) para procesar registros MARC21 y normalizar la información extraída. Este paquete facilita la limpieza, normalización y análisis de datos bibliográficos, y es especialmente útil para bibliotecarios y gestores de información que manejan grandes volúmenes de registros MARC21.
+**BibloClean** es un paquete Python diseñado para el procesamiento de datos bibliográficos, utilizando un pipeline ETL (Extracción, Transformación, Carga) para procesar registros MARC21 y normalizar la información extraída. Este paquete facilita la limpieza, normalización y análisis de datos bibliográficos, y es especialmente útil para bibliotecarios y gestores de información que manejan grandes volúmenes de registros MARC21.
 
 ### Características Principales
 
 - **Extracción de datos**: Carga registros desde archivos CSV/Excel.
 - **Preprocesamiento de texto**: Limpia y normaliza campos bibliográficos.
 - **Generación de embeddings**: Crea representaciones vectoriales para análisis temático.
-- **Normalización de entidades**: Detecta y normaliza autores, títulos y lugares.
+- **Normalización de entidades**: Normaliza autores, títulos, lugares, fechas y clasificación dewey.
 - **Red de correlaciones temáticas**: Genera redes de conexiones entre temas basados en umbrales de similitud.
 - **Exportación de resultados**: Guarda los datos procesados en un formato estructurado y exporta redes temáticas a formato GraphML.
 
