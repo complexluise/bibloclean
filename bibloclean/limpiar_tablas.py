@@ -505,7 +505,8 @@ class BibliotecaDataProcessor:
         editoriales = [e.strip() for e in editorial.split(';') if e.strip()]
 
         # Capitalizar primera letra de cada palabra
-        editoriales = [e.strip('.').title() for e in editoriales]
+        normalize = lambda x: ' '.join(w if w.isupper() else w.capitalize() for w in x.split())
+        editoriales = [normalize(e.strip(".")) for e in editoriales]
 
         # Si no hay editoriales después de la limpieza
         if not editoriales:
