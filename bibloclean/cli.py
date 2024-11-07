@@ -4,10 +4,12 @@ from pathlib import Path
 from bibloclean.limpiar_tablas import BibliotecaDataProcessor
 import pandas as pd
 
+
 @click.group()
 def cli():
     """Herramientas para procesamiento de datos bibliográficos"""
     pass
+
 
 @cli.command()
 @click.argument("archivo", type=click.Path(exists=True))
@@ -63,25 +65,26 @@ def limpiar_koha(archivo, salida, verbose):
         click.echo(f"❌ Error: {str(e)}", err=True)
         raise click.Abort()
 
+
 @cli.command()
 @click.argument("archivo", type=click.Path(exists=True))
 @click.option(
     "--umbral",
     "-u",
     default=0.7,
-    help="Umbral de similaridad para conexiones entre temas (0-1)"
+    help="Umbral de similaridad para conexiones entre temas (0-1)",
 )
 @click.option(
     "--modelo",
     "-m",
     default="jinaai/jina-embeddings-v3",
-    help="Modelo de embeddings a utilizar"
+    help="Modelo de embeddings a utilizar",
 )
 @click.option(
     "--salida",
     "-s",
     default="clean_data/red_temas.graphml",
-    help="Ruta de salida para el archivo GraphML"
+    help="Ruta de salida para el archivo GraphML",
 )
 def analizar_red(archivo, umbral, modelo, salida):
     """
@@ -89,7 +92,11 @@ def analizar_red(archivo, umbral, modelo, salida):
 
     ARCHIVO: CSV procesado con temas asignados
     """
-    from bibloclean.modelamiento_topicos import ProcesadorMateriasEmbeddings, construir_red, exportar_graphml
+    from bibloclean.modelamiento_topicos import (
+        ProcesadorMateriasEmbeddings,
+        construir_red,
+        exportar_graphml,
+    )
     from bibloclean.extraer_vocabulario import extraer_vocabulario
 
     click.echo("🔄 Iniciando análisis de red temática")

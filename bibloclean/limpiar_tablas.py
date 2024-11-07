@@ -52,7 +52,7 @@ class BibliotecaDataProcessor:
             "titulo": "Título principal",
             "dewey": "Número de clasificación Dewey",
             "periodo": "Periodo cronológico",
-            "editorial": "Editorial"
+            "editorial": "Editorial",
         }
 
     def obtener_columnas_disponibles(self) -> Dict[str, List[str]]:
@@ -110,7 +110,7 @@ class BibliotecaDataProcessor:
                 self.columnas_esperadas["editorial"]
                 if self.columnas_esperadas["editorial"] in self.datos.columns
                 else None
-            )
+            ),
         }
         return columnas_disponibles
 
@@ -495,23 +495,25 @@ class BibliotecaDataProcessor:
         Returns:
             tuple: (editorial_principal, editorial_secundaria)
         """
-        if pd.isna(editorial) or editorial == '' or editorial == '##':
+        if pd.isna(editorial) or editorial == "" or editorial == "##":
             return "Editorial no identificada", ""
 
         # Limpieza inicial del texto
         editorial = str(editorial).strip()
 
         # Remover paréntesis y su contenido
-        editorial = re.sub(r'\s*\([^)]*\)', '', editorial)
+        editorial = re.sub(r"\s*\([^)]*\)", "", editorial)
 
         # Normalizar separadores
-        editorial = editorial.replace(',;', ';').replace(',', ';')
+        editorial = editorial.replace(",;", ";").replace(",", ";")
 
         # Dividir por punto y coma o coma
-        editoriales = [e.strip() for e in editorial.split(';') if e.strip()]
+        editoriales = [e.strip() for e in editorial.split(";") if e.strip()]
 
         # Capitalizar primera letra de cada palabra
-        normalize = lambda x: ' '.join(w if w.isupper() else w.capitalize() for w in x.split())
+        normalize = lambda x: " ".join(
+            w if w.isupper() else w.capitalize() for w in x.split()
+        )
         editoriales = [normalize(e.strip(".")) for e in editoriales]
 
         # Si no hay editoriales después de la limpieza
@@ -595,9 +597,9 @@ class BibliotecaDataProcessor:
             logging.info(
                 f"Normalizando columna de editorial: {columnas_disponibles['editorial']}"
             )
-            editorial_normalizados = self.datos[columnas_disponibles["editorial"]].apply(
-                self._normalizar_editorial
-            )
+            editorial_normalizados = self.datos[
+                columnas_disponibles["editorial"]
+            ].apply(self._normalizar_editorial)
             self.datos[columnas_disponibles["editorial"] + " 1 normalizado"] = (
                 editorial_normalizados.str[0]
             )
@@ -608,8 +610,6 @@ class BibliotecaDataProcessor:
         if columnas_disponibles["temas"]:
             logging.info(f"Modelando temas en columna: {columnas_disponibles['temas']}")
             self.datos = self._modelar_topicos(columnas_disponibles["temas"])
-
-
 
         return self.datos
 
@@ -756,7 +756,7 @@ def main(ruta_entrada):
 if __name__ == "__main__":
 
     rutas = [
-        #"raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv",
+        # "raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv",
         "raw_data/tablero_7_oplb.xlsx - 02102024KOHA.csv",
     ]
     for i in rutas:
