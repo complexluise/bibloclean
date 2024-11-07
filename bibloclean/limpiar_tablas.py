@@ -52,6 +52,7 @@ class BibliotecaDataProcessor:
             "titulo": "Título principal",
             "dewey": "Número de clasificación Dewey",
             "periodo": "Periodo cronológico",
+            "editorial": "Editorial"
         }
 
     def obtener_columnas_disponibles(self) -> Dict[str, List[str]]:
@@ -105,6 +106,11 @@ class BibliotecaDataProcessor:
                 if self.columnas_esperadas["periodo"] in self.datos.columns
                 else None
             ),
+            "editorial": (
+                self.columnas_esperadas["editorial"]
+                if self.columnas_esperadas["editorial"] in self.datos.columns
+                else None
+            )
         }
         return columnas_disponibles
 
@@ -551,14 +557,14 @@ class BibliotecaDataProcessor:
             logging.info(
                 f"Normalizando columna de lugar: {columnas_disponibles['lugar']}"
             )
-            lugares_normalizados = self.datos[columnas_disponibles["lugar"]].apply(
+            editorial_normalizados = self.datos[columnas_disponibles["lugar"]].apply(
                 self._normalizar_lugar_publicacion
             )
             self.datos[columnas_disponibles["lugar"] + " ciudad 1 normalizado"] = (
-                lugares_normalizados.str[0]
+                editorial_normalizados.str[0]
             )
             self.datos[columnas_disponibles["lugar"] + " ciudad 2 normalizado"] = (
-                lugares_normalizados.str[1]
+                editorial_normalizados.str[1]
             )
 
         if columnas_disponibles["fecha"]:
@@ -585,9 +591,25 @@ class BibliotecaDataProcessor:
                 columnas_disponibles["periodo"]
             ].apply(self._normalizar_periodo)
 
+        if columnas_disponibles["editorial"]:
+            logging.info(
+                f"Normalizando columna de editorial: {columnas_disponibles['editorial']}"
+            )
+            editorial_normalizados = self.datos[columnas_disponibles["editorial"]].apply(
+                self._normalizar_editorial
+            )
+            self.datos[columnas_disponibles["editorial"] + " 1 normalizado"] = (
+                editorial_normalizados.str[0]
+            )
+            self.datos[columnas_disponibles["editorial"] + " 2 normalizado"] = (
+                editorial_normalizados.str[1]
+            )
+
         if columnas_disponibles["temas"]:
             logging.info(f"Modelando temas en columna: {columnas_disponibles['temas']}")
             self.datos = self._modelar_topicos(columnas_disponibles["temas"])
+
+
 
         return self.datos
 
