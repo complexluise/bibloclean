@@ -164,6 +164,49 @@ def test_normalizar_periodo(periodo, expected):
     processor = BibliotecaDataProcessor("")
     assert processor._normalizar_periodo(periodo) == expected
 
+@pytest.mark.parametrize(
+    "editorial, expected",
+    [
+        # Casos básicos
+        ("Norma", ("Norma", "")),
+        ("Planeta", ("Planeta", "")),
+        ("Alfaguara", ("Alfaguara", "")),
+
+        # Casos con múltiples editoriales separadas por coma
+        ("Norma, Planeta", ("Norma", "Planeta")),
+        ("Aguilar, Alfaguara", ("Aguilar", "Alfaguara")),
+
+        # Casos con múltiples editoriales separadas por punto y coma
+        ("Norma; Alfaguara", ("Norma", "Alfaguara")),
+        ("Ediciones SM; Ediciones B", ("Ediciones SM", "Ediciones B")),
+
+        # Casos con múltiples editoriales con espacios y puntuación extra
+        ("Norma,;Planeta,", ("Norma", "Planeta")),
+        ("Universidad de Antioquia.;Norma", ("Universidad De Antioquia", "Norma")),
+
+
+        # Casos especiales de formatos inusuales
+        ("", ("Editorial no identificada", "")),
+        (np.nan, ("Editorial no identificada", "")),
+        ("##", ("Editorial no identificada", "")),
+
+        # Casos con más de dos editoriales, se deben tomar solo las primeras dos
+        ("Norma; Planeta; Alfaguara", ("Norma", "Planeta")),
+        ("Ediciones SM, Aguilar, Grijalbo", ("Ediciones SM", "Aguilar")),
+
+        # Casos con variaciones de mayúsculas y minúsculas
+        ("norma", ("Norma", "")),
+        ("Aguilar; norma", ("Aguilar", "Norma")),
+
+        # Casos con paréntesis y variaciones de nombres
+        ("Alfaguara (Colombia)", ("Alfaguara", "")),
+        ("Ediciones SM (España)", ("Ediciones SM", "")),
+    ],
+)
+def test_normalizar_editorial(editorial, expected):
+    processor = BibliotecaDataProcessor("")
+    assert processor._normalizar_editorial(editorial) == expected
+
 
 @pytest.mark.parametrize(
     "dewey_number, expected",
