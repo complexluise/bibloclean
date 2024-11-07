@@ -52,6 +52,7 @@ class BibliotecaDataProcessor:
             "titulo": "Título principal",
             "dewey": "Número de clasificación Dewey",
             "periodo": "Periodo cronológico",
+            "editorial": "Editorial",
         }
 
     def obtener_columnas_disponibles(self) -> Dict[str, List[str]]:
@@ -103,6 +104,11 @@ class BibliotecaDataProcessor:
             "periodo": (
                 self.columnas_esperadas["periodo"]
                 if self.columnas_esperadas["periodo"] in self.datos.columns
+                else None
+            ),
+            "editorial": (
+                self.columnas_esperadas["editorial"]
+                if self.columnas_esperadas["editorial"] in self.datos.columns
                 else None
             ),
         }
@@ -478,6 +484,49 @@ class BibliotecaDataProcessor:
         # Extract and return the first three digits if available
         return numeric_part[:3] if len(numeric_part) >= 3 else ""
 
+    @staticmethod
+    def _normalizar_editorial(editorial: str) -> Tuple[str, str]:
+        """
+        Normaliza el nombre de la editorial.
+
+        Args:
+            editorial (str): Nombre de la editorial a normalizar
+
+        Returns:
+            tuple: (editorial_principal, editorial_secundaria)
+        """
+        if pd.isna(editorial) or editorial == "" or editorial == "##":
+            return "Editorial no identificada", ""
+
+        # Limpieza inicial del texto
+        editorial = str(editorial).strip()
+
+        # Remover paréntesis y su contenido
+        editorial = re.sub(r"\s*\([^)]*\)", "", editorial)
+
+        # Normalizar separadores
+        editorial = editorial.replace(",;", ";").replace(",", ";")
+
+        # Dividir por punto y coma o coma
+        editoriales = [e.strip() for e in editorial.split(";") if e.strip()]
+
+        # Capitalizar primera letra de cada palabra
+        normalize = lambda x: " ".join(
+            w if w.isupper() else w.capitalize() for w in x.split()
+        )
+        editoriales = [normalize(e.strip(".")) for e in editoriales]
+
+        # Si no hay editoriales después de la limpieza
+        if not editoriales:
+            return "Editorial no identificada", ""
+
+        # Si solo hay una editorial
+        if len(editoriales) == 1:
+            return editoriales[0], ""
+
+        # Si hay dos o más editoriales, tomar las dos primeras
+        return editoriales[0], editoriales[1]
+
     def transformar_datos(self) -> pd.DataFrame:
         """
         Aplica todas las transformaciones necesarias al DataFrame según las columnas disponibles.
@@ -510,14 +559,14 @@ class BibliotecaDataProcessor:
             logging.info(
                 f"Normalizando columna de lugar: {columnas_disponibles['lugar']}"
             )
-            lugares_normalizados = self.datos[columnas_disponibles["lugar"]].apply(
+            editorial_normalizados = self.datos[columnas_disponibles["lugar"]].apply(
                 self._normalizar_lugar_publicacion
             )
             self.datos[columnas_disponibles["lugar"] + " ciudad 1 normalizado"] = (
-                lugares_normalizados.str[0]
+                editorial_normalizados.str[0]
             )
             self.datos[columnas_disponibles["lugar"] + " ciudad 2 normalizado"] = (
-                lugares_normalizados.str[1]
+                editorial_normalizados.str[1]
             )
 
         if columnas_disponibles["fecha"]:
@@ -543,6 +592,20 @@ class BibliotecaDataProcessor:
             self.datos[columnas_disponibles["periodo"] + " normalizado"] = self.datos[
                 columnas_disponibles["periodo"]
             ].apply(self._normalizar_periodo)
+
+        if columnas_disponibles["editorial"]:
+            logging.info(
+                f"Normalizando columna de editorial: {columnas_disponibles['editorial']}"
+            )
+            editorial_normalizados = self.datos[
+                columnas_disponibles["editorial"]
+            ].apply(self._normalizar_editorial)
+            self.datos[columnas_disponibles["editorial"] + " 1 normalizado"] = (
+                editorial_normalizados.str[0]
+            )
+            self.datos[columnas_disponibles["editorial"] + " 2 normalizado"] = (
+                editorial_normalizados.str[1]
+            )
 
         if columnas_disponibles["temas"]:
             logging.info(f"Modelando temas en columna: {columnas_disponibles['temas']}")
@@ -693,7 +756,7 @@ def main(ruta_entrada):
 if __name__ == "__main__":
 
     rutas = [
-        "raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv",
+        # "raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv",
         "raw_data/tablero_7_oplb.xlsx - 02102024KOHA.csv",
     ]
     for i in rutas:
