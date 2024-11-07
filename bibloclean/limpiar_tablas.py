@@ -478,6 +478,46 @@ class BibliotecaDataProcessor:
         # Extract and return the first three digits if available
         return numeric_part[:3] if len(numeric_part) >= 3 else ""
 
+    @staticmethod
+    def _normalizar_editorial(editorial: str) -> Tuple[str, str]:
+        """
+        Normaliza el nombre de la editorial.
+
+        Args:
+            editorial (str): Nombre de la editorial a normalizar
+
+        Returns:
+            tuple: (editorial_principal, editorial_secundaria)
+        """
+        if pd.isna(editorial) or editorial == '' or editorial == '##':
+            return "Editorial no identificada", ""
+
+        # Limpieza inicial del texto
+        editorial = str(editorial).strip()
+
+        # Remover paréntesis y su contenido
+        editorial = re.sub(r'\s*\([^)]*\)', '', editorial)
+
+        # Normalizar separadores
+        editorial = editorial.replace(',;', ';').replace(',', ';')
+
+        # Dividir por punto y coma o coma
+        editoriales = [e.strip() for e in editorial.split(';') if e.strip()]
+
+        # Capitalizar primera letra de cada palabra
+        editoriales = [e.strip('.').title() for e in editoriales]
+
+        # Si no hay editoriales después de la limpieza
+        if not editoriales:
+            return "Editorial no identificada", ""
+
+        # Si solo hay una editorial
+        if len(editoriales) == 1:
+            return editoriales[0], ""
+
+        # Si hay dos o más editoriales, tomar las dos primeras
+        return editoriales[0], editoriales[1]
+
     def transformar_datos(self) -> pd.DataFrame:
         """
         Aplica todas las transformaciones necesarias al DataFrame según las columnas disponibles.
@@ -693,7 +733,7 @@ def main(ruta_entrada):
 if __name__ == "__main__":
 
     rutas = [
-        "raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv",
+        #"raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv",
         "raw_data/tablero_7_oplb.xlsx - 02102024KOHA.csv",
     ]
     for i in rutas:
