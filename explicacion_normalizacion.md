@@ -73,6 +73,26 @@
 
 ---
 
+### 9. **Editorial**
+   - **Separación de múltiples editoriales**:
+     - Si el campo contiene múltiples editoriales separadas por coma (`,`) o punto y coma (`;`), se extraen las dos primeras.
+     - Se eliminan espacios en exceso, puntuaciones innecesarias y símbolos especiales.
+   - **Formato de nombre**:
+     - Las palabras en el nombre de la editorial se capitalizan para mantener consistencia. Por ejemplo, `"universidad de antioquia"` se convierte en `"Universidad De Antioquia"`.
+   - **Eliminación de información adicional**:
+     - Se eliminan datos entre paréntesis que indican localización o ediciones específicas. Por ejemplo, `"Alfaguara (Colombia)"` se convierte en `"Alfaguara"`.
+   - **Editorial no identificada**:
+     - Si el campo está vacío, contiene caracteres inválidos (`##`, `np.nan`), o no se puede identificar correctamente, se asigna `"Editorial no identificada"`.
+
+---
+
+### **Archivos de Salida Actualizados**
+1. **_procesado.csv**: Incluye registros con la columna de Editorial normalizada según los criterios mencionados.
+2. **_descartados.csv**: Archiva los registros con editoriales no identificadas o datos incompletos.
+
+Esta sección sigue la misma estructura de las demás columnas, asegurando una normalización completa del catálogo bibliográfico.
+---
+
 ### **Archivos de Salida**
 1. **_procesado.csv**: Contiene los registros con datos normalizados y clasificados según los criterios mencionados.
 2. **_descartados.csv**: Archiva los registros que no cumplen con los requisitos de normalización, especialmente aquellos sin biblioteca asignada o sin suficientes datos de referencia para otras columnas.
