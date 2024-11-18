@@ -471,9 +471,9 @@ class BibliotecaDataProcessor:
         if not raw_dewey_number:
             return ""
 
-        match = re.search(r'(?:^R\s*)?(\d+)', re.sub(r'[^\dR]', '', raw_dewey_number))  # Extrae números y preserva R inicial
+        match = re.search(r'(?:^R\s*)?(\d+)', re.sub(r'[^\dR]', '', str(raw_dewey_number)))  # Extrae números y preserva R inicial
         if not match:
-            return ""
+            return "Dewey no identificado"
 
         # Si comienza con R, retorna R independiente de los números que sigan
         if raw_dewey_number.strip().startswith('R'):
@@ -758,8 +758,8 @@ def main(ruta_entrada):
 if __name__ == "__main__":
 
     rutas = [
-        # "raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv",
-        "raw_data/tablero_7_oplb.xlsx - 02102024KOHA.csv",
+        "raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv",
+        #"raw_data/tablero_7_oplb.xlsx - 02102024KOHA.csv",
     ]
     for i in rutas:
         main(i)

@@ -228,9 +228,10 @@ def test_normalizar_editorial(editorial, expected):
         ("AB123CD456", "100"),
         ("90-123-456", "900"),
         (" 650.213 ", "600"),
-        ("", ""),
-        # Casos adicionales de la tabla
+        # Casos con "R" de Referencia
         ("R 036", "R"),
+        ("R400", "R"),
+        # Casos adicionales
         ("155.25", "100"),
         ("204.35", "200"),
         ("371.3 - 3460482", "300"),
@@ -240,6 +241,7 @@ def test_normalizar_editorial(editorial, expected):
         ("796545 - 793.735", "700"),
         ("Co 867.6 - 808.1 - Ar 864.44", "800"),
         ("922.21", "900"),
+        ("NRAM", "Dewey no identificado")
     ],
 )
 def test_normalizar_numero_clasificacion_dewey(dewey_number, expected):
