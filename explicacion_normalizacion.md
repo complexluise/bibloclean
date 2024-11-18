@@ -52,9 +52,19 @@
 ---
 
 ### 6. **Número Dewey**
-   - **Tres primeros dígitos**: Se extraen solo los primeros tres dígitos del número Dewey para facilitar la clasificación.
-   - **Eliminación de prefijos y separadores**: Se eliminan prefijos no numéricos y caracteres adicionales como `;`, `/`, `-` y espacios.
-   - **Casos especiales**: Si el número tiene menos de tres dígitos o no es numérico, se deja vacío (`""`).
+   - **Centenas principales**: Se extrae la centena principal del número Dewey (100, 200, 300, etc.)
+   - **Casos especiales**:
+     - Números que empiezan con 0 (000-099) se convierten a "0"
+     - Referencias (R) se mantienen como "R"
+     - Números con menos de 3 dígitos se convierten a "0"
+   - **Limpieza de formato**:
+     - Se eliminan prefijos y sufijos no numéricos
+     - Se eliminan separadores como puntos, guiones, barras (., -, /)
+     - Se eliminan espacios en blanco
+   - **Procesamiento de patrones complejos**:
+     - Múltiples clasificaciones se reducen a la primera centena válida
+     - Prefijos como "Co" se ignoran
+   - **Valor por defecto**: Si no se puede identificar un número Dewey válido, se asigna "Dewey no identificado"
 
 ---
 

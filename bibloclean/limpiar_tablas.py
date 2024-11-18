@@ -456,33 +456,35 @@ class BibliotecaDataProcessor:
         return None
 
     @staticmethod
-    def _normalizar_numero_clasificacion_dewey(raw_dewey_number: str):
+    def _normalizar_numero_clasificacion_dewey(raw_dewey_number: str) -> str:
         """
-        Normalize Dewey classification number by extracting the first three digits only,
-        ignoring non-numeric prefixes and internal separators.
+        Normaliza el número de clasificación Dewey extrayendo los primeros tres dígitos y
+        mapeándolo a la clase centena correspondiente.
 
-        Parameters:
-        - dewey_number (str): The Dewey number to normalize.
+        Parámetros:
+        - raw_dewey_number (str): El número Dewey a normalizar.
 
-        Returns:
-        - str: The first three digits of the Dewey number as a string, or an empty
-          string if no valid number is found.
+        Retorna:
+        - str: La clase centena Dewey correspondiente (ej: "100", "200", etc.),
+               "R" para números de referencia, o cadena vacía para entradas inválidas.
         """
-        raw_dewey_number = str(raw_dewey_number)
-        raw_dewey_number = (
-            raw_dewey_number.split(";")[1]
-            if ";" in raw_dewey_number
-            else raw_dewey_number
-        )
+        if not raw_dewey_number:
+            return ""
 
-        # Remove all non-numeric characters
-        numeric_part = re.sub(r"\D", "", raw_dewey_number)
+        match = re.search(r'(?:^R\s*)?(\d+)', re.sub(r'[^\dR]', '', str(raw_dewey_number)))  # Extrae números y preserva R inicial
+        if not match:
+            return "Dewey no identificado"
 
-        # Remove leading zeros and get first 3 significant digits
-        numeric_part = str(int(numeric_part)) if numeric_part else ""
+        # Si comienza con R, retorna R independiente de los números que sigan
+        if raw_dewey_number.strip().startswith('R'):
+            return "R"
 
-        # Extract and return the first three digits if available
-        return numeric_part[:3] if len(numeric_part) >= 3 else ""
+        number = match.group(1)
+
+        if len(number) < 3 or number[0] == '0':
+            return "0"
+
+        return f"{number[0]}00"
 
     @staticmethod
     def _normalizar_editorial(editorial: str) -> Tuple[str, str]:
@@ -756,8 +758,8 @@ def main(ruta_entrada):
 if __name__ == "__main__":
 
     rutas = [
-        # "raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv",
-        "raw_data/tablero_7_oplb.xlsx - 02102024KOHA.csv",
+        "raw_data/tablero_8_oplb.xlsx - 02102024KOHA.csv",
+        #"raw_data/tablero_7_oplb.xlsx - 02102024KOHA.csv",
     ]
     for i in rutas:
         main(i)
