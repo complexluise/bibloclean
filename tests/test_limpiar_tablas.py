@@ -204,31 +204,42 @@ def test_normalizar_editorial(editorial, expected):
 @pytest.mark.parametrize(
     "dewey_number, expected",
     [
-        # Standard cases
-        ("123.456", "123"),
-        ("70904062", "709"),
-        ("70.904.062", "709"),
-        # Edge cases with prefixes and additional characters
-        ("3.386.425", "338"),  # should handle prefixes
-        ("Co 867.6", "867"),  # non-numeric prefix
-        ("14;155.633", "155"),  # semicolon separator
-        ("338.9/86106", "338"),  # slash separator
-        # Cases with leading zeros
-        ("070.44", "704"),
-        ("005.133", "513"),
-        ("000.151", "151"),
-        ("'070.44", "704"),
-        # Cases with only three digits
-        ("523", "523"),  # exactly three digits
-        ("920", "920"),  # another three-digit case
-        # Cases with fewer than three digits
-        ("5", ""),  # fewer than three digits
-        ("88", ""),  # fewer than three digits
-        # Complex non-numeric patterns
-        ("AB123CD456", "123"),  # mixed letters
-        ("90-123-456", "901"),  # hyphens in sequence
-        (" 650.213 ", "650"),  # spaces around the number
-        ("", ""),  # empty input
+        # Casos estándar
+        ("123.456", "100"),
+        ("70904062", "700"),
+        ("70.904.062", "700"),
+        # Casos límite con prefijos y caracteres adicionales
+        ("3.386.425", "300"),
+        ("Co 867.6", "800"),
+        ("14;155.633", "100"),
+        ("338.9/86106", "300"),
+        # Casos con ceros a la izquierda
+        ("070.44", "0"),
+        ("005.133", "0"),
+        ("000.151", "0"),
+        ("'070.44", "0"),
+        # Casos con solo tres dígitos
+        ("523", "500"),
+        ("920", "900"),
+        # Casos con menos de tres dígitos
+        ("5", "0"),
+        ("88", "0"),
+        # Patrones no numéricos complejos
+        ("AB123CD456", "100"),
+        ("90-123-456", "900"),
+        (" 650.213 ", "600"),
+        ("", ""),
+        # Casos adicionales de la tabla
+        ("R 036", "R"),
+        ("155.25", "100"),
+        ("204.35", "200"),
+        ("371.3 - 3460482", "300"),
+        ("462.3", "400"),
+        ("530.01", "500"),
+        ("658.8 - 613", "600"),
+        ("796545 - 793.735", "700"),
+        ("Co 867.6 - 808.1 - Ar 864.44", "800"),
+        ("922.21", "900"),
     ],
 )
 def test_normalizar_numero_clasificacion_dewey(dewey_number, expected):
