@@ -481,7 +481,7 @@ class BibliotecaDataProcessor:
 
         number = match.group(1)
 
-        if len(number) < 3:
+        if len(number) < 3 or number[0] == '0':
             return "0"
 
         return f"{number[0]}00"
