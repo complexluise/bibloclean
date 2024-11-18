@@ -96,13 +96,6 @@
 
 ---
 
-### **Archivos de Salida Actualizados**
-1. **_procesado.csv**: Incluye registros con la columna de Editorial normalizada según los criterios mencionados.
-2. **_descartados.csv**: Archiva los registros con editoriales no identificadas o datos incompletos.
-
-Esta sección sigue la misma estructura de las demás columnas, asegurando una normalización completa del catálogo bibliográfico.
----
-
 ### **Archivos de Salida**
 1. **_procesado.csv**: Contiene los registros con datos normalizados y clasificados según los criterios mencionados.
 2. **_descartados.csv**: Archiva los registros que no cumplen con los requisitos de normalización, especialmente aquellos sin biblioteca asignada o sin suficientes datos de referencia para otras columnas.
